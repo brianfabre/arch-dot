@@ -1,0 +1,25 @@
+snippet ggp "ggplot2 plot"
+ggplot(${1:${VISUAL:data}}, aes(${0:aesthetics}))
+endsnippet
+
+snippet lib "Import a library"
+library('${0:${VISUAL:package}}')
+endsnippet
+
+snippet for "for loop"
+for (${1:item} in ${2:list}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet p "pipes"
+%>% 
+endsnippet
+
+snippet if "dummy variable, if else inline"
+ifelse(${0:${VISUAL}}, 1, 0)
+endsnippet
+
+snippet asn "as.numeric"
+as.numeric(${0})
+endsnippet
