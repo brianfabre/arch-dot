@@ -1,0 +1,5 @@
+set selection-clipboard clipboard
+set highlight-active-color "#ff0000"
+set highlight-transparency 0.3
+set window-title-basename true
+# set recolor true

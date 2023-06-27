@@ -1,33 +1,7 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 import os
 import subprocess
-from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile import bar, layout, widget, hook, qtile
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 
 HOME = os.path.expanduser("~")
@@ -40,7 +14,8 @@ def startup():
 
 
 class Commands:
-    dmenu = "dmenu_run -i -p '>>>' -fn 'SF Mono' -nb '#000' -nf '#fff' -sb '#00BF32' -sf '#fff'"
+    # dmenu = "dmenu_run -i -p '>>>' -fn 'SF Mono' -nb '#000' -nf '#fff' -sb '#00BF32' -sf '#fff'"
+    dmenu = "dmenu_run -i -l 10 -p '>>>' -fn 'SF Mono' -nb '#000' -nf '#fff' -sb '#556F7A' -sf '#fff'"
 
 
 # go to prev window
@@ -107,7 +82,8 @@ keys = [
     Key([hyper], "1", lazy.spawn(ocr)),
 ]
 
-groups = [Group(i) for i in "123456789"]
+# groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "12345"]
 
 for i in groups:
     keys.extend(
@@ -133,9 +109,35 @@ for i in groups:
         ]
     )
 
+# Define scratchpads
+groups.append(
+    ScratchPad(
+        "scratchpad",
+        [
+            DropDown(
+                "term",
+                # terminal,
+                ["/usr/bin/firefox"],
+                width=0.8,
+                height=0.8,
+                x=0.1,
+                y=0.1,
+                # opacity=1,
+            ),
+        ],
+    )
+)
+
+# Scratchpad keybindings
+keys.extend(
+    [
+        Key([mod], "m", lazy.group["scratchpad"].dropdown_toggle("term")),
+    ]
+)
+
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.MonadTall(margin=0, border_width=1, border_focus="ffffff"),
+    layout.MonadTall(margin=0, border_width=1, border_focus="#ffffff"),
     layout.Max(margin=0),
     # layout.Stack(num_stacks=1),
     # layout.Bsp(),
@@ -149,14 +151,19 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="SF Mono",
-    fontsize=14,
+    # font="SF Mono",
+    # font="FiraCode Nerd Font Bold",
+    # fontsize=14,
+    font="Source Code Pro",
+    fontsize=15,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
+        wallpaper="~/Documents/waves.jpg",
+        wallpaper_mode="fill",
         top=bar.Bar(
             [
                 widget.CurrentLayout(),
@@ -165,6 +172,9 @@ screens = [
                     rounded=False,
                     # hide_unused=True,
                     highlight_method="block",
+                    center_aligned=True,
+                    disable_drag=True,
+                    # inactive="#A9A9A9",
                 ),
                 widget.Sep(linewidth=1, padding=15),
                 widget.Prompt(),
@@ -175,9 +185,24 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Volume(volume_app="pipewire"),
+                # widget.TextBox(
+                #     text="󰃟",
+                #     mouse_callbacks={
+                #         "Button1": lambda: qtile.cmd_spawn("dmenu_run"),
+                #     },
+                # ),
+                # widget.CPU(),
+                # widget.Sep(linewidth=1, padding=15),
+                # widget.Memory(),
+                # widget.Sep(linewidth=1, padding=15),
+                widget.Volume(
+                    fmt="",
+                    volume_up_command="pactl set-sink-volume @DEFAULT_SINK@ +5%",
+                    volume_down_command="pactl set-sink-volume @DEFAULT_SINK@ -5%",
+                    volume_app="pavucontrol",
+                ),
                 widget.Sep(linewidth=1, padding=15),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Clock(format="%Y-%m-%d  %a  %I:%M %p"),
                 widget.Sep(linewidth=1, padding=15),
                 widget.QuickExit(),
                 widget.Sep(linewidth=1, padding=15),
@@ -186,7 +211,11 @@ screens = [
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            # background="#223843",
         ),
+        # right=bar.Gap(20),
+        # left=bar.Gap(20),
+        # bottom=bar.Gap(20),
     ),
 ]
 
@@ -221,7 +250,8 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
         Match(wm_class="thunar"),
-    ]
+        Match(title="MyGuy"),
+    ],
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"

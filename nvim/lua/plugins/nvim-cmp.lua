@@ -16,30 +16,30 @@ local M = {
         config = function()
             local kind_icons = {
                 Text = "",
-                Method = "",
-                Function = "",
+                Method = "󰆧",
+                Function = "󰊕",
                 Constructor = "",
-                Field = "",
-                Variable = "",
-                Class = "ﴯ",
+                Field = "󰇽",
+                Variable = "󰂡",
+                Class = "󰠱",
                 Interface = "",
                 Module = "",
-                Property = "ﰠ",
+                Property = "󰜢",
                 Unit = "",
-                Value = "",
+                Value = "󰎠",
                 Enum = "",
-                Keyword = "",
+                Keyword = "󰌋",
                 Snippet = "",
-                Color = "",
-                File = "",
+                Color = "󰏘",
+                File = "󰈙",
                 Reference = "",
-                Folder = "",
+                Folder = "󰉋",
                 EnumMember = "",
-                Constant = "",
+                Constant = "󰏿",
                 Struct = "",
                 Event = "",
-                Operator = "",
-                TypeParameter = "",
+                Operator = "󰆕",
+                TypeParameter = "󰅲",
             }
 
             local t = function(str)
@@ -161,17 +161,16 @@ local M = {
                     entries = { name = "custom", selection_order = "near_cursor" },
                 },
                 -- disables completion when cursor in comment
-                -- disabled because introduces bug
-                -- enabled = function()
-                -- 	-- disable completion in comments
-                -- 	local context = require("cmp.config.context")
-                -- 	-- keep command mode completion enabled when cursor is in a comment
-                -- 	if vim.api.nvim_get_mode().mode == "c" then
-                -- 		return true
-                -- 	else
-                -- 		return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
-                -- 	end
-                -- end,
+                enabled = function()
+                    -- disable completion in comments
+                    local context = require("cmp.config.context")
+                    -- keep command mode completion enabled when cursor is in a comment
+                    if vim.api.nvim_get_mode().mode == "c" then
+                        return true
+                    else
+                        return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+                    end
+                end,
             })
 
             cmp.setup.filetype("python", {

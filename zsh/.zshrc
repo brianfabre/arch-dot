@@ -1,6 +1,9 @@
 # history size
+HISTFILE=~/.zsh_history
 HISTSIZE=10000
-export HISTCONTROL=ignoredups:erasedups
+SAVEHIST=10000
+setopt appendhistory
+# export HISTCONTROL=ignoredups:erasedups
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -14,7 +17,24 @@ export VISUAL="nvim"
 export EDITOR=nvim
 export OPENER=xdg-open
 
-PROMPT="%n %~ $ "
+PROMPT="[%n %~]$ "
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path 'placeholder11' -prune \
+                  -o -path '*/.mozilla' -prune \
+                  -o -path '*/.git' -prune \
+                  -o -path '*/.pyenv' -prune \
+                  -o -path '*/.cache' -prune \
+                  -o -path '*/.texlive' -prune \
+                  -o -path '*/Repos/*/*' -prune \
+                  -o -path '*/.config/*/*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
 
 # lf cd function
 lfcd () {
