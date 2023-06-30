@@ -2,7 +2,7 @@ local M = {
 
     {
         "akinsho/toggleterm.nvim",
-        keys = { "<leader>ol" },
+        -- keys = { "<leader>tl" },
         cmd = "ToggleTerm",
         version = "*",
         config = function()
@@ -34,42 +34,6 @@ local M = {
                     vim.cmd("startinsert!")
                 end,
             })
-
-            local Terminal = require("toggleterm.terminal").Terminal
-            local lazygit = Terminal:new({
-                cmd = "lazygit",
-                hidden = true,
-                direction = "float",
-                float_opts = {
-                    border = "none",
-                    width = 100000,
-                    height = 100000,
-                },
-                -- on_open = function(_)
-                --     vim.cmd("startinsert!")
-                --     -- vim.cmd "set laststatus=0"
-                -- end,
-                -- on_close = function(_)
-                --     -- vim.cmd "set laststatus=3"
-                -- end,
-                count = 99,
-            })
-
-            function _LAZYGIT_TOGGLE()
-                lazygit:toggle()
-            end
-            vim.keymap.set("n", "<leader>ol", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
-
-            -- local Terminal = require("toggleterm.terminal").Terminal
-            -- local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
-            -- -- local lf = Terminal:new({ cmd = "lf", hidden = true })
-            --
-            -- function _lazygit_toggle()
-            --     lazygit:toggle()
-            -- end
-            --
-            -- -- vim.api.nvim_set_keymap(
-            -- vim.keymap.set("n", "<leader>ol", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
         end,
     },
 }

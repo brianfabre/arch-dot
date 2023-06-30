@@ -116,8 +116,7 @@ groups.append(
         [
             DropDown(
                 "term",
-                # terminal,
-                ["/usr/bin/firefox"],
+                terminal,
                 width=0.8,
                 height=0.8,
                 x=0.1,
@@ -177,7 +176,8 @@ screens = [
                     # inactive="#A9A9A9",
                 ),
                 widget.Sep(linewidth=1, padding=15),
-                widget.Prompt(),
+                widget.WindowCount(fmt="{} win", show_zero=True),
+                widget.Sep(linewidth=1, padding=15),
                 widget.WindowName(),
                 widget.Chord(
                     chords_colors={
@@ -191,10 +191,14 @@ screens = [
                 #         "Button1": lambda: qtile.cmd_spawn("dmenu_run"),
                 #     },
                 # ),
-                # widget.CPU(),
-                # widget.Sep(linewidth=1, padding=15),
-                # widget.Memory(),
-                # widget.Sep(linewidth=1, padding=15),
+                widget.Sep(linewidth=1, padding=15),
+                widget.ThermalSensor(fmt="CPU {}", tag_sensor="Tctl"),
+                widget.CPU(format=" {load_percent}%"),
+                widget.Sep(linewidth=1, padding=15),
+                widget.NvidiaSensors(fmt="GPU {}"),
+                widget.Sep(linewidth=1, padding=15),
+                widget.Memory(measure_mem="G"),
+                widget.Sep(linewidth=1, padding=15),
                 widget.Volume(
                     fmt="",
                     volume_up_command="pactl set-sink-volume @DEFAULT_SINK@ +5%",

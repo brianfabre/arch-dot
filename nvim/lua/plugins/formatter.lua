@@ -67,6 +67,7 @@ local M = {
                     r = { styler },
                     tex = { latexindent },
                     json = { prettier },
+                    html = { prettier },
                 },
             })
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
