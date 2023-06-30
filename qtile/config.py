@@ -27,6 +27,7 @@ mod = "mod4"
 hyper = "mod3"
 terminal = "wezterm"
 ocr = SCRIPTS_PATH + "ocr_capture.sh"
+widget_padding = 25
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -149,12 +150,12 @@ layouts = [
     # layout.Zoomy(),
 ]
 
+
 widget_defaults = dict(
-    # font="SF Mono",
+    font="SF Mono Bold",
     # font="FiraCode Nerd Font Bold",
-    # fontsize=14,
-    font="Source Code Pro",
-    fontsize=15,
+    # font="Source Code Pro",
+    fontsize=14,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -166,7 +167,7 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.Sep(linewidth=1, padding=15),
+                widget.Sep(linewidth=1, padding=widget_padding),
                 widget.GroupBox(
                     rounded=False,
                     # hide_unused=True,
@@ -175,9 +176,9 @@ screens = [
                     disable_drag=True,
                     # inactive="#A9A9A9",
                 ),
-                widget.Sep(linewidth=1, padding=15),
+                widget.Sep(linewidth=1, padding=widget_padding),
                 widget.WindowCount(fmt="{} win", show_zero=True),
-                widget.Sep(linewidth=1, padding=15),
+                widget.Sep(linewidth=1, padding=widget_padding),
                 widget.WindowName(),
                 widget.Chord(
                     chords_colors={
@@ -191,37 +192,35 @@ screens = [
                 #         "Button1": lambda: qtile.cmd_spawn("dmenu_run"),
                 #     },
                 # ),
-                widget.Sep(linewidth=1, padding=15),
-                widget.ThermalSensor(fmt="CPU {}", tag_sensor="Tctl"),
-                widget.CPU(format=" {load_percent}%"),
-                widget.Sep(linewidth=1, padding=15),
-                widget.NvidiaSensors(fmt="GPU {}"),
-                widget.Sep(linewidth=1, padding=15),
-                widget.Memory(measure_mem="G"),
-                widget.Sep(linewidth=1, padding=15),
+                widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Volume(
                     fmt="",
                     volume_up_command="pactl set-sink-volume @DEFAULT_SINK@ +5%",
                     volume_down_command="pactl set-sink-volume @DEFAULT_SINK@ -5%",
                     volume_app="pavucontrol",
                 ),
-                widget.Sep(linewidth=1, padding=15),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.ThermalSensor(fmt="CPU {}", tag_sensor="Tctl"),
+                widget.CPU(format=" {load_percent}%"),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.NvidiaSensors(fmt="GPU {}"),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Memory(format="MEM {MemPercent}%"),
+                widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Clock(format="%Y-%m-%d  %a  %I:%M %p"),
-                widget.Sep(linewidth=1, padding=15),
-                widget.QuickExit(),
-                widget.Sep(linewidth=1, padding=15),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                # widget.QuickExit(),
+                # widget.Sep(linewidth=1, padding=15),
                 widget.Systray(),
             ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            # background="#223843",
+            26,
         ),
         # right=bar.Gap(20),
         # left=bar.Gap(20),
         # bottom=bar.Gap(20),
     ),
 ]
+
 
 # Drag floating layouts.
 mouse = [
