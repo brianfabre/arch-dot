@@ -4,6 +4,7 @@ set ignorecase true
 set drawbox
 set icons true
 set period 1
+set cursorpreviewfmt ""
 
 # custom functions
 cmd mkdir ${{
@@ -58,6 +59,15 @@ map / :fzf_jump
 # # copy file path
 # cmd yank-path $printf '%s' "$fx" | wl-copy
 # map Y yank-path
+
+cmd copy_to_clipboard %{{
+    if type pbcopy > /dev/null 2>&1; then
+    printf '%s' "$f" | pbcopy
+    elif type xsel > /dev/null 2>&1; then
+    printf '%s' "$f" | xsel -ib
+    fi
+}}
+map <c-c> :copy_to_clipboard
 
 # custom remaps
 map <enter> open

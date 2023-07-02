@@ -21,6 +21,7 @@ alias lg="lazygit"
 alias rm='rm -i'
 alias mv='mv -i'
 alias act='source venv/bin/activate'
+alias deact='deactivate'
 alias ls='exa'
 alias ll='exa -labh --no-time --no-filesize --icons'
 export EDITOR="nvim"

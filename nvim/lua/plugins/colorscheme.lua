@@ -13,7 +13,7 @@ local M = {
         name = "catppuccin",
         opts = {
             flavour = "mocha", -- latte, frappe, macchiato, mocha
-            transparent_background = false,
+            transparent_background = true,
             -- term_colors = true,
         },
     },

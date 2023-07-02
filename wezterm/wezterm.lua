@@ -13,7 +13,8 @@ end
 -- This is where you actually apply your config choices
 config.font_size = 12
 config.font = wezterm.font_with_fallback({
-    "SF Mono",
+    -- "SF Mono",
+    "Hack",
     -- "JetBrains Mono",
     -- "IBM Plex Mono",
     { family = "Symbols Nerd Font Mono", scale = 0.75 },
@@ -21,7 +22,7 @@ config.font = wezterm.font_with_fallback({
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.adjust_window_size_when_changing_font_size = false
--- config.window_background_opacity = 0.9
+config.window_background_opacity = 0.75
 
 -- For example, changing the color scheme:
 -- config.color_scheme = "Catppuccin Macchiato"

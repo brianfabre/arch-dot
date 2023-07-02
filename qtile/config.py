@@ -28,6 +28,7 @@ hyper = "mod3"
 terminal = "wezterm"
 ocr = SCRIPTS_PATH + "ocr_capture.sh"
 widget_padding = 25
+window_gap = 10
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -77,7 +78,6 @@ keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "shift"], "c", lazy.reload_config()),
     Key([mod, "shift"], "e", lazy.shutdown()),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "t", lazy.window.toggle_floating()),
     Key([hyper], "space", lazy.function(prev_group)),
     Key([hyper], "1", lazy.spawn(ocr)),
@@ -137,9 +137,9 @@ keys.extend(
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.MonadTall(margin=0, border_width=1, border_focus="#ffffff"),
+    layout.MonadTall(margin=window_gap, border_width=1, border_focus="#ffffff"),
     layout.Max(margin=0),
-    # layout.Stack(num_stacks=1),
+    # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadWide(),
@@ -152,8 +152,10 @@ layouts = [
 
 
 widget_defaults = dict(
-    font="SF Mono Bold",
+    # font="SF Mono Bold",
+    # font="Hack Bold",
     # font="FiraCode Nerd Font Bold",
+    font="JetBrains Mono Bold",
     # font="Source Code Pro",
     fontsize=14,
     padding=3,
@@ -162,8 +164,11 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper="~/Documents/waves.jpg",
+        # wallpaper="~/Documents/wallpapers/waves.jpg",
+        # wallpaper="~/Documents/wallpapers/shibuya.jpg",
+        wallpaper="~/Documents/wallpapers/snowmountain.jpg",
         wallpaper_mode="fill",
+        # wallpaper_mode="stretch",
         top=bar.Bar(
             [
                 widget.CurrentLayout(),
@@ -179,7 +184,7 @@ screens = [
                 widget.Sep(linewidth=1, padding=widget_padding),
                 widget.WindowCount(fmt="{} win", show_zero=True),
                 widget.Sep(linewidth=1, padding=widget_padding),
-                widget.WindowName(),
+                widget.WindowName(foreground="A9A9A9"),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -207,7 +212,10 @@ screens = [
                 widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Memory(format="MEM {MemPercent}%"),
                 widget.Sep(linewidth=1, padding=widget_padding),
-                widget.Clock(format="%Y-%m-%d  %a  %I:%M %p"),
+                widget.Clock(
+                    format="%Y-%m-%d  %a  %I:%M %p",
+                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("gsimplecal")},
+                ),
                 widget.Sep(linewidth=1, padding=widget_padding),
                 # widget.QuickExit(),
                 # widget.Sep(linewidth=1, padding=15),
@@ -215,9 +223,9 @@ screens = [
             ],
             26,
         ),
-        # right=bar.Gap(20),
-        # left=bar.Gap(20),
-        # bottom=bar.Gap(20),
+        # right=bar.Gap(),
+        # left=bar.Gap(),
+        # bottom=bar.Gap(),
     ),
 ]
 
