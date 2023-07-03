@@ -55,9 +55,17 @@ keys = [
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
     Key(
-        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
+        [mod, "control"],
+        "h",
+        lazy.layout.grow_left().when(layout=["bsp", "columns"]),
+        lazy.layout.shrink().when(layout=["monadtall", "monadwide", "monadthreecol"]),
+    ),
+    Key(
+        [mod, "control"],
+        "l",
+        lazy.layout.grow_right().when(layout=["bsp", "columns"]),
+        lazy.layout.grow().when(layout=["monadtall", "monadwide", "monadthreecol"]),
     ),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
@@ -153,9 +161,9 @@ layouts = [
 
 widget_defaults = dict(
     # font="SF Mono Bold",
-    # font="Hack Bold",
+    font="Hack",
     # font="FiraCode Nerd Font Bold",
-    font="JetBrains Mono Bold",
+    # font="JetBrains Mono Bold",
     # font="Source Code Pro",
     fontsize=14,
     padding=3,
@@ -203,6 +211,11 @@ screens = [
                     volume_up_command="pactl set-sink-volume @DEFAULT_SINK@ +5%",
                     volume_down_command="pactl set-sink-volume @DEFAULT_SINK@ -5%",
                     volume_app="pavucontrol",
+                    # mouse_callbacks={
+                    #     "Button3": lambda: qtile.cmd_spawn(
+                    #         "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+                    #     )
+                    # },
                 ),
                 widget.Sep(linewidth=1, padding=widget_padding),
                 widget.ThermalSensor(fmt="CPU {}", tag_sensor="Tctl"),
