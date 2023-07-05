@@ -68,6 +68,7 @@ local M = {
                     tex = { latexindent },
                     json = { prettier },
                     html = { prettier },
+                    htmldjango = { prettier },
                 },
             })
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
