@@ -1,7 +1,10 @@
 alacritty/themes
-Code
+Code/*
+!Code/User
+Code/User/*
 !Code/User/keybindings.json
 !Code/User/settings.json
+!Code/User/vs_code_extensions_list.txt
 dconf
 discord
 lazygit

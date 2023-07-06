@@ -1,0 +1,8 @@
+{
+    "telemetry.telemetryLevel": "off",
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "editor.fontFamily": "SF Mono",
+    "workbench.tree.indent": 20,
+    "notebook.lineNumbers": "on"
+}
