@@ -6,6 +6,9 @@ set icons true
 set period 1
 set cursorpreviewfmt ""
 
+# set nopreview
+# set ratios 1:2
+
 # custom functions
 cmd mkdir ${{
   printf "Directory Name: "
@@ -78,9 +81,9 @@ map a mkdir
 map zp zip
 map R bulk-rename
 
-map gx cd ~/Downloads
-map gy cd ~/Documents
-map gz cd ~/Desktop
+map ga cd ~/Documents
+map gb cd ~/Downloads
+map gc cd ~/Desktop
 
 # interpreter for shell commands
 set shell sh

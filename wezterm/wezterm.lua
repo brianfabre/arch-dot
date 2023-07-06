@@ -13,8 +13,10 @@ end
 -- This is where you actually apply your config choices
 config.font_size = 12
 config.font = wezterm.font_with_fallback({
-    "SF Mono",
+    -- "SF Mono",
     -- "Hack",
+    "FiraCode Nerd Font Ret",
+    -- "Iosevka Nerd Font",
     -- "JetBrains Mono",
     -- "IBM Plex Mono",
     { family = "Symbols Nerd Font Mono", scale = 0.75 },

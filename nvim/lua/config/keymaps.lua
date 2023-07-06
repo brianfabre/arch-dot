@@ -12,6 +12,10 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 
+-- horizontal movement
+map("n", "<S-left>", "^")
+map("n", "<S-right>", "$")
+
 -- windows
 map("n", "<leader>wo", "<C-W>p", { desc = "other window" })
 map("n", "<leader>wd", "<C-W>c", { desc = "delete window" })

@@ -16,3 +16,9 @@ vim.api.nvim_set_hl(0, "FlashLabel", {
     fg = "#FFFFFF",
     bold = true,
 })
+
+vim.api.nvim_set_hl(0, "FlashPrompt", {
+    bg = "#FFFFFF",
+    fg = "#0000FF",
+    -- bold = true,
+})

@@ -1,6 +1,11 @@
-dconf/
-lazygit/
-libreoffice/
-pulse/
-thunar/
-xfce4/
+alacritty/themes
+Code
+!Code/User/keybindings.json
+!Code/User/settings.json
+dconf
+discord
+lazygit
+libreoffice
+pulse
+Thunar
+xfce4

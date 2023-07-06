@@ -1,5 +1,7 @@
 import os
 import subprocess
+from datetime import datetime
+from time import time
 from libqtile import bar, layout, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
@@ -23,9 +25,19 @@ def prev_group(qtile):
     qtile.current_screen.set_group(qtile.current_screen.previous_group)
 
 
+def screenshot():
+    def f(qtile):
+        date_time = datetime.fromtimestamp(time())
+        filename = date_time.strftime("%Y-%m-%d-%-I-%M-%p-%S")
+        path = HOME + f"/Desktop/screenshot_{filename}.png"
+        subprocess.run(["maim", "--select", path])
+
+    return f
+
+
 mod = "mod4"
 hyper = "mod3"
-terminal = "wezterm"
+terminal = "alacritty"
 ocr = SCRIPTS_PATH + "ocr_capture.sh"
 widget_padding = 25
 window_gap = 10
@@ -89,6 +101,7 @@ keys = [
     Key([mod], "t", lazy.window.toggle_floating()),
     Key([hyper], "space", lazy.function(prev_group)),
     Key([hyper], "1", lazy.spawn(ocr)),
+    Key([hyper], "2", lazy.function(screenshot())),
 ]
 
 # groups = [Group(i) for i in "123456789"]
@@ -121,16 +134,31 @@ for i in groups:
 # Define scratchpads
 groups.append(
     ScratchPad(
-        "scratchpad",
+        "scratch1",
         [
             DropDown(
                 "term",
                 terminal,
-                width=0.8,
-                height=0.8,
-                x=0.1,
-                y=0.1,
-                # opacity=1,
+                # height=0.9,
+                # width=0.28,
+                # y=0.05,
+                # x=0.7,
+                width=0.6,
+                height=0.6,
+                x=0.2,
+                y=0.2,
+                opacity=1,
+                match=Match(wm_class="Alacritty"),
+            ),
+            DropDown(
+                "firefox",
+                "firefox",
+                width=0.6,
+                height=0.6,
+                x=0.2,
+                y=0.2,
+                opacity=1,
+                match=Match(wm_class="firefox"),
             ),
         ],
     )
@@ -139,7 +167,8 @@ groups.append(
 # Scratchpad keybindings
 keys.extend(
     [
-        Key([mod], "m", lazy.group["scratchpad"].dropdown_toggle("term")),
+        Key([mod], "m", lazy.group["scratch1"].dropdown_toggle("term")),
+        Key([mod], "n", lazy.group["scratch1"].dropdown_toggle("firefox")),
     ]
 )
 
@@ -160,12 +189,12 @@ layouts = [
 
 
 widget_defaults = dict(
-    # font="SF Mono Bold",
-    font="Hack",
-    # font="FiraCode Nerd Font Bold",
+    font="SF Mono",
+    # font="Hack",
+    # font="FiraCode Nerd Font",
     # font="JetBrains Mono Bold",
     # font="Source Code Pro",
-    fontsize=14,
+    fontsize=15,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -179,8 +208,6 @@ screens = [
         # wallpaper_mode="stretch",
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.Sep(linewidth=1, padding=widget_padding),
                 widget.GroupBox(
                     rounded=False,
                     # hide_unused=True,
@@ -190,9 +217,13 @@ screens = [
                     # inactive="#A9A9A9",
                 ),
                 widget.Sep(linewidth=1, padding=widget_padding),
-                widget.WindowCount(fmt="{} win", show_zero=True),
+                widget.CurrentLayout(),
                 widget.Sep(linewidth=1, padding=widget_padding),
+                widget.WindowCount(fmt="[ {} ]", show_zero=True),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Spacer(),
                 widget.WindowName(foreground="A9A9A9"),
+                widget.Spacer(),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -221,12 +252,13 @@ screens = [
                 widget.ThermalSensor(fmt="CPU {}", tag_sensor="Tctl"),
                 widget.CPU(format=" {load_percent}%"),
                 widget.Sep(linewidth=1, padding=widget_padding),
-                widget.NvidiaSensors(fmt="GPU {}"),
-                widget.Sep(linewidth=1, padding=widget_padding),
+                # widget.NvidiaSensors(fmt="GPU {}"),
+                # widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Memory(format="MEM {MemPercent}%"),
                 widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Clock(
-                    format="%Y-%m-%d  %a  %I:%M %p",
+                    format="%a, %Y-%m-%d  %I:%M %p",
+                    # format="[%Y-%m-%d] [%I:%M %p]",
                     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("gsimplecal")},
                 ),
                 widget.Sep(linewidth=1, padding=widget_padding),
@@ -274,7 +306,6 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
         Match(wm_class="thunar"),
-        Match(title="MyGuy"),
     ],
 )
 auto_fullscreen = True

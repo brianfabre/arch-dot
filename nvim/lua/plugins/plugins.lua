@@ -211,14 +211,6 @@ local M = {
             render = "minimal",
         },
     },
-    {
-        "norcalli/nvim-colorizer.lua",
-        cmd = "ColorizerToggle",
-        init = function()
-            vim.opt.termguicolors = true
-        end,
-        opts = {},
-    },
 }
 
 return M
