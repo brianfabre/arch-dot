@@ -102,10 +102,10 @@ keys = [
     Key([hyper], "space", lazy.function(prev_group)),
     Key([hyper], "1", lazy.spawn(ocr)),
     Key([hyper], "2", lazy.function(screenshot())),
+    Key([hyper], "f", lazy.next_screen(), desc="Next monitor"),
 ]
 
-# groups = [Group(i) for i in "123456789"]
-groups = [Group(i) for i in "12345"]
+groups = [Group(i) for i in "1234567890"]
 
 for i in groups:
     keys.extend(
@@ -130,6 +130,17 @@ for i in groups:
             #     desc="move focused window to group {}".format(i.name)),
         ]
     )
+
+groups.extend(
+    [
+        Group(
+            "󰙯",
+            spawn="discord",
+            layout="max",
+            matches=[Match(wm_class=["discord"])],
+        ),
+    ]
+)
 
 # Define scratchpads
 groups.append(
@@ -174,7 +185,12 @@ keys.extend(
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.MonadTall(margin=window_gap, border_width=1, border_focus="#ffffff"),
+    layout.MonadTall(
+        # margin=window_gap,
+        margin=0,
+        border_width=2,
+        border_focus="#94e2d5",
+    ),
     layout.Max(margin=0),
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -203,7 +219,9 @@ screens = [
     Screen(
         # wallpaper="~/Documents/wallpapers/waves.jpg",
         # wallpaper="~/Documents/wallpapers/shibuya.jpg",
-        wallpaper="~/Documents/wallpapers/snowmountain.jpg",
+        # wallpaper="~/Documents/wallpapers/snowmountain.jpg",
+        # wallpaper="~/Documents/wallpapers/summer-pool.jpg",
+        wallpaper="~/Documents/wallpapers/cat-arch.png",
         wallpaper_mode="fill",
         # wallpaper_mode="stretch",
         top=bar.Bar(
@@ -274,6 +292,72 @@ screens = [
     ),
 ]
 
+screens.append(
+    Screen(
+        wallpaper="~/Documents/wallpapers/cat-arch.png",
+        wallpaper_mode="fill",
+        top=bar.Bar(
+            [
+                widget.GroupBox(
+                    rounded=False,
+                    # hide_unused=True,
+                    highlight_method="block",
+                    center_aligned=True,
+                    disable_drag=True,
+                    # inactive="#A9A9A9",
+                ),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.CurrentLayout(),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.WindowCount(fmt="[ {} ]", show_zero=True),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Spacer(),
+                widget.WindowName(foreground="A9A9A9"),
+                widget.Spacer(),
+                widget.Chord(
+                    chords_colors={
+                        "launch": ("#ff0000", "#ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                # widget.TextBox(
+                #     text="󰃟",
+                #     mouse_callbacks={
+                #         "Button1": lambda: qtile.cmd_spawn("dmenu_run"),
+                #     },
+                # ),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Volume(
+                    fmt="",
+                    volume_up_command="pactl set-sink-volume @DEFAULT_SINK@ +5%",
+                    volume_down_command="pactl set-sink-volume @DEFAULT_SINK@ -5%",
+                    volume_app="pavucontrol",
+                    # mouse_callbacks={
+                    #     "Button3": lambda: qtile.cmd_spawn(
+                    #         "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+                    #     )
+                    # },
+                ),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.ThermalSensor(fmt="CPU {}", tag_sensor="Tctl"),
+                widget.CPU(format=" {load_percent}%"),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                # widget.NvidiaSensors(fmt="GPU {}"),
+                # widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Memory(format="MEM {MemPercent}%"),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Clock(
+                    format="%a, %Y-%m-%d  %I:%M %p",
+                    # format="[%Y-%m-%d] [%I:%M %p]",
+                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("gsimplecal")},
+                ),
+                widget.Sep(linewidth=1, padding=widget_padding),
+            ],
+            26,
+        ),
+    ),
+)
+
 
 # Drag floating layouts.
 mouse = [
@@ -308,6 +392,7 @@ floating_layout = layout.Floating(
         Match(wm_class="thunar"),
     ],
 )
+
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True

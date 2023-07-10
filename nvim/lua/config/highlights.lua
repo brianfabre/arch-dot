@@ -20,5 +20,7 @@ vim.api.nvim_set_hl(0, "FlashLabel", {
 vim.api.nvim_set_hl(0, "FlashPrompt", {
     bg = "#FFFFFF",
     fg = "#0000FF",
-    -- bold = true,
+    bold = true,
 })
+
+vim.cmd("highlight link WinSeparator FloatBorder")
