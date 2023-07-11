@@ -80,7 +80,17 @@ fe() {
     -not -path "*/Repos/*/*" \
     | fzf-tmux --query="$1" --multi --select-1 --exit-0
   ))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+  # [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+  if [[ -n "$files" ]]; then
+    for file in "${files[@]}"; do
+      extension="${file##*.}"
+      if [[ "$extension" == "pdf" ]]; then
+        xdg-open "$file"
+      else
+        ${EDITOR:-vim} "$file"
+      fi
+    done
+  fi
 }
 
 # fe() {

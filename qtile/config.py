@@ -38,6 +38,7 @@ def screenshot():
 mod = "mod4"
 hyper = "mod3"
 terminal = "alacritty"
+browser = "firefox"
 ocr = SCRIPTS_PATH + "ocr_capture.sh"
 widget_padding = 25
 window_gap = 10
@@ -102,10 +103,44 @@ keys = [
     Key([hyper], "space", lazy.function(prev_group)),
     Key([hyper], "1", lazy.spawn(ocr)),
     Key([hyper], "2", lazy.function(screenshot())),
-    Key([hyper], "f", lazy.next_screen(), desc="Next monitor"),
+    Key([mod], "semicolon", lazy.next_screen(), desc="Next monitor"),
 ]
 
-groups = [Group(i) for i in "1234567890"]
+# groups = [Group(i) for i in "1234567890"]
+
+workspace_names = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "",
+    "󰙯",
+    # "",
+    # "",
+    # "",
+    # "",
+    # "",
+    # "",
+    # "",
+    # "",
+    # "",
+]
+
+groups = [
+    Group("1", label=workspace_names[0], spawn=browser),
+    Group("2", label=workspace_names[1], spawn=terminal),
+    Group("3", label=workspace_names[2]),
+    Group("4", label=workspace_names[3]),
+    Group("5", label=workspace_names[4]),
+    Group("6", label=workspace_names[5], spawn=browser),
+    Group("7", label=workspace_names[6], spawn="discord"),
+    # Group("8", label=workspace_names[7]),
+    # Group("9", label=workspace_names[8]),
+    # Group("0", label=workspace_names[9]),
+]
+
+# Group("2", label="\uf738", matches=[Match(wm_class=["firefox"])]),
 
 for i in groups:
     keys.extend(
@@ -131,17 +166,6 @@ for i in groups:
         ]
     )
 
-groups.extend(
-    [
-        Group(
-            "󰙯",
-            spawn="discord",
-            layout="max",
-            matches=[Match(wm_class=["discord"])],
-        ),
-    ]
-)
-
 # Define scratchpads
 groups.append(
     ScratchPad(
@@ -163,7 +187,7 @@ groups.append(
             ),
             DropDown(
                 "firefox",
-                "firefox",
+                browser,
                 width=0.6,
                 height=0.6,
                 x=0.2,
@@ -298,6 +322,8 @@ screens.append(
         wallpaper_mode="fill",
         top=bar.Bar(
             [
+                widget.WindowName(foreground="A9A9A9"),
+                widget.Spacer(),
                 widget.GroupBox(
                     rounded=False,
                     # hide_unused=True,
@@ -312,46 +338,6 @@ screens.append(
                 widget.WindowCount(fmt="[ {} ]", show_zero=True),
                 widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Spacer(),
-                widget.WindowName(foreground="A9A9A9"),
-                widget.Spacer(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                # widget.TextBox(
-                #     text="󰃟",
-                #     mouse_callbacks={
-                #         "Button1": lambda: qtile.cmd_spawn("dmenu_run"),
-                #     },
-                # ),
-                widget.Sep(linewidth=1, padding=widget_padding),
-                widget.Volume(
-                    fmt="",
-                    volume_up_command="pactl set-sink-volume @DEFAULT_SINK@ +5%",
-                    volume_down_command="pactl set-sink-volume @DEFAULT_SINK@ -5%",
-                    volume_app="pavucontrol",
-                    # mouse_callbacks={
-                    #     "Button3": lambda: qtile.cmd_spawn(
-                    #         "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-                    #     )
-                    # },
-                ),
-                widget.Sep(linewidth=1, padding=widget_padding),
-                widget.ThermalSensor(fmt="CPU {}", tag_sensor="Tctl"),
-                widget.CPU(format=" {load_percent}%"),
-                widget.Sep(linewidth=1, padding=widget_padding),
-                # widget.NvidiaSensors(fmt="GPU {}"),
-                # widget.Sep(linewidth=1, padding=widget_padding),
-                widget.Memory(format="MEM {MemPercent}%"),
-                widget.Sep(linewidth=1, padding=widget_padding),
-                widget.Clock(
-                    format="%a, %Y-%m-%d  %I:%M %p",
-                    # format="[%Y-%m-%d] [%I:%M %p]",
-                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("gsimplecal")},
-                ),
-                widget.Sep(linewidth=1, padding=widget_padding),
             ],
             26,
         ),

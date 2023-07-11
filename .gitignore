@@ -1,4 +1,5 @@
 alacritty/themes
+chromium
 Code/*
 !Code/User
 Code/User/*
@@ -11,4 +12,4 @@ lazygit
 libreoffice
 pulse
 Thunar
-xfce4
+xfce4/*
