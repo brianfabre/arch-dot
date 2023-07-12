@@ -106,65 +106,86 @@ keys = [
     Key([mod], "semicolon", lazy.next_screen(), desc="Next monitor"),
 ]
 
-# groups = [Group(i) for i in "1234567890"]
 
-workspace_names = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "",
-    "󰙯",
-    # "",
-    # "",
-    # "",
-    # "",
-    # "",
-    # "",
-    # "",
-    # "",
-    # "",
-]
+# workspace_names = [
+#     "1",
+#     "2",
+#     "3",
+#     "4",
+#     "5",
+#     "",
+#     "󰙯",
+#     # "",
+#     # "",
+#     # "",
+#     # "",
+#     # "",
+#     # "",
+#     # "",
+#     # "",
+#     # "",
+# ]
+#
+# groups = [
+#     Group("1", label=workspace_names[0], spawn=browser),
+#     Group("2", label=workspace_names[1], spawn=terminal),
+#     Group("3", label=workspace_names[2]),
+#     Group("4", label=workspace_names[3]),
+#     Group("5", label=workspace_names[4]),
+#     Group("6", label=workspace_names[5], spawn=browser),
+#     Group("7", label=workspace_names[6], spawn="discord"),
+#     # Group("8", label=workspace_names[7]),
+#     # Group("9", label=workspace_names[8]),
+#     # Group("0", label=workspace_names[9]),
+# ]
+#
+# for i in groups:
+#     keys.extend(
+#         [
+#             # mod1 + letter of group = switch to group
+#             Key(
+#                 [mod],
+#                 i.name,
+#                 lazy.group[i.name].toscreen(),
+#                 desc="Switch to group {}".format(i.name),
+#             ),
+#             # mod1 + shift + letter of group = switch to & move focused window to group
+#             Key(
+#                 [mod, "shift"],
+#                 i.name,
+#                 lazy.window.togroup(i.name, switch_group=True),
+#                 desc="Switch to & move focused window to group {}".format(i.name),
+#             ),
+#             # Or, use below if you prefer not to switch to that group.
+#             # # mod1 + shift + letter of group = move focused window to group
+#             # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+#             #     desc="move focused window to group {}".format(i.name)),
+#         ]
+#     )
 
-groups = [
-    Group("1", label=workspace_names[0], spawn=browser),
-    Group("2", label=workspace_names[1], spawn=terminal),
-    Group("3", label=workspace_names[2]),
-    Group("4", label=workspace_names[3]),
-    Group("5", label=workspace_names[4]),
-    Group("6", label=workspace_names[5], spawn=browser),
-    Group("7", label=workspace_names[6], spawn="discord"),
-    # Group("8", label=workspace_names[7]),
-    # Group("9", label=workspace_names[8]),
-    # Group("0", label=workspace_names[9]),
-]
 
-# Group("2", label="\uf738", matches=[Match(wm_class=["firefox"])]),
+groups = [Group(i) for i in "1234567890"]
+
 
 for i in groups:
     keys.extend(
         [
-            # mod1 + letter of group = switch to group
+            # Switch to group N
             Key(
                 [mod],
                 i.name,
+                lazy.to_screen(0) if i.name in "12345" else lazy.to_screen(1),
                 lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
             ),
-            # mod1 + shift + letter of group = switch to & move focused window to group
+            # Move window to group N
             Key(
                 [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
             ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
         ]
     )
+
 
 # Define scratchpads
 groups.append(
