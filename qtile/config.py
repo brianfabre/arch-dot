@@ -40,6 +40,7 @@ hyper = "mod3"
 terminal = "alacritty"
 browser = "firefox"
 ocr = SCRIPTS_PATH + "ocr_capture.sh"
+audio = SCRIPTS_PATH + "switch_audio.sh"
 widget_padding = 25
 window_gap = 10
 
@@ -305,6 +306,7 @@ screens = [
                     volume_up_command="pactl set-sink-volume @DEFAULT_SINK@ +5%",
                     volume_down_command="pactl set-sink-volume @DEFAULT_SINK@ -5%",
                     volume_app="pavucontrol",
+                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(audio)},
                     # mouse_callbacks={
                     #     "Button3": lambda: qtile.cmd_spawn(
                     #         "pactl set-sink-mute @DEFAULT_SINK@ toggle"

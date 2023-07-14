@@ -32,7 +32,8 @@ alias mv='mv -i'
 alias act='source venv/bin/activate'
 alias deact='deactivate'
 alias ls='exa'
-alias ll='exa -labh --no-time --no-filesize --icons'
+# alias ll='exa -labh --no-time --no-filesize --icons'
+alias ll='exa -labh --time-style="long-iso" --icons'
 alias src='source ~/.config/zsh/.zshrc'
 export EDITOR="nvim"
 export VISUAL="nvim"
