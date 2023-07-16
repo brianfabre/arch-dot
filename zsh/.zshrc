@@ -35,6 +35,7 @@ alias ls='exa'
 # alias ll='exa -labh --no-time --no-filesize --icons'
 alias ll='exa -labh --time-style="long-iso" --icons'
 alias src='source ~/.config/zsh/.zshrc'
+alias lz='NVIM_APPNAME=lazyvim nvim'
 export EDITOR="nvim"
 export VISUAL="nvim"
 export EDITOR=nvim

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-redshift-gtk &
+# redshift-gtk &
 
 xset r rate 400 50 &
 
@@ -10,4 +10,4 @@ xset r rate 400 50 &
 # executed in startx
 # xmodmap ~/.Xmodmap &
 
-xrandr --output DP-0 --mode 1920x1080 --rate 165 --output HDMI-0 --right-of DP-0 &
+xrandr --output DP-0 --mode 1920x1080 --rate 165 --output HDMI-0 --left-of DP-0 &

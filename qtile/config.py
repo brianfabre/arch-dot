@@ -16,8 +16,8 @@ def startup():
 
 
 class Commands:
-    # dmenu = "dmenu_run -i -p '>>>' -fn 'SF Mono' -nb '#000' -nf '#fff' -sb '#00BF32' -sf '#fff'"
-    dmenu = "dmenu_run -i -l 10 -p '>>>' -fn 'SF Mono' -nb '#000' -nf '#fff' -sb '#556F7A' -sf '#fff'"
+    # dmenu = "dmenu_run -i -l 10 -p '>>>' -fn 'SF Mono' -nb '#000' -nf '#fff' -sb '#556F7A' -sf '#fff'"
+    dmenu = "rofi -show drun"
 
 
 # go to prev window
@@ -39,10 +39,12 @@ mod = "mod4"
 hyper = "mod3"
 terminal = "alacritty"
 browser = "firefox"
-ocr = SCRIPTS_PATH + "ocr_capture.sh"
-audio = SCRIPTS_PATH + "switch_audio.sh"
 widget_padding = 25
 window_gap = 10
+
+ocr = SCRIPTS_PATH + "ocr_capture.sh"
+audio = SCRIPTS_PATH + "switch_audio.sh"
+redshift = SCRIPTS_PATH + "redshift.sh"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -294,12 +296,13 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                # widget.TextBox(
-                #     text="󰃟",
-                #     mouse_callbacks={
-                #         "Button1": lambda: qtile.cmd_spawn("dmenu_run"),
-                #     },
-                # ),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.TextBox(
+                    text="󰃟 ",
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn(redshift),
+                    },
+                ),
                 widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Volume(
                     fmt="",
@@ -314,13 +317,13 @@ screens = [
                     # },
                 ),
                 widget.Sep(linewidth=1, padding=widget_padding),
-                widget.ThermalSensor(fmt="CPU {}", tag_sensor="Tctl"),
-                widget.CPU(format=" {load_percent}%"),
-                widget.Sep(linewidth=1, padding=widget_padding),
+                # widget.ThermalSensor(fmt="CPU {}", tag_sensor="Tctl"),
+                # widget.CPU(format=" {load_percent}%"),
+                # widget.Sep(linewidth=1, padding=widget_padding),
                 # widget.NvidiaSensors(fmt="GPU {}"),
                 # widget.Sep(linewidth=1, padding=widget_padding),
-                widget.Memory(format="MEM {MemPercent}%"),
-                widget.Sep(linewidth=1, padding=widget_padding),
+                # widget.Memory(format="MEM {MemPercent}%"),
+                # widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Clock(
                     format="%a, %Y-%m-%d  %I:%M %p",
                     # format="[%Y-%m-%d] [%I:%M %p]",
