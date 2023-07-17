@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# redshift tray icon
 # redshift-gtk &
 
 xset r rate 400 50 &
@@ -10,4 +11,8 @@ xset r rate 400 50 &
 # executed in startx
 # xmodmap ~/.Xmodmap &
 
+# sets refresh rate and multi monitor
 xrandr --output DP-0 --mode 1920x1080 --rate 165 --output HDMI-0 --left-of DP-0 &
+
+# starts clipboard manager service
+greenclip daemon &

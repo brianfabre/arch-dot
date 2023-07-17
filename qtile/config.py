@@ -17,7 +17,7 @@ def startup():
 
 class Commands:
     # dmenu = "dmenu_run -i -l 10 -p '>>>' -fn 'SF Mono' -nb '#000' -nf '#fff' -sb '#556F7A' -sf '#fff'"
-    dmenu = "rofi -show drun"
+    dmenu = "rofi -show run"
 
 
 # go to prev window
@@ -106,6 +106,13 @@ keys = [
     Key([hyper], "space", lazy.function(prev_group)),
     Key([hyper], "1", lazy.spawn(ocr)),
     Key([hyper], "2", lazy.function(screenshot())),
+    Key(
+        [hyper],
+        "c",
+        lazy.spawn(
+            "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"
+        ),
+    ),
     Key([mod], "semicolon", lazy.next_screen(), desc="Next monitor"),
 ]
 
