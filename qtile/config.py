@@ -48,8 +48,6 @@ mod = "mod4"
 hyper = "mod3"
 terminal = "alacritty"
 browser = "firefox"
-widget_padding = 25
-window_gap = 5
 
 ocr = SCRIPTS_PATH + "ocr_capture.sh"
 audio = SCRIPTS_PATH + "switch_audio.sh"
@@ -263,6 +261,35 @@ keys.extend(
     ]
 )
 
+colors = [
+    "#f4dbd6",  # rosewater =
+    "#f0c6c6",  # flamingo =
+    "#f5bde6",  # pink =
+    "#c6a0f6",  # mauve =
+    "#ed8796",  # red =
+    "#ee99a0",  # maroon =
+    "#f5a97f",  # peach =
+    "#eed49f",  # yellow =
+    "#a6da95",  # green =
+    "#8bd5ca",  # teal =
+    "#91d7e3",  # sky =
+    "#7dc4e4",  # sapphire =
+    "#8aadf4",  # blue =
+    "#b7bdf8",  # lavender =
+    "#cad3f5",  # text =
+    "#b8c0e0",  # subtext1 =
+    "#a5adcb",  # subtext0 =
+    "#939ab7",  # overlay2 =
+    "#8087a2",  # overlay1 =
+    "#6e738d",  # overlay0 =
+    "#5b6078",  # surface2 =
+    "#494d64",  # surface1 =
+    "#363a4f",  # surface0 =
+    "#24273a",  # base =
+    "#1e2030",  # mantle =
+    "#181926",  # crust =
+]
+
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.MonadTall(
@@ -283,6 +310,11 @@ layouts = [
     # layout.Zoomy(),
 ]
 
+widget_padding = 25
+window_gap = 5
+icon_font = 22
+sep_color = colors[18]
+text_color = colors[16]
 
 widget_defaults = dict(
     # font="SF Mono",
@@ -292,7 +324,8 @@ widget_defaults = dict(
     # font="Source Code Pro",
     fontsize=15,
     padding=3,
-    foreground="A9A9A9",
+    foreground=text_color,
+    background=colors[23],
 )
 extension_defaults = widget_defaults.copy()
 
@@ -313,14 +346,28 @@ screens = [
                     highlight_method="block",
                     center_aligned=True,
                     disable_drag=True,
-                    # inactive="#A9A9A9",
+                    active=text_color,
+                    inactive=colors[21],
+                    block_highlight_text_color=colors[21],
+                    this_current_screen_border=colors[12],
+                    other_screen_border=colors[19],
+                    this_screen_border=colors[12],
+                    other_current_screen_border=colors[19],
                 ),
-                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 # widget.CurrentLayout(),
-                widget.CurrentLayoutIcon(
-                    scale=0.6,
+                # widget.CurrentLayoutIcon(
+                #     foreground=text_color,
+                #     scale=0.6,
+                # ),
+                widget.CurrentScreen(
+                    active_color=colors[8],
+                    inactive_color=colors[4],
+                    active_text="",
+                    inactive_text="",
+                    fontsize=icon_font,
                 ),
-                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 # widget.WindowCount(fmt="{} win", show_zero=True),
                 # widget.Sep(linewidth=1, padding=widget_padding),
                 # widget.Spacer(),
@@ -329,26 +376,29 @@ screens = [
                     max_char=100,
                     parse_text=my_func,
                 ),
-                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 widget.TextBox(
                     text="",
-                    fontsize=20,
+                    fontsize=icon_font,
+                    foreground=colors[3],
                     mouse_callbacks={
                         "Button1": lambda: qtile.cmd_spawn(twitch),
                     },
                 ),
-                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 widget.TextBox(
                     text="󰃟",
-                    fontsize=20,
+                    fontsize=icon_font,
+                    foreground=colors[4],
                     mouse_callbacks={
                         "Button1": lambda: qtile.cmd_spawn(redshift),
                     },
                 ),
-                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 widget.Volume(
                     fmt="",
-                    fontsize=20,
+                    fontsize=icon_font,
+                    foreground=colors[5],
                     volume_up_command=vol_up,
                     volume_down_command=vol_down,
                     volume_app="pavucontrol",
@@ -359,22 +409,37 @@ screens = [
                     #     )
                     # },
                 ),
-                widget.Sep(linewidth=1, padding=widget_padding),
-                widget.ThermalSensor(fmt="󰘚 {}", tag_sensor="Tctl"),
+                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
+                widget.TextBox(
+                    text="󰘚",
+                    fontsize=icon_font,
+                    foreground=colors[6],
+                ),
+                widget.ThermalSensor(
+                    fmt="{}", foreground=colors[16], tag_sensor="Tctl"
+                ),
                 widget.CPU(format=" [{load_percent}%]"),
-                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 # widget.NvidiaSensors(fmt="GPU {}"),
-                # widget.Sep(linewidth=1, padding=widget_padding),
-                widget.Memory(format="󰍛 {MemPercent}%"),
-                widget.Sep(linewidth=1, padding=widget_padding),
+                # widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
+                widget.TextBox(
+                    text="󰍛",
+                    fontsize=icon_font,
+                    foreground=colors[7],
+                ),
+                widget.Memory(format="{MemPercent}%"),
+                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
+                widget.TextBox(
+                    text="",
+                    fontsize=icon_font,
+                    foreground=colors[8],
+                ),
                 widget.Clock(
-                    # format="%a, %Y-%m-%d  %I:%M %p",
-                    format=" %I:%M %p",
+                    format="%a %Y-%m-%d  %I:%M %p",
+                    # format="%I:%M %p",
                     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("gsimplecal")},
                 ),
-                widget.Sep(linewidth=1, padding=widget_padding),
-                # widget.QuickExit(),
-                # widget.Sep(linewidth=1, padding=15),
+                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 widget.Systray(),
             ],
             26,
@@ -391,21 +456,22 @@ screens.append(
         wallpaper_mode="fill",
         top=bar.Bar(
             [
-                widget.WindowName(foreground="A9A9A9"),
-                widget.Spacer(),
                 widget.GroupBox(
                     rounded=False,
                     # hide_unused=True,
                     highlight_method="block",
                     center_aligned=True,
                     disable_drag=True,
-                    # inactive="#A9A9A9",
+                    active=text_color,
+                    inactive=colors[21],
+                    block_highlight_text_color=colors[21],
+                    this_current_screen_border=colors[12],
+                    other_screen_border=colors[19],
+                    this_screen_border=colors[12],
+                    other_current_screen_border=colors[19],
                 ),
-                widget.Sep(linewidth=1, padding=widget_padding),
-                widget.CurrentLayout(),
-                widget.Sep(linewidth=1, padding=widget_padding),
-                widget.WindowCount(fmt="{} win", show_zero=True),
-                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Spacer(),
+                widget.WindowName(foreground="A9A9A9"),
                 widget.Spacer(),
             ],
             26,
