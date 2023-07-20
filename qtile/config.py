@@ -35,16 +35,28 @@ def screenshot():
     return f
 
 
+# to replace window name in screen
+def my_func(text):
+    # if len(text) > 30:
+    #     text = text[0:30]
+    for string in [" - Chromium", " — Mozilla Firefox"]:
+        text = text.replace(string, "")
+    return text
+
+
 mod = "mod4"
 hyper = "mod3"
 terminal = "alacritty"
 browser = "firefox"
 widget_padding = 25
-window_gap = 10
+window_gap = 5
 
 ocr = SCRIPTS_PATH + "ocr_capture.sh"
 audio = SCRIPTS_PATH + "switch_audio.sh"
 redshift = SCRIPTS_PATH + "redshift.sh"
+vol_up = SCRIPTS_PATH + "vol_up.sh"
+vol_down = SCRIPTS_PATH + "vol_down.sh"
+twitch = SCRIPTS_PATH + "stream_twitch.sh"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -176,6 +188,19 @@ keys = [
 
 groups = [Group(i) for i in "1234567890"]
 
+groups = [
+    Group("1", spawn=browser),
+    Group("2", spawn=terminal),
+    Group("3"),
+    Group("4"),
+    Group("5"),
+    Group("6", spawn="microsoft-edge-stable"),
+    Group("7", spawn="discord"),
+    Group("8"),
+    Group("9"),
+    Group("0"),
+]
+
 
 for i in groups:
     keys.extend(
@@ -241,8 +266,8 @@ keys.extend(
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.MonadTall(
-        # margin=window_gap,
-        margin=0,
+        margin=window_gap,
+        # margin=0,
         border_width=2,
         border_focus="#94e2d5",
     ),
@@ -260,13 +285,14 @@ layouts = [
 
 
 widget_defaults = dict(
-    font="SF Mono",
+    # font="SF Mono",
     # font="Hack",
     # font="FiraCode Nerd Font",
-    # font="JetBrains Mono Bold",
+    font="JetBrainsMono Nerd Font Mono",
     # font="Source Code Pro",
     fontsize=15,
     padding=3,
+    foreground="A9A9A9",
 )
 extension_defaults = widget_defaults.copy()
 
@@ -274,9 +300,9 @@ screens = [
     Screen(
         # wallpaper="~/Documents/wallpapers/waves.jpg",
         # wallpaper="~/Documents/wallpapers/shibuya.jpg",
-        # wallpaper="~/Documents/wallpapers/snowmountain.jpg",
+        wallpaper="~/Documents/wallpapers/snowmountain.jpg",
         # wallpaper="~/Documents/wallpapers/summer-pool.jpg",
-        wallpaper="~/Documents/wallpapers/cat-arch.png",
+        # wallpaper="~/Documents/wallpapers/cat-arch.png",
         wallpaper_mode="fill",
         # wallpaper_mode="stretch",
         top=bar.Bar(
@@ -290,22 +316,31 @@ screens = [
                     # inactive="#A9A9A9",
                 ),
                 widget.Sep(linewidth=1, padding=widget_padding),
-                widget.CurrentLayout(),
+                # widget.CurrentLayout(),
+                widget.CurrentLayoutIcon(
+                    scale=0.6,
+                ),
                 widget.Sep(linewidth=1, padding=widget_padding),
-                widget.WindowCount(fmt="[ {} ]", show_zero=True),
-                widget.Sep(linewidth=1, padding=widget_padding),
-                widget.Spacer(),
-                widget.WindowName(foreground="A9A9A9"),
-                widget.Spacer(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                # widget.WindowCount(fmt="{} win", show_zero=True),
+                # widget.Sep(linewidth=1, padding=widget_padding),
+                # widget.Spacer(),
+                widget.WindowTabs(
+                    selected=("<b>[", "]</b>"),
+                    max_char=100,
+                    parse_text=my_func,
                 ),
                 widget.Sep(linewidth=1, padding=widget_padding),
                 widget.TextBox(
-                    text="󰃟 ",
+                    text="",
+                    fontsize=20,
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn(twitch),
+                    },
+                ),
+                widget.Sep(linewidth=1, padding=widget_padding),
+                widget.TextBox(
+                    text="󰃟",
+                    fontsize=20,
                     mouse_callbacks={
                         "Button1": lambda: qtile.cmd_spawn(redshift),
                     },
@@ -313,8 +348,9 @@ screens = [
                 widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Volume(
                     fmt="",
-                    volume_up_command="pactl set-sink-volume @DEFAULT_SINK@ +5%",
-                    volume_down_command="pactl set-sink-volume @DEFAULT_SINK@ -5%",
+                    fontsize=20,
+                    volume_up_command=vol_up,
+                    volume_down_command=vol_down,
                     volume_app="pavucontrol",
                     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(audio)},
                     # mouse_callbacks={
@@ -324,16 +360,16 @@ screens = [
                     # },
                 ),
                 widget.Sep(linewidth=1, padding=widget_padding),
-                # widget.ThermalSensor(fmt="CPU {}", tag_sensor="Tctl"),
-                # widget.CPU(format=" {load_percent}%"),
-                # widget.Sep(linewidth=1, padding=widget_padding),
+                widget.ThermalSensor(fmt="󰘚 {}", tag_sensor="Tctl"),
+                widget.CPU(format=" [{load_percent}%]"),
+                widget.Sep(linewidth=1, padding=widget_padding),
                 # widget.NvidiaSensors(fmt="GPU {}"),
                 # widget.Sep(linewidth=1, padding=widget_padding),
-                # widget.Memory(format="MEM {MemPercent}%"),
-                # widget.Sep(linewidth=1, padding=widget_padding),
+                widget.Memory(format="󰍛 {MemPercent}%"),
+                widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Clock(
-                    format="%a, %Y-%m-%d  %I:%M %p",
-                    # format="[%Y-%m-%d] [%I:%M %p]",
+                    # format="%a, %Y-%m-%d  %I:%M %p",
+                    format=" %I:%M %p",
                     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("gsimplecal")},
                 ),
                 widget.Sep(linewidth=1, padding=widget_padding),
@@ -351,7 +387,7 @@ screens = [
 
 screens.append(
     Screen(
-        wallpaper="~/Documents/wallpapers/cat-arch.png",
+        wallpaper="~/Documents/wallpapers/snowmountain.jpg",
         wallpaper_mode="fill",
         top=bar.Bar(
             [
@@ -368,7 +404,7 @@ screens.append(
                 widget.Sep(linewidth=1, padding=widget_padding),
                 widget.CurrentLayout(),
                 widget.Sep(linewidth=1, padding=widget_padding),
-                widget.WindowCount(fmt="[ {} ]", show_zero=True),
+                widget.WindowCount(fmt="{} win", show_zero=True),
                 widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Spacer(),
             ],

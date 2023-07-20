@@ -1,4 +1,5 @@
 alacritty/themes
+calibre
 chromium
 Code/*
 !Code/User
@@ -15,4 +16,5 @@ libreoffice
 microsoft-edge
 pulse
 Thunar
+QtProject.conf
 xfce4/*

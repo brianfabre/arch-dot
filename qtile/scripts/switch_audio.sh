@@ -9,6 +9,7 @@ sinks="$sinks
 $sinks"
 
 next_sink=$(echo "$sinks" | awk "/$default_sink/{getline x;print x;exit;}")
+dunstify -r 420 $next_sink
 
 pactl set-default-sink "$next_sink"
 pactl list short sink-inputs | \
