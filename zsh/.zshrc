@@ -72,7 +72,6 @@ fe() {
   IFS=$'\n' files=($(
     find . -type f \
     -not -path "*/.vscode/*" \
-    -not -path "*/.mozilla/*" \
     -not -path "*/.git/*" \
     -not -path "*/venv/*" \
     -not -path "*/.cache/*" \
