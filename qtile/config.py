@@ -262,33 +262,40 @@ keys.extend(
 )
 
 colors = [
-    "#f4dbd6",  # rosewater =
-    "#f0c6c6",  # flamingo =
-    "#f5bde6",  # pink =
-    "#c6a0f6",  # mauve =
-    "#ed8796",  # red =
-    "#ee99a0",  # maroon =
-    "#f5a97f",  # peach =
-    "#eed49f",  # yellow =
-    "#a6da95",  # green =
-    "#8bd5ca",  # teal =
-    "#91d7e3",  # sky =
-    "#7dc4e4",  # sapphire =
-    "#8aadf4",  # blue =
-    "#b7bdf8",  # lavender =
-    "#cad3f5",  # text =
-    "#b8c0e0",  # subtext1 =
-    "#a5adcb",  # subtext0 =
-    "#939ab7",  # overlay2 =
-    "#8087a2",  # overlay1 =
-    "#6e738d",  # overlay0 =
-    "#5b6078",  # surface2 =
-    "#494d64",  # surface1 =
-    "#363a4f",  # surface0 =
-    "#24273a",  # base =
-    "#1e2030",  # mantle =
-    "#181926",  # crust =
+    "#f5e0dc",  # rosewater =
+    "#f2cdcd",  # flamingo =
+    "#f5c2e7",  # pink =
+    "#cba6f7",  # mauve =
+    "#f38ba8",  # red =
+    "#eba0ac",  # maroon =
+    "#fab387",  # peach =
+    "#f9e2af",  # yellow =
+    "#a6e3a1",  # green =
+    "#94e2d5",  # teal =
+    "#89dceb",  # sky =
+    "#74c7ec",  # sapphire =
+    "#89b4fa",  # blue =
+    "#b4befe",  # lavender =
+    "#cdd6f4",  # text =
+    "#bac2de",  # subtext1 =
+    "#a6adc8",  # subtext0 =
+    "#9399b2",  # overlay2 =
+    "#7f849c",  # overlay1 =
+    "#6c7086",  # overlay0 =
+    "#585b70",  # surface2 =
+    "#45475a",  # surface1 =
+    "#313244",  # surface0 =
+    "#1e1e2e",  # base =
+    "#181825",  # mantle =
+    "#11111b",  # crust =
 ]
+
+widget_padding = 25
+window_gap = 5
+icon_font = 22
+# sep_color = colors[18]
+sep_color = colors[23]
+text_color = colors[16]
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
@@ -309,12 +316,6 @@ layouts = [
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
-
-widget_padding = 25
-window_gap = 5
-icon_font = 22
-sep_color = colors[18]
-text_color = colors[16]
 
 widget_defaults = dict(
     # font="SF Mono",
@@ -340,6 +341,20 @@ screens = [
         # wallpaper_mode="stretch",
         top=bar.Bar(
             [
+                widget.CurrentScreen(
+                    active_color=colors[8],
+                    inactive_color=colors[4],
+                    active_text="",
+                    inactive_text="",
+                    fontsize=icon_font,
+                ),
+                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
+                # widget.CurrentLayout(),
+                # widget.CurrentLayoutIcon(
+                #     foreground=text_color,
+                #     scale=0.6,
+                # ),
+                widget.Spacer(),
                 widget.GroupBox(
                     rounded=False,
                     # hide_unused=True,
@@ -355,28 +370,15 @@ screens = [
                     other_current_screen_border=colors[19],
                 ),
                 widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
-                # widget.CurrentLayout(),
-                # widget.CurrentLayoutIcon(
-                #     foreground=text_color,
-                #     scale=0.6,
-                # ),
-                widget.CurrentScreen(
-                    active_color=colors[8],
-                    inactive_color=colors[4],
-                    active_text="",
-                    inactive_text="",
-                    fontsize=icon_font,
-                ),
-                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 # widget.WindowCount(fmt="{} win", show_zero=True),
                 # widget.Sep(linewidth=1, padding=widget_padding),
-                # widget.Spacer(),
-                widget.WindowTabs(
-                    selected=("<b>[", "]</b>"),
-                    max_char=100,
-                    parse_text=my_func,
-                ),
-                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
+                widget.Spacer(),
+                # widget.WindowTabs(
+                #     selected=("<b>[", "]</b>"),
+                #     max_char=100,
+                #     parse_text=my_func,
+                # ),
+                # widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 widget.TextBox(
                     text="",
                     fontsize=icon_font,
