@@ -1,6 +1,6 @@
 configuration {
   display-run: "run:";
-  font: "JetBrainsMono Nerd Font Medium 10";
+  font: "JetBrainsMono Nerd Font Medium 12";
 }
 
 @theme "/dev/null"
@@ -17,7 +17,7 @@ configuration {
   fg-alt: #bac2de;
 
 
-  border: 0;
+  border: 1;
   margin: 0;
   padding: 0;
   spacing: 0;
@@ -26,6 +26,7 @@ configuration {
 window {
   width: 30%;
   background-color: @bg;
+  border-color: white;
 }
 
 element {

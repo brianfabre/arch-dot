@@ -293,8 +293,8 @@ colors = [
 widget_padding = 25
 window_gap = 5
 icon_font = 22
-# sep_color = colors[18]
-sep_color = colors[23]
+sep_color = colors[18]
+# sep_color = colors[23]
 text_color = colors[16]
 
 layouts = [
@@ -334,7 +334,8 @@ screens = [
     Screen(
         # wallpaper="~/Documents/wallpapers/waves.jpg",
         # wallpaper="~/Documents/wallpapers/shibuya.jpg",
-        wallpaper="~/Documents/wallpapers/snowmountain.jpg",
+        # wallpaper="~/Documents/wallpapers/snowmountain.jpg",
+        wallpaper="~/Documents/wallpapers/windows.png",
         # wallpaper="~/Documents/wallpapers/summer-pool.jpg",
         # wallpaper="~/Documents/wallpapers/cat-arch.png",
         wallpaper_mode="fill",
@@ -348,7 +349,7 @@ screens = [
                     inactive_text="",
                     fontsize=icon_font,
                 ),
-                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
+                # widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 # widget.CurrentLayout(),
                 # widget.CurrentLayoutIcon(
                 #     foreground=text_color,
@@ -369,7 +370,7 @@ screens = [
                     this_screen_border=colors[12],
                     other_current_screen_border=colors[19],
                 ),
-                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
+                # widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 # widget.WindowCount(fmt="{} win", show_zero=True),
                 # widget.Sep(linewidth=1, padding=widget_padding),
                 widget.Spacer(),
@@ -378,7 +379,7 @@ screens = [
                 #     max_char=100,
                 #     parse_text=my_func,
                 # ),
-                # widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
+                widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 widget.TextBox(
                     text="",
                     fontsize=icon_font,
