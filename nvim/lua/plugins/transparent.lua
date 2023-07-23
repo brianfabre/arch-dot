@@ -2,7 +2,7 @@ local M = {
 
     {
         "xiyaowong/nvim-transparent",
-        enabled = false,
+        enabled = true,
         opts = {
             extra_groups = {
                 "Folded",

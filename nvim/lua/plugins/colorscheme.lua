@@ -13,7 +13,7 @@ local M = {
         name = "catppuccin",
         opts = {
             flavour = "mocha", -- latte, frappe, macchiato, mocha
-            -- transparent_background = true,
+            transparent_background = true,
             -- term_colors = true,
         },
     },
@@ -38,7 +38,7 @@ local M = {
         config = function()
             local dracula = require("dracula")
             dracula.setup({
-                -- transparent_bg = true, -- default false
+                transparent_bg = true, -- default false
                 -- set italic comment
                 italic_comment = true, -- default false
                 overrides = {

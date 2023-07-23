@@ -49,6 +49,8 @@ hyper = "mod3"
 terminal = "alacritty"
 browser = "firefox"
 
+wallpaper = "~/Documents/wallpapers/chicago.jpg"
+
 ocr = SCRIPTS_PATH + "ocr_capture.sh"
 audio = SCRIPTS_PATH + "switch_audio.sh"
 redshift = SCRIPTS_PATH + "redshift.sh"
@@ -337,12 +339,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        # wallpaper="~/Documents/wallpapers/waves.jpg",
-        # wallpaper="~/Documents/wallpapers/shibuya.jpg",
-        # wallpaper="~/Documents/wallpapers/snowmountain.jpg",
-        wallpaper="~/Documents/wallpapers/windows.png",
-        # wallpaper="~/Documents/wallpapers/summer-pool.jpg",
-        # wallpaper="~/Documents/wallpapers/cat-arch.png",
+        wallpaper=wallpaper,
         wallpaper_mode="fill",
         # wallpaper_mode="stretch",
         top=bar.Bar(
@@ -460,7 +457,7 @@ screens = [
 
 screens.append(
     Screen(
-        wallpaper="~/Documents/wallpapers/snowmountain.jpg",
+        wallpaper=wallpaper,
         wallpaper_mode="fill",
         top=bar.Bar(
             [

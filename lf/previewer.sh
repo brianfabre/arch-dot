@@ -37,17 +37,12 @@ if [ -n "$FIFO_UEBERZUG" ]; then
 	  ffmpeg -y -i "$file" -vframes 1 "$cache"
       draw "$cache" "$@"
       ;;
-    # application/pdf)
-    #   cache="$(hash "$file")"
-    #   cache "${cache}.jpg"
-    #   pdftoppm -f 1 -l 1 \
-    #       -scale-to-x 1920 \
-    #       -scale-to-y -1 \
-    #       -singlefile \
-    #       -jpeg \
-    #       -- "$file" "$cache"
-    #   draw "${cache}.jpg"
-    #   ;;
+    application/pdf)
+      cache="$(hash "$file").png"
+      cache "$cache" "$@"
+	  gs -o "$cache" -sDEVICE=pngalpha -dLastPage=1 "$file" >/dev/null
+	  draw "$cache" "$@"
+	  ;;
     *)
     # text/* | */xml)
       bat --terminal-width "$3" -f "$file"
