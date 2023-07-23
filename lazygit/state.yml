@@ -1,9 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/brian/.config
+- /home/brian/Documents/latex
 - /home/brian/Documents/wiki
 - /home/brian/Repos/qtile
-- /home/brian/Documents/latex
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false

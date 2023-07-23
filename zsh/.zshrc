@@ -36,6 +36,7 @@ alias ls='exa'
 alias ll='exa -labh --time-style="long-iso" --icons'
 alias src='source ~/.config/zsh/.zshrc'
 alias lz='NVIM_APPNAME=lazyvim nvim'
+alias lf='$HOME/.config/lf/lfub'
 export EDITOR="nvim"
 export VISUAL="nvim"
 export EDITOR=nvim
@@ -128,7 +129,9 @@ lfcd () {
     fi
 }
 
-alias lf="lfcd"
+# alias lf="lfcd"
+
+
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
