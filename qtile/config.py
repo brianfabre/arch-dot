@@ -344,20 +344,6 @@ screens = [
         # wallpaper_mode="stretch",
         top=bar.Bar(
             [
-                widget.CurrentScreen(
-                    active_color=colors[8],
-                    inactive_color=colors[4],
-                    active_text="",
-                    inactive_text="",
-                    fontsize=icon_font,
-                ),
-                # widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
-                # widget.CurrentLayout(),
-                # widget.CurrentLayoutIcon(
-                #     foreground=text_color,
-                #     scale=0.6,
-                # ),
-                widget.Spacer(),
                 widget.GroupBox(
                     rounded=False,
                     # hide_unused=True,
@@ -371,6 +357,20 @@ screens = [
                     other_screen_border=colors[19],
                     this_screen_border=colors[12],
                     other_current_screen_border=colors[19],
+                ),
+                # widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
+                # widget.CurrentLayout(),
+                # widget.CurrentLayoutIcon(
+                #     foreground=text_color,
+                #     scale=0.6,
+                # ),
+                widget.Spacer(),
+                widget.CurrentScreen(
+                    active_color=colors[8],
+                    inactive_color=colors[4],
+                    active_text="",
+                    inactive_text="",
+                    fontsize=icon_font,
                 ),
                 # widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 # widget.WindowCount(fmt="{} win", show_zero=True),
@@ -447,7 +447,7 @@ screens = [
                 widget.Sep(linewidth=1, padding=widget_padding, foreground=sep_color),
                 widget.Systray(),
             ],
-            26,
+            22,
         ),
         # right=bar.Gap(),
         # left=bar.Gap(),
@@ -479,7 +479,7 @@ screens.append(
                 widget.WindowName(foreground="A9A9A9"),
                 widget.Spacer(),
             ],
-            26,
+            22,
         ),
     ),
 )

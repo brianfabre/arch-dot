@@ -129,7 +129,7 @@ lfcd () {
     fi
 }
 
-# alias lf="lfcd"
+alias lf="lfcd"
 
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
