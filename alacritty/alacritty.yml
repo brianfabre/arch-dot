@@ -71,7 +71,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.9
+  opacity: 0.8
   # opacity: 1.0
 
   # Startup Mode (changes require restart)
@@ -122,13 +122,15 @@ window:
 
 # Font configuration
 font:
-  size: 11.0
+  # size: 11.0
+  size: 13.0
   normal:
     family: Cascadia Code
     # family: FiraCode Nerd Font Ret
     # family: Iosevka Nerd Font
     # family: Hack
     # family: SF Mono
+    # family: JetBrainsMonoNL Nerd Font Mono
     style: Regular
   bold:
     family: Cascadia Code
@@ -136,6 +138,7 @@ font:
     # family: Iosevka Nerd Font
     # family: Hack
     # family: SF Mono
+    # family: JetBrainsMonoNL Nerd Font Mono
     style: Bold
   italic:
     family: Cascadia Code
@@ -143,6 +146,7 @@ font:
     # family: Iosevka Nerd Font
     # family: Hack
     # family: SF Mono
+    # family: JetBrainsMonoNL Nerd Font Mono
     style: Italic
   bold_italic:
     family: Cascadia Code
@@ -150,6 +154,7 @@ font:
     # family: Iosevka Nerd Font
     # family: Hack
     # family: SF Mono
+    # family: JetBrainsMonoNL Nerd Font Mono
     style: Bold Italic
 
   # Point size

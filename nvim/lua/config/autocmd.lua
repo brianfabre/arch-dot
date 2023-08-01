@@ -57,7 +57,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "python" },
     callback = function()
         vim.keymap.set("n", "<leader>pp", ":lua require('config/utils').RunCode()<CR>", { silent = true })
-        vim.opt.foldmethod = "indent"
+        -- vim.opt.foldmethod = "indent"
+        -- vim.opt.foldmethod = "expr"
+        -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
     end,
     group = group,
 })

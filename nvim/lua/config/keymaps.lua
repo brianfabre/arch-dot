@@ -94,3 +94,19 @@ map("i", "<C-e>", "<esc>lxep<esc>i")
 
 map("n", "<leader>\\", ":lua require('config/utils').FindAll()<CR>", { desc = "quickfix search" })
 map("n", "<leader>ur", ":lua require('config/utils').SearchReplace()<CR>", { desc = "search and replace" })
+
+-- toggle all folds
+map("n", "<leader>.", "zA", { desc = "search and replace" })
+
+-- if BOL, press h to close fold
+vim.keymap.set("n", "h", function()
+    local onIndentOrFirstNonBlank = vim.fn.virtcol(".") <= vim.fn.indent(".") + 1 ---@diagnostic disable-line: param-type-mismatch
+    local shouldCloseFold = vim.tbl_contains(vim.opt_local.foldopen:get(), "hor")
+    if onIndentOrFirstNonBlank and shouldCloseFold then
+        local wasFolded = pcall(vim.cmd.normal, "zc")
+        if wasFolded then
+            return
+        end
+    end
+    vim.cmd.normal({ "h", bang = true })
+end, { desc = "h (+ close fold at BoL)" })

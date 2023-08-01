@@ -31,10 +31,10 @@ local function color(theme)
     vim.cmd("colorscheme " .. theme)
 end
 -- color("kanagawa")
--- color("sonokai")
+color("sonokai")
 -- color("tokyonight")
 -- color("dracula")
-color("catppuccin")
+-- color("catppuccin")
 
 -- require
 require("config")

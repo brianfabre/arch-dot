@@ -4,7 +4,7 @@ local M = {
         "rebelot/kanagawa.nvim",
         lazy = true,
         priority = 1000,
-        opts = {},
+        opts = { transparent = true },
     },
     {
         "catppuccin/nvim",
@@ -24,6 +24,7 @@ local M = {
         opts = { style = "moon" },
         config = function()
             require("tokyonight").setup({
+                transparent = true,
                 -- other configs
                 on_colors = function(colors)
                     colors.border = "#565f89"
@@ -72,6 +73,7 @@ local M = {
         config = function()
             vim.g.sonokai_style = "atlantis"
             vim.g.sonokai_better_performance = 1
+            vim.g.sonokai_transparent_background = 2
         end,
     },
     {

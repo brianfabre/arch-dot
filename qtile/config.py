@@ -49,7 +49,9 @@ hyper = "mod3"
 terminal = "alacritty"
 browser = "firefox"
 
-wallpaper = "~/Documents/wallpapers/chicago.jpg"
+# wallpaper = "~/Documents/wallpapers/chicago.jpg"
+wallpaper = "~/Documents/wallpapers/mountain.avif"
+# wallpaper = "~/Documents/wallpapers/snowmountain.jpg"
 
 ocr = SCRIPTS_PATH + "ocr_capture.sh"
 audio = SCRIPTS_PATH + "switch_audio.sh"
