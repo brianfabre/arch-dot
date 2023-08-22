@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+PROMPT="[%n %~]$ "
+
 # history size
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -12,10 +14,17 @@ SAVEHIST=10000
 setopt appendhistory
 # export HISTCONTROL=ignoredups:erasedups
 
+# ruby / jekyll
+export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -41,11 +50,6 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export EDITOR=nvim
 export OPENER=xdg-open
-
-PROMPT="[%n %~]$ "
-
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
 
 for file in /home/brian/.config/zsh/plugins/*.zsh; do
   source "$file"

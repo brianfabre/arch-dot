@@ -50,7 +50,8 @@ terminal = "alacritty"
 browser = "firefox"
 
 # wallpaper = "~/Documents/wallpapers/chicago.jpg"
-wallpaper = "~/Documents/wallpapers/mountain.avif"
+# wallpaper = "~/Documents/wallpapers/mountain.avif"
+wallpaper = "~/Documents/wallpapers/japan.jpg"
 # wallpaper = "~/Documents/wallpapers/snowmountain.jpg"
 
 ocr = SCRIPTS_PATH + "ocr_capture.sh"
@@ -198,7 +199,7 @@ groups = [Group(i) for i in "1234567890"]
 groups = [
     Group("1", spawn=browser),
     Group("2", spawn=terminal),
-    Group("3"),
+    Group("3", spawn="thunderbird"),
     Group("4"),
     Group("5"),
     Group("6", spawn="microsoft-edge-stable"),

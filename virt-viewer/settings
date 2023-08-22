@@ -1,0 +1,7 @@
+[virt-viewer]
+share-clipboard=true
+ask-quit=false
+
+#endeavour-os
+[f6755304-7849-4924-93d7-5c54cdeaafdc]
+monitor-mapping=1:1;

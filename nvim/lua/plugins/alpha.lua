@@ -109,9 +109,10 @@ local M = {
                 callback = function()
                     local stats = require("lazy").stats()
                     local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-                    config.layout[#config.layout].val = "⚡ Neovim loaded "
-                        .. stats.count
-                        .. " plugins in "
+                    config.layout[#config.layout].val = "⚡ Neovim loaded"
+                        -- .. stats.count
+                        -- .. " plugins in "
+                        .. " in "
                         .. ms
                         .. "ms"
                     pcall(vim.cmd.AlphaRedraw)
