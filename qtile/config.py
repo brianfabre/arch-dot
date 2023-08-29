@@ -51,7 +51,8 @@ browser = "firefox"
 
 # wallpaper = "~/Documents/wallpapers/chicago.jpg"
 # wallpaper = "~/Documents/wallpapers/mountain.avif"
-wallpaper = "~/Documents/wallpapers/japan.jpg"
+# wallpaper = "~/Documents/wallpapers/japan.jpg"
+wallpaper = "~/Documents/wallpapers/gray.jpg"
 # wallpaper = "~/Documents/wallpapers/snowmountain.jpg"
 
 ocr = SCRIPTS_PATH + "ocr_capture.sh"
