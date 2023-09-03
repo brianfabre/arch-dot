@@ -48,7 +48,6 @@ alias lz='NVIM_APPNAME=lazyvim nvim'
 alias lf='$HOME/.config/lf/lfub'
 export EDITOR="nvim"
 export VISUAL="nvim"
-export EDITOR=nvim
 export OPENER=xdg-open
 
 for file in /home/brian/.config/zsh/plugins/*.zsh; do
@@ -98,10 +97,6 @@ fe() {
     done
   fi
 }
-
-# fe() {
-#   find . -type f ! -name "*/.mozilla/*" | fzf | xargs nvim
-# }
 
 fd() {
   local dir

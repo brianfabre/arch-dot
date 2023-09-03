@@ -302,7 +302,7 @@ colors = [
 ]
 
 widget_padding = 25
-window_gap = 5
+window_gap = 30
 icon_font = 22
 sep_color = colors[18]
 # sep_color = colors[23]
@@ -312,7 +312,6 @@ layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.MonadTall(
         margin=window_gap,
-        # margin=0,
         border_width=2,
         border_focus="#94e2d5",
     ),

@@ -23,4 +23,4 @@ vim.api.nvim_set_hl(0, "FlashPrompt", {
     bold = true,
 })
 
-vim.cmd("highlight link WinSeparator FloatBorder")
+-- vim.cmd("highlight link WinSeparator FloatBorder")
