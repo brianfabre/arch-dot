@@ -1,0 +1,62 @@
+# This is a partial xkb symbols file defining remappings for common modifier
+# keys to make it easier to navigate within Linux GUI environments.
+# This files makes the following changes:
+#
+# Caps Lock    ->Super_R
+# Left Windows -> Meta
+# Right Alt    -> Super_L
+#
+# It defines modifiers as
+#
+# lock
+# control     Control_L (0x25),  Control_R (0x69)
+# mod1        Alt_L (0x40),  Meta_L (0xcd)
+# mod2        Meta_L (0x85)
+# mod3        Super_R (0x42),  Hyper_L (0xcf)
+# mod4        Super_R (0x42),  Super_L (0x6c),  Super_L (0xce)
+#
+# The shift, control and mod5 modifiers are left as they are.
+#
+# To use this file, copy it to /usr/share/X11/xkb/symbols
+# Then update evdev, evdev.lst, and evdev.xml to include it as "mymods" in the
+# options section
+
+#
+# Examples:
+#
+# default hidden partial modifier_keys
+# xkb_symbols "mymods" {
+#     # Remove Hyper (Hyper_L/Hyper_R) from Mod4, was added by "pc" layout
+#     modifier_map Mod3 { <HYPR> };
+#
+#     # Remap caps to right super and Mod3
+#     key <CAPS> { [ Super_R ] };
+#     modifier_map Mod3 { <CAPS> };
+#
+#     # Remap left alt to Mod1
+#     # Something in here is still Meta_L (0xcd) on Mod1
+#     replace modifier_map none { Meta_L, Meta_R, Num_Lock  };
+#     replace modifier_map Mod1 { <LALT> };
+#
+#
+#     # Remap right alt to super key
+#     key <RALT> { [ Super_L ] };
+#     modifier_map Mod4   { <RALT> };
+#
+#     # Remap left window to meta
+#     replace key <LWIN> { [ Meta_L, Meta_R] };
+#     replace modifier_map Mod2 { <LWIN> };
+# };
+
+# verify with xmodmap
+xkb_symbols "basic" {
+  include "pc+us+kr"
+
+  replace key <CAPS> {
+    [ Hyper_L, Hyper_L ]
+  };
+
+  modifier_map Mod3 { <HYPR> };
+
+  modifier_map Mod4 { Super_L, Super_R };
+};
