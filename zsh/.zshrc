@@ -17,6 +17,10 @@ setopt appendhistory
 # ruby / jekyll
 export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
 
+# bemenu
+export BEMENU_OPTS="--fn 'Hack 11'"
+
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"

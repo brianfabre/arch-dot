@@ -1,10 +1,7 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
+# run at startup
 exec wl-paste -t text --watch clipman store --max-items=1000 --histpath="~/.cache/clipman.json"
+exec fcitx5
+exec wl-gammarelay
 
 ### Variables
 #
@@ -118,6 +115,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
 # #
 # # Workspaces:
 # #
@@ -159,6 +157,19 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     workspace 9 output $output-secondary
     workspace 10 output $output-secondary
 
+    # applications on startup
+    # assign [class="firefox"] workspace 1
+    # assign [app_id="foot"] workspace 2
+    assign [class="thunderbird"] workspace 3
+    assign [class="Microsoft-edge"] workspace 6
+    assign [class="discord"] workspace 7
+    exec swaymsg 'exec firefox'
+    exec swaymsg 'exec foot'
+    exec swaymsg 'exec thunderbird'
+    exec swaymsg 'exec microsoft-edge-stable'
+    exec swaymsg 'exec discord'
+
+    # switch last window
     bindsym $hyper+space workspace back_and_forth
 
 # Layout stuff:
@@ -186,6 +197,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
 #
 # Scratchpad:
 #
@@ -197,7 +209,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym $mod+m scratchpad show
+
 #
 # Resizing containers:
 #
@@ -231,17 +244,6 @@ bindsym $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     swaybar_command waybar
-    # position top
-    #
-    # # When the status_command prints a new line to stdout, swaybar updates.
-    # # The default just shows the current date and time.
-    # status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-    #
-    # colors {
-    #     statusline #ffffff
-    #     background #323232
-    #     inactive_workspace #32323200 #32323200 #5c5c5c
-    # }
 }
 
 input type:keyboard {
@@ -255,8 +257,10 @@ input type:keyboard {
 #
 # Custom settings:
 #
-# swaymsg -t get_tree
+    # swaymsg -t get_tree
     for_window [app_id="thunar"]             floating enable
+    for_window [app_id="pavucontrol"]        floating enable
+    for_window [class="fcitx5-config-qt"]    floating enable
 
      # ocr screenshot
     bindsym $hyper+1 exec grim -g "$(slurp)" - | tesseract -l "eng" stdin stdout | wl-copy
@@ -266,5 +270,10 @@ input type:keyboard {
 
     # clipboard history
     bindsym $hyper+c exec clipman --histpath="~/.cache/clipman.json" pick --tool=bemenu --tool-args="-l 10 --fn 'Hack 11'"
+
+    # start with clipboard in scratchpad
+    exec $term --title Scratchpad
+    for_window [title="Scratchpad"] move scratchpad
+
 
 include /etc/sway/config.d/*
