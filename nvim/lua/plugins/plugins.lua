@@ -62,7 +62,7 @@ local M = {
             vim.cmd([[
             let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always"
             let g:zettel_format = '%Y%m%d%H%M%S'
-            let g:zettel_options = [{"disable_front_matter": 1, "template" :  "/Volumes/Bob/wiki/template.tpl"}]
+            let g:zettel_options = [{"disable_front_matter": 1, "template" :  "~/Documents/wiki/template.tpl"}]
             let g:vimwiki_markdown_link_ext = 1
             ]])
         end,

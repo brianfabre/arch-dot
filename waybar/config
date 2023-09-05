@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
     "modules-center": ["sway/window"],
     "modules-right": ["custom/wl-gammarelay-temperature", "custom/wl-gammarelay-brightness", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray"],
     // Modules configuration
@@ -58,7 +58,8 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%Y-%m-%d}",
+        "on-click-right": "gsimplecal"
     },
     "cpu": {
         "format": "{usage}% ",

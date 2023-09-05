@@ -1,10 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/brian/.config
+- /home/brian/Documents/wiki
 - /home/brian/Repos/ansible-arch-linux
 - /home/brian/Repos/brianfabre.github.io
 - /home/brian/Repos/qtile
-- /home/brian/Documents/wiki
 - /home/brian/Documents/latex
 startuppopupversion: 5
 customcommandshistory: []
