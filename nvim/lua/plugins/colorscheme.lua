@@ -4,7 +4,7 @@ local M = {
         "rebelot/kanagawa.nvim",
         lazy = true,
         priority = 1000,
-        opts = { transparent = true },
+        opts = { transparent = false },
     },
     {
         "catppuccin/nvim",
@@ -21,16 +21,7 @@ local M = {
         "folke/tokyonight.nvim",
         lazy = true,
         priority = 1000,
-        opts = { style = "moon" },
-        config = function()
-            require("tokyonight").setup({
-                transparent = true,
-                -- other configs
-                on_colors = function(colors)
-                    colors.border = "#565f89"
-                end,
-            })
-        end,
+        opts = { style = "night" },
     },
     {
         "Mofiqul/dracula.nvim",

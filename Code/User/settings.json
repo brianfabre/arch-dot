@@ -6,5 +6,11 @@
   "notebook.lineNumbers": "on",
   "workbench.colorTheme": "Catppuccin Mocha",
   "editor.formatOnSave": true,
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "none",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "jupyter.interactiveWindow.textEditor.executeSelection": true,
+  "jupyter.askForKernelRestart": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

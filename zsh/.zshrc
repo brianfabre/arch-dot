@@ -20,6 +20,14 @@ setopt appendhistory
 # ruby / jekyll
 export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
 
+# pacman
+alias pacin="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window=65% | xargs -ro sudo pacman -S"
+alias pacre="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window=65% | xargs -ro sudo pacman -Rns"
+
+# case insensitive search
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+autoload -Uz compinit && compinit
+
 # bemenu
 export BEMENU_OPTS="--fn 'Hack 11'"
 
@@ -47,9 +55,8 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias act='source venv/bin/activate'
 alias deact='deactivate'
-alias ls='exa'
-# alias ll='exa -labh --no-time --no-filesize --icons'
-alias ll='exa -labh --time-style="long-iso" --icons'
+alias ls='eza'
+alias ll='eza -lab --icons'
 alias src='source ~/.config/zsh/.zshrc'
 alias lz='NVIM_APPNAME=lazyvim nvim'
 alias lf='$HOME/.config/lf/lfub'

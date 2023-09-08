@@ -32,9 +32,9 @@ local function color(theme)
 end
 -- color("kanagawa")
 -- color("sonokai")
--- color("tokyonight")
+color("tokyonight")
 -- color("dracula")
-color("catppuccin")
+-- color("catppuccin")
 
 -- require
 require("config")

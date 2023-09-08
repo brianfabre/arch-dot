@@ -9,9 +9,14 @@ set cursorpreviewfmt ""
 
 # set nopreview
 # set ratios 1:2
+# set ratios 1:2:3:5
 
 set previewer ~/.config/lf/previewer.sh
 set cleaner ~/.config/lf/clear_img.sh
+
+# move up/down directory, ignores files
+map J :updir; set dironly true; down; set dironly false; open
+map K :updir; set dironly true; up; set dironly false; open
 
 # custom functions
 cmd mkdir ${{
@@ -63,18 +68,18 @@ cmd fzf_jump ${{
 }}
 map / :fzf_jump
 
-# # copy file path
-# cmd yank-path $printf '%s' "$fx" | wl-copy
-# map Y yank-path
+# copy file path
+cmd yank-path $printf '%s' "$fx" | wl-copy
+map Y yank-path
 
-cmd copy_to_clipboard %{{
-    if type pbcopy > /dev/null 2>&1; then
-    printf '%s' "$f" | pbcopy
-    elif type xsel > /dev/null 2>&1; then
-    printf '%s' "$f" | xsel -ib
-    fi
-}}
-map Y :copy_to_clipboard
+# cmd copy_to_clipboard %{{
+#     if type pbcopy > /dev/null 2>&1; then
+#     printf '%s' "$f" | pbcopy
+#     elif type xsel > /dev/null 2>&1; then
+#     printf '%s' "$f" | xsel -ib
+#     fi
+# }}
+# map Y :copy_to_clipboard
 
 # custom remaps
 map <enter> open
@@ -188,8 +193,3 @@ cmd zip ${{
     zip -r $1.zip $1
     rm -rf $1
 }}
-
-# # display images
-# set previewer ~/.config/lf/lf_kitty_preview
-# set cleaner ~/.config/lf/lf_kitty_clean
-
