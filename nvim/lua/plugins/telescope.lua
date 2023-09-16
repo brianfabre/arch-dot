@@ -23,14 +23,22 @@ local M = {
             require("telescope").setup({
                 defaults = {
                     file_ignore_patterns = { "%.csv", "%.txt", "%.xml" },
-                    layout_strategy = "vertical",
                     prompt_prefix = "   ",
+                    -- layout_strategy = "vertical",
+                    -- layout_config = {
+                    --     height = 0.95,
+                    --     width = 0.95,
+                    --     -- preview_height = 0.5,
+                    --     mirror = true,
+                    --     prompt_position = "top",
+                    -- },
+                    layout_strategy = "horizontal",
                     layout_config = {
-                        height = 0.95,
-                        width = 0.95,
-                        -- preview_height = 0.5,
-                        mirror = true,
-                        prompt_position = "top",
+                        height = 0.7,
+                        width = 0.7,
+                        preview_width = 0.6,
+                        -- mirror = true,
+                        -- prompt_position = "top",
                     },
                     mappings = {
                         i = {

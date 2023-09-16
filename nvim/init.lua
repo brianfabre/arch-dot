@@ -32,7 +32,10 @@ local function color(theme)
 end
 -- color("kanagawa")
 -- color("sonokai")
-color("tokyonight")
+-- color("tokyonight")
+-- color("rose-pine")
+color("falcon")
+-- color("arctic") -- vscode colors
 -- color("dracula")
 -- color("catppuccin")
 

@@ -7,6 +7,13 @@ local M = {
         opts = { transparent = false },
     },
     {
+        "rockyzhang24/arctic.nvim",
+        lazy = true,
+        branch = "v2",
+        dependencies = { "rktjmp/lush.nvim" },
+    },
+    { "rose-pine/neovim", lazy = true, name = "rose-pine" },
+    {
         "catppuccin/nvim",
         lazy = true,
         priority = 1000,
@@ -24,13 +31,18 @@ local M = {
         opts = { style = "night" },
     },
     {
+        "fenetikm/falcon",
+        lazy = true,
+        priority = 1000,
+    },
+    {
         "Mofiqul/dracula.nvim",
         lazy = true,
         priority = 1000,
         config = function()
             local dracula = require("dracula")
             dracula.setup({
-                transparent_bg = true, -- default false
+                -- transparent_bg = true, -- default false
                 -- set italic comment
                 italic_comment = true, -- default false
                 overrides = {

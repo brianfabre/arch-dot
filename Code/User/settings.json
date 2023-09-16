@@ -6,11 +6,12 @@
   "notebook.lineNumbers": "on",
   "workbench.colorTheme": "Catppuccin Mocha",
   "editor.formatOnSave": true,
-  "python.formatting.provider": "none",
+  "python.formatting.provider": "black",
   "[python]": {
-    "editor.defaultFormatter": "ms-python.autopep8"
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "jupyter.interactiveWindow.textEditor.executeSelection": true,
   "jupyter.askForKernelRestart": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "vscode-neovim.NVIM_APPNAME": "nvim-code"
 }

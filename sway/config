@@ -29,8 +29,8 @@ set $output-secondary "HDMI-A-1"
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/brian/Documents/wallpapers/chicago.jpg fill
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg /home/brian/Documents/wallpapers/chicago.jpg fill
 
 #
 # Example configuration:
@@ -142,6 +142,9 @@ exec swayidle -w \
     workspace 8 output $output-secondary
     workspace 9 output $output-secondary
     workspace 10 output $output-secondary
+
+    bindsym $mod+bracketright move workspace to output right
+    bindsym $mod+bracketleft move workspace to output left
 
     # applications on startup
     # assign [class="firefox"] workspace 1
