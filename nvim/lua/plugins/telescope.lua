@@ -34,11 +34,9 @@ local M = {
                     -- },
                     layout_strategy = "horizontal",
                     layout_config = {
-                        height = 0.7,
-                        width = 0.7,
+                        height = 0.6,
+                        width = 0.6,
                         preview_width = 0.6,
-                        -- mirror = true,
-                        -- prompt_position = "top",
                     },
                     mappings = {
                         i = {
