@@ -17,6 +17,9 @@ end
 map("n", "<S-left>", "^")
 map("n", "<S-right>", "$")
 
+-- cursor remains in position after yank
+map("v", "y", "ygv<esc>")
+
 -- windows
 map("n", "<leader>wo", "<C-W>p", { desc = "other window" })
 map("n", "<leader>wd", "<C-W>c", { desc = "delete window" })
@@ -51,7 +54,7 @@ map("t", "<Esc>", "<C-\\><C-n>")
 map("n", "<leader>k", ":update<CR>", { desc = "save" })
 
 -- quit all
-map("n", "<leader>qp", ":qa!<CR>", { desc = "quit neovim" })
+-- map("n", "<leader>qp", ":qa!<CR>", { desc = "quit neovim" })
 
 -- file path
 map("n", "<leader>cw", ":lua print(vim.fn.getcwd())<CR>", { desc = "echo CWD" })
@@ -59,8 +62,8 @@ map("n", "<leader>cd", ":cd %:p:h<CR>:pwd<CR>", { desc = "set as working dir" })
 map("n", "<leader>cp", ':let @+=expand("%:p")<CR>', { desc = "path to clipboard" })
 
 -- always centers after c-d/c-u
--- map("n", "<C-d>", "<C-d>zz")
--- map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
 -- faster in/outdenting
 map("i", "<<", "<c-d>")
@@ -78,10 +81,10 @@ map("n", "<leader>oc", ":e $MYVIMRC<CR>", { desc = "config" })
 -- resize windows
 -- map("n", "<leader>=", ':exe "resize +2"<CR>', { desc = "win size increase" })
 -- map("n", "<leader>-", ':exe "resize -2"<CR>', { desc = "win size decrease" })
-map("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
-map("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
-map("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
-map("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
+-- map("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
+-- map("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
+-- map("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
+-- map("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
 
 -- / is used by pounce so remap to ?
 map("n", "?", "/")

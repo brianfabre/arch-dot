@@ -10,42 +10,6 @@ local M = {
                 return
             end
 
-            local function return_todo()
-                local path = "/Volumes/MacAsahi/Documents/wiki/index.md"
-                -- todo's are between begstring and finstring
-                local begstring = "important dates"
-                local finstring = "wip"
-                local todos = {}
-                local start = false
-                for line in io.lines(path) do
-                    -- local endmatch = string.find(line, finstring)
-                    -- local startmatch = string.find(line, begstring)
-                    local endmatch = line:find(finstring)
-                    local startmatch = line:find(begstring)
-                    if endmatch then
-                        break
-                    end
-                    if start then
-                        -- %] = the last instance of ]
-                        -- (.*) = match and capture 0+ characters
-                        local str = line:match("%](.*)")
-
-                        -- removes trailing spaces in beg + end
-                        str = string.gsub(str, "^%s*(.-)%s*$", "%1")
-
-                        -- adds string to position 1
-                        -- str = str:gsub("()", { [1] = " " })
-                        str = str:gsub("()", { [1] = " " })
-
-                        todos[#todos + 1] = str
-                    end
-                    if startmatch then
-                        start = true
-                    end
-                end
-                return todos
-            end
-
             local header = require("alpha.themes.theta").config.layout[2]
             local recent = require("alpha.themes.theta").config.layout[4]
             local dashboard = require("alpha.themes.dashboard")
@@ -55,10 +19,11 @@ local M = {
                     { type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
                     { type = "padding", val = 1 },
                     dashboard.button("e", " " .. " New file", ":ene <BAR> startinsert <CR>"),
-                    dashboard.button("s", " " .. " Search directory", ":Telescope live_grep <CR>"),
-                    dashboard.button("p", " " .. " Projects", ":Telescope projects <CR>"),
+                    -- dashboard.button("s", " " .. " Search directory", ":Telescope live_grep <CR>"),
+                    -- dashboard.button("p", " " .. " Projects", ":Telescope projects <CR>"),
+                    dashboard.button("f", " " .. " Search files", ":lua require('fzf-lua').files() <CR>"),
+                    dashboard.button("s", " " .. " Live grep", ":lua require('fzf-lua').live_grep() <CR>"),
                     dashboard.button("i", " " .. " Config", ":e $MYVIMRC <CR> :cd %:p:h <CR>"),
-                    -- dashboard.button("w", " " .. " Wiki", ":e /Volumes/Bob/wiki/index.md <CR>"),
                     dashboard.button("w", " " .. " Wiki", ":VimwikiIndex <CR>"),
                     dashboard.button("q", " " .. " Quit", ":qa<CR>"),
                 },
