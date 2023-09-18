@@ -1,11 +1,22 @@
 return {
     "ibhagwan/fzf-lua",
+    event = { "BufReadPre", "BufNewFile" },
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         -- calling `setup` is optional for customization
         require("fzf-lua").setup({
-            winopts = {},
+            winopts = {
+                -- Use **only one** of the below options
+                -- split = "aboveleft new"   -- open in split above current window
+                -- split = "belowright new"  -- open in split below current window
+                -- split = "aboveleft vnew"  -- open in split left of current window
+                -- split = "belowright vnew" -- open in split right of current window
+                -- split = "topleft new", -- open in a full-width split on top
+                split = "botright new", -- open in a full-width split on the bottom
+                -- split = "topleft vnew"  -- open in a full-height split on the far left
+                -- split = "botright vnew", -- open in a full-height split on the far right
+            },
         })
         vim.keymap.set(
             "n",
