@@ -2,6 +2,7 @@
 exec wl-paste -t text --watch clipman store --max-items=1000 --histpath="~/.cache/clipman.json"
 exec fcitx5
 exec wl-gammarelay
+exec /home/brian/.config/sway/scripts/installed_packages.sh
 
 ### Variables
 #
@@ -29,8 +30,8 @@ set $output-secondary "HDMI-A-1"
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# output * bg /home/brian/Documents/wallpapers/chicago.jpg fill
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/brian/Documents/wallpapers/mountain-kde.png fill
 
 #
 # Example configuration:
@@ -268,8 +269,8 @@ input type:keyboard {
     for_window [title="Scratchpad"] move scratchpad
 
     # transparency
-    # set $opacity 0.9
-    # for_window [app_id="foot"] opacity $opacity
+    set $opacity 0.85
+    for_window [app_id="foot"] opacity $opacity
 
 
 include /etc/sway/config.d/*

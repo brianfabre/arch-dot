@@ -47,7 +47,7 @@ local M = {
                     lualine_c = {
                         {
                             "filename",
-                            path = 1,
+                            path = 2,
                         },
                     },
                     -- lualine_x = { "filetype" },

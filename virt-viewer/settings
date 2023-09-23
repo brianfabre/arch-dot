@@ -21,3 +21,6 @@ monitor-mapping=1:1;
 
 [1575db12-c256-4efa-9ead-fb1e48e7a889]
 monitor-mapping=1:1;
+#debian
+[e8439038-008d-49cd-a895-557a1f471fc0]
+monitor-mapping=1:2;

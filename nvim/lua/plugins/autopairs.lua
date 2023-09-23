@@ -6,10 +6,12 @@ return {
         local Rule = require("nvim-autopairs.rule")
         local npairs = require("nvim-autopairs")
 
-        npairs.setup({
+        require("nvim-autopairs").setup({
+            ignored_next_char = "", -- autopair even before char
             fast_wrap = {
                 map = "<C-e>",
                 end_key = "'",
+                manual_position = false,
             },
         })
 

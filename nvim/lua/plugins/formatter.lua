@@ -59,6 +59,13 @@ local M = {
                 }
             end
 
+            local function shfmt()
+                return {
+                    exe = "shfmt",
+                    stdin = true,
+                }
+            end
+
             require("formatter").setup({
                 -- logging = true,
                 filetype = {
@@ -69,6 +76,9 @@ local M = {
                     json = { prettier },
                     html = { prettier },
                     htmldjango = { prettier },
+                    sh = { shfmt },
+                    bash = { shfmt },
+                    zsh = { shfmt },
                 },
             })
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {

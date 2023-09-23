@@ -42,7 +42,7 @@ return {
                 -- mark_visual = "<space>mc",
                 -- remove_mark = "<space>md",
                 -- cr = "<space>s<cr>",
-                -- interrupt = "<space>s<space>",
+                interrupt = "<space>s<space>",
                 -- exit = "<space>sq",
                 -- clear = "<space>cl",
             },

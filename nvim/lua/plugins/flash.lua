@@ -15,7 +15,7 @@ return {
             },
         },
         jump = {
-            autojump = true,
+            autojump = false,
         },
         modes = {
             char = {
@@ -23,6 +23,24 @@ return {
                 multi_line = false,
                 highlight = { backdrop = false },
             },
+        },
+    },
+    keys = {
+        {
+            "/",
+            mode = { "n", "o", "x" },
+            function()
+                require("flash").jump()
+            end,
+            desc = "Flash",
+        },
+        {
+            "S",
+            mode = { "n" },
+            function()
+                require("flash").treesitter()
+            end,
+            desc = "Flash Treesitter",
         },
     },
 }

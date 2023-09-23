@@ -86,15 +86,12 @@ map("n", "<leader>oc", ":e $MYVIMRC<CR>", { desc = "config" })
 -- map("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
 -- map("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
 
--- / is used by pounce so remap to ?
-map("n", "?", "/")
-
 -- ui stuff
 map("n", "<leader>us", ":set invspell<CR>", { desc = "toggle spelling" })
 map("n", "<leader>uw", ":set wrap!<CR>", { desc = "toggle word wrap" })
 
 -- fastwrap
-map("i", "<C-e>", "<esc>lxep<esc>i")
+-- map("i", "<C-e>", "<esc>lxep<esc>i")
 
 map("n", "<leader>\\", ":lua require('config/utils').FindAll()<CR>", { desc = "quickfix search" })
 map("n", "<leader>ur", ":lua require('config/utils').SearchReplace()<CR>", { desc = "search and replace" })
