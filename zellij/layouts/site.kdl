@@ -1,0 +1,13 @@
+layout {
+    tab cwd="/home/brian/Repos/brianfabre.github.io"{
+        pane split_direction="vertical" { // first logical container
+            pane name="file" command="lf"
+            pane split_direction="horizontal" { // second logical container
+                pane name="server" command="jekyll" {
+                    args "s"
+                }
+                pane name="-"
+            }
+        }
+    }
+}

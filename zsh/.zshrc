@@ -20,6 +20,9 @@ setopt appendhistory
 # ruby / jekyll
 export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
 
+# doom emacs
+export PATH=$HOME/.config/emacs/bin:$PATH
+
 # pacman
 alias pacin="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window=65% | xargs -ro sudo pacman -S"
 alias pacre="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window=65% | xargs -ro sudo pacman -Rns"
@@ -91,6 +94,7 @@ fe() {
     find . -type f \
     -not -path "*/.vscode/*" \
     -not -path "*/.git/*" \
+    -not -path "*/.cargo/*" \
     -not -path "*/venv/*" \
     -not -path "*/.cache/*" \
     -not -path "*/.texlive/*" \

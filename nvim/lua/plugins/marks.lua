@@ -3,11 +3,13 @@ return {
     keys = "m",
     config = function()
         require("marks").setup({
+            default_mappings = false,
             mappings = {
-                preview = false,
-                delete_buf = "mda",
-                next = "mw",
-                prev = "mq",
+                set_next = "m,",
+                next = "m;",
+                -- preview = false,
+                -- delete_buf = "mda",
+                -- prev = "mq",
             },
         })
     end,

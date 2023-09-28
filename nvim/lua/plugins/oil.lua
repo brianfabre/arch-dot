@@ -1,6 +1,15 @@
 return {
     "stevearc/oil.nvim",
-    keys = "-",
+    -- keys = "-",
+    keys = {
+        {
+
+            "-",
+            "<cmd>Oil<cr>",
+            desc = "Open File Explorer",
+        },
+    },
+    cmd = "Oil",
     -- opts = {},
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -37,6 +46,5 @@ return {
                 show_hidden = true,
             },
         })
-        vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
     end,
 }

@@ -12,6 +12,23 @@ local M = {
         branch = "v2",
         dependencies = { "rktjmp/lush.nvim" },
     },
+    {
+        "marko-cerovac/material.nvim",
+        lazy = true,
+        config = function()
+            require("material").setup({})
+            vim.g.material_style = "deep ocean"
+        end,
+    },
+    {
+        "navarasu/onedark.nvim",
+        lazy = true,
+        config = function()
+            require("onedark").setup({
+                style = "darker",
+            })
+        end,
+    },
     { "rose-pine/neovim", lazy = true, name = "rose-pine" },
     {
         "catppuccin/nvim",
@@ -20,7 +37,7 @@ local M = {
         name = "catppuccin",
         opts = {
             flavour = "mocha", -- latte, frappe, macchiato, mocha
-            transparent_background = true,
+            -- transparent_background = true,
             -- term_colors = true,
         },
     },

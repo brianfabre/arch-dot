@@ -33,8 +33,10 @@ end
 -- color("kanagawa")
 -- color("sonokai")
 -- color("tokyonight")
-color("rose-pine")
--- color("falcon")
+-- color("onedark")
+-- color("rose-pine")
+color("falcon")
+-- color("material")
 -- color("arctic") -- vscode colors
 -- color("dracula")
 -- color("catppuccin")
