@@ -1,26 +1,51 @@
-alacritty/themes
-calibre
-chromium
-Code/*
-!Code/User
-Code/User/*
-!Code/User/keybindings.json
-!Code/User/settings.json
-!Code/User/vs_code_extensions_list.txt
-dconf
-discord
-emacs
-fcit*
-GIMP
-htop
-ibus
-lazygit
-Ledger Live
-libreoffice
-microsoft-edge
-pulse
-Thunar
-torbrowser
-QtProject.conf
-xfce4
-virt-viewer
+/*
+!alacritty/
+!dunst/
+!foot/
+!lf/
+!mpv/
+!nvim/
+!picom/
+!qtile/
+!rofi/
+!sway/
+!tmux/
+!waybar/
+!xkb/
+!zathura/
+!zellij/
+!zsh/.zshrc
+!.gitignore
+!greenclip.toml
+!mimeapps.list
+!packages-aur.txt
+!packages-packman.txt
+
+
+
+# alacritty/themes
+# calibre
+# chromium
+# Code/*
+# !Code/User
+# Code/User/*
+# !Code/User/keybindings.json
+# !Code/User/settings.json
+# !Code/User/vs_code_extensions_list.txt
+# dconf
+# discord
+# emacs
+# fcit*
+# GIMP
+# htop
+# ibus
+# lazygit
+# Ledger Live
+# libreoffice
+# microsoft-edge
+# pulse
+# Thunar
+# torbrowser
+# QtProject.conf
+# xfce4
+# virt-viewer
