@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<FileZilla3 version="3.64.0" platform="*nix">
-	<FtpSessionResumption>
-		<Entry Host="ftp.briank80.sg-host.com" Port="21">true</Entry>
-		<Entry Host="ftp.fullertondisciples.com" Port="21">true</Entry>
-	</FtpSessionResumption>
-</FileZilla3>
