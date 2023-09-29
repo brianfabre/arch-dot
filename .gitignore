@@ -14,7 +14,7 @@
 !xkb/
 !zathura/
 !zellij/
-!zsh/.zshrc
+!zsh/
 !.gitignore
 !greenclip.toml
 !mimeapps.list
