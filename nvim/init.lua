@@ -27,19 +27,19 @@ require("lazy").setup("plugins", {
 })
 
 -- colorscheme
-local function color(theme)
-    vim.cmd("colorscheme " .. theme)
+local function c(theme)
+    vim.cmd.colorscheme(theme)
 end
--- color("kanagawa")
--- color("sonokai")
--- color("tokyonight")
--- color("onedark")
--- color("rose-pine")
-color("falcon")
--- color("material")
--- color("arctic") -- vscode colors
--- color("dracula")
--- color("catppuccin")
+-- c("kanagawa")
+-- c("sonokai")
+-- c("tokyonight")
+-- c("onedark")
+-- c("rose-pine")
+-- c("falcon")
+-- c("material")
+-- c("arctic") -- vscode colors
+c("dracula")
+-- c("catppuccin")
 
 -- require
 require("config")

@@ -62,23 +62,22 @@ local M = {
                 -- transparent_bg = true, -- default false
                 -- set italic comment
                 italic_comment = true, -- default false
-                overrides = {
-                    -- Examples
-                    -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
-                    -- NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight
-                    -- Nothing = {} -- clear highlight of Nothing
-                    htmlH1 = { fg = dracula.colors().cyan, underline = true, bold = true },
-                    htmlH2 = { fg = dracula.colors().pink, underline = true, bold = true },
-                    htmlH3 = { fg = dracula.colors().green, underline = true, bold = true },
-                    htmlH4 = { fg = dracula.colors().orange, underline = true, bold = true },
-                    htmlH5 = { fg = dracula.colors().purple, underline = true, bold = true },
-                    htmlH6 = { fg = dracula.colors().yellow, underline = true, bold = true },
-                    htmlItalic = { fg = dracula.colors().purple, italic = true },
-                    htmlLink = { fg = dracula.colors().orange, underline = true },
-                    htmlBoldItalic = { fg = dracula.colors().green, bold = true, italic = true },
-                    -- Comment = { fg = dracula.colors().comment },
-                    Comment = { fg = "#A9A9A9", italic = true },
-                },
+                -- overrides = {
+                --     -- Examples
+                --     -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
+                --     -- NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight
+                --     -- Nothing = {} -- clear highlight of Nothing
+                --     htmlH1 = { fg = dracula.colors().cyan, underline = true, bold = true },
+                --     htmlH2 = { fg = dracula.colors().pink, underline = true, bold = true },
+                --     htmlH3 = { fg = dracula.colors().green, underline = true, bold = true },
+                --     htmlH4 = { fg = dracula.colors().orange, underline = true, bold = true },
+                --     htmlH5 = { fg = dracula.colors().purple, underline = true, bold = true },
+                --     htmlH6 = { fg = dracula.colors().yellow, underline = true, bold = true },
+                --     htmlItalic = { fg = dracula.colors().purple, italic = true },
+                --     htmlLink = { fg = dracula.colors().orange, underline = true },
+                --     htmlBoldItalic = { fg = dracula.colors().green, bold = true, italic = true },
+                --     Comment = { fg = "#A9A9A9", italic = true },
+                -- },
             })
 
             -- -- should be called later?

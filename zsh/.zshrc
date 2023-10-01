@@ -31,7 +31,6 @@ autoload -Uz compinit && compinit
 # bemenu
 export BEMENU_OPTS="--fn 'Hack 11'"
 
-
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -40,6 +39,8 @@ eval "$(pyenv init -)"
 # fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+export FZF_DEFAULT_COMMAND="fd --type file --hidden --no-ignore --color=always"
+export FZF_DEFAULT_OPTS="--ansi"
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -83,31 +84,30 @@ fkill() {
     fi
 }
 
-# fe [FUZZY PATTERN] - Open the selected file with the default editor
-#   - Bypass fuzzy finder if there's only one match (--select-1)
-#   - Exit if there's no match (--exit-0)
 fe() {
   IFS=$'\n' files=($(
-    find . -type f \
-    -not -path "*/.cache/*" \
-    -not -path "*/.cargo/*" \
-    -not -path "*/.git/*" \
-    -not -path "*/.pyenv/*" \
-    -not -path "*/.rustup/*" \
-    -not -path "*/.texlive/*" \
-    -not -path "*/.vscode/*" \
-    -not -path "*/Repos/*/*" \
-    -not -path "*/_*/*" \
-    -not -path "*/backup_samsungT5/*" \
-    -not -path "*/mnt/*" \
-    -not -path "*/venv/*" \
+  fd -t f --color=always --hidden --no-ignore-vcs \
+    --exclude ".cache" \
+    --exclude ".cargo" \
+    --exclude ".git" \
+    --exclude ".local" \
+    --exclude ".mypy_cache" \
+    --exclude ".pyenv" \
+    --exclude ".rustup" \
+    --exclude ".texlive" \
+    --exclude ".vscode" \
+    --exclude "Repos/*/*" \
+    --exclude "_*" \
+    --exclude "backup_samsungT5" \
+    --exclude "mnt" \
+    --exclude "venv" \
     | fzf-tmux --query="$1" --multi --select-1 --exit-0
   ))
   # [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
   if [[ -n "$files" ]]; then
     for file in "${files[@]}"; do
       extension="${file##*.}"
-      if [[ "$extension" == "pdf" ]]; then
+      if [[ "$extension" =~ (pdf|jpg|jpeg|JPG|png)$ ]]; then
         xdg-open "$file"
       else
         ${EDITOR:-vim} "$file"
@@ -116,22 +116,21 @@ fe() {
   fi
 }
 
-fd() {
+fcd() {
   local dir
-  dir=$(find ${1:-.} -path '*/.vscode' -prune \
-                  -o -path '*/.cache' -prune \
-                  -o -path '*/.cargo' -prune \
-                  -o -path '*/.git' -prune \
-                  -o -path '*/.mozilla' -prune \
-                  -o -path '*/.pyenv' -prune \
-                  -o -path '*/.rustup' -prune \
-                  -o -path '*/.texlive' -prune \
-                  -o -path '*/Repos/*/*' -prune \
-                  -o -path '*/_*' -prune \
-                  -o -path '*/backup_samsungT5' -prune \
-                  -o -path '*/mnt' -prune \
-                  -o -path '*/venv' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
+  dir=$(fd ${1:-.} --exclude '.vscode'  \
+                   --exclude '.cache'  \
+                   --exclude '.cargo'  \
+                   --exclude '.git'  \
+                   --exclude '.mozilla'  \
+                   --exclude '.pyenv'  \
+                   --exclude '.rustup'  \
+                   --exclude '.texlive'  \
+                   --exclude 'Repos/*/*'  \
+                   --exclude '_*'  \
+                   --exclude 'backup_samsungT5'  \
+                   --exclude 'venv'  \
+                   -t d --hidden --no-ignore-vcs | fzf +m) &&
   cd "$dir"
 }
 
@@ -151,6 +150,44 @@ lfcd () {
 }
 
 alias lf="lfcd"
+
+
+
+# Use fd and fzf to get the args to a command.
+# Works only with zsh
+# Examples:
+# f mv # To move files. You can write the destination after selecting the files.
+# f 'echo Selected:'
+# f 'echo Selected music:' --extension mp3
+# fm rm # To rm files in current directory
+f() {
+    sels=( "${(@f)$(fd --color=always "${fd_default[@]}" "${@:2}"| fzf)}" )
+    test -n "$sels" && print -z -- "$1 ${sels[@]:q:q}"
+}
+
+# Like f, but not recursive.
+fm() f "$@" --max-depth 1
+
+# Deps
+alias fz="fzf-noempty --bind 'tab:toggle,shift-tab:toggle+beginning-of-line+kill-line,ctrl-j:toggle+beginning-of-line+kill-line,ctrl-t:top' --color=light -1 -m"
+fzf-noempty () {
+	local in="$(</dev/stdin)"
+	test -z "$in" && (
+		exit 130
+	) || {
+		ec "$in" | fzf "$@"
+	}
+}
+ec () {
+	if [[ -n $ZSH_VERSION ]]
+	then
+		print -r -- "$@"
+	else
+		echo -E -- "$@"
+	fi
+}
+
+
 
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme

@@ -18,11 +18,11 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     end,
 })
 
--- set syntax for .md
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile", "BufEnter" }, {
-    pattern = { "*.md" },
-    command = "set syntax=markdown",
-})
+-- -- set syntax for .md
+-- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile", "BufEnter" }, {
+--     pattern = { "*.md" },
+--     command = "set syntax=markdown",
+-- })
 
 -- set iskeyword+=-
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile", "Filetype" }, {

@@ -1,0 +1,14 @@
+https://hnrss.org/frontpage
+"query:--- Tech ---:tags # \"tech\""
+https://www.androidauthority.com/guides/feed/ tech "~Android Authority"
+https://feeds.arstechnica.com/arstechnica/index/ tech
+https://www.bitecode.dev/feed tech
+https://gizmodo.com/rss tech
+http://rss.slashdot.org/Slashdot/slashdotMain tech
+https://unix.stackexchange.com/feeds tech "~Stack Exchange Unix & Linux"
+"query:--- Economist ---:tags # \"economist\""
+https://www.economist.com/finance-and-economics/rss.xml economist "~Economist - Finance/Economics"
+https://www.economist.com/the-world-this-week/rss.xml economist "~Economist - World this Week"
+https://www.economist.com/united-states/rss.xml economist "~Economist - United States"
+https://www.economist.com/china/rss.xml economist "~Economist - China"
+https://www.economist.com/science-and-technology/rss.xml economist "~Economist - Science/Technology"
