@@ -20,12 +20,14 @@ eza 0.13.1-1
 fcitx5-configtool 5.1.0-1
 fcitx5-gtk 5.1.0-1
 fcitx5-hangul 5.1.0-1
+fd 8.7.0-1
 filezilla 3.65.0-1
 firefox 118.0.1-1
 foot 1.15.3-1
 fzf 0.42.0-1
 gimp 2.10.34-3
 git 2.42.0-1
+go 2:1.21.1-1
 grim 1.4.1-1
 gsimplecal 2.5.1-1
 gst-plugin-pipewire 1:0.3.80-1
@@ -33,6 +35,7 @@ gvfs 1.52.0-1
 gvfs-smb 1.52.0-1
 hblock 3.4.2-1
 htop 3.2.2-1
+ifuse 1.1.4-4
 imv 4.4.0-2
 iwd 2.8-1
 lazygit 0.40.2-1

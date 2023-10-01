@@ -40,7 +40,8 @@ eval "$(pyenv init -)"
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="fd --type file --hidden --no-ignore --color=always"
-export FZF_DEFAULT_OPTS="--ansi"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--ansi --height=40% --reverse --border=none"
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -60,7 +61,7 @@ alias ls='eza'
 alias ll='eza -lab --icons'
 alias src='source ~/.config/zsh/.zshrc'
 alias lz='NVIM_APPNAME=lazyvim nvim'
-alias lf='$HOME/.config/lf/lfub'
+# alias lf='$HOME/.config/lf/lfub'
 export EDITOR="nvim"
 export VISUAL="nvim"
 export OPENER=xdg-open
@@ -84,6 +85,7 @@ fkill() {
     fi
 }
 
+# search files fzf
 fe() {
   IFS=$'\n' files=($(
   fd -t f --color=always --hidden --no-ignore-vcs \
@@ -116,6 +118,7 @@ fe() {
   fi
 }
 
+# cd to directory fzf
 fcd() {
   local dir
   dir=$(fd ${1:-.} --exclude '.vscode'  \
@@ -150,44 +153,6 @@ lfcd () {
 }
 
 alias lf="lfcd"
-
-
-
-# Use fd and fzf to get the args to a command.
-# Works only with zsh
-# Examples:
-# f mv # To move files. You can write the destination after selecting the files.
-# f 'echo Selected:'
-# f 'echo Selected music:' --extension mp3
-# fm rm # To rm files in current directory
-f() {
-    sels=( "${(@f)$(fd --color=always "${fd_default[@]}" "${@:2}"| fzf)}" )
-    test -n "$sels" && print -z -- "$1 ${sels[@]:q:q}"
-}
-
-# Like f, but not recursive.
-fm() f "$@" --max-depth 1
-
-# Deps
-alias fz="fzf-noempty --bind 'tab:toggle,shift-tab:toggle+beginning-of-line+kill-line,ctrl-j:toggle+beginning-of-line+kill-line,ctrl-t:top' --color=light -1 -m"
-fzf-noempty () {
-	local in="$(</dev/stdin)"
-	test -z "$in" && (
-		exit 130
-	) || {
-		ec "$in" | fzf "$@"
-	}
-}
-ec () {
-	if [[ -n $ZSH_VERSION ]]
-	then
-		print -r -- "$@"
-	else
-		echo -E -- "$@"
-	fi
-}
-
-
 
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
