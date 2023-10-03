@@ -38,7 +38,7 @@ vim.opt.updatetime = 300
 -- ## not in use ##
 -- vim.opt.cmdheight = 0
 -- vim.opt.autochdir = true
--- vim.opt.cursorline = false
+vim.opt.cursorline = true
 -- vim.opt.laststatus = 0                                   -- hides status line
 -- vim.formatoptions = 'tqj'                                -- removed 'c'
 -- stylua: ignore end

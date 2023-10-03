@@ -16,8 +16,8 @@ dmenu 5.2-1
 dmidecode 3.5-1
 dunst 1.9.2-1
 efibootmgr 18-2
-eza 0.13.1-1
-fcitx5-configtool 5.1.0-1
+eza 0.14.0-1
+fcitx5-configtool 5.1.0-2
 fcitx5-gtk 5.1.0-1
 fcitx5-hangul 5.1.0-1
 fd 8.7.0-1
@@ -41,7 +41,7 @@ iwd 2.8-1
 lazygit 0.40.2-1
 lf 31-1
 libpulse 16.1-6
-libreoffice-still 7.5.7-1
+libreoffice-still 7.5.7-2
 linux 6.5.5.arch1-1
 linux-firmware 20230804.7be2766d-2
 linux-headers 6.5.5.arch1-1
@@ -109,7 +109,7 @@ texlive-latexextra 2023.66594-19
 texlive-latexrecommended 2023.66594-19
 texlive-luatex 2023.66594-19
 thunar 4.18.7-1
-thunderbird 115.2.3-1
+thunderbird 115.3.1-1
 tk 8.6.13-2
 tmux 3.3_a-7
 tree 2.1.1-1
@@ -125,7 +125,7 @@ ttf-times-new-roman 2.0-3
 ueberzugpp 2.9.2-1
 unzip 6.0-19
 usbutils 015-3
-vim 9.0.1882-1
+vim 9.0.1968-1
 virt-viewer 11.0-2
 visidata 2.11.1-1
 visual-studio-code-bin 1.82.2-1
