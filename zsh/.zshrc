@@ -4,13 +4,26 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export OPENER=xdg-open
 
+# colored man pages
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export MANROFFOPT="-P -c"
+
 # function for if file exists, source
+# ex: include ~/.zshrc
 include() {
 	[[ -f "$1" ]] && source "$1"
 }
 
-# zsh auto suggestions
+# # case insensitive search
+# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+# bindkey '\t' menu-complete
+# zstyle ':completion:::::default' menu select
+# # zstyle ':completion:*' file-list all
+# autoload -Uz compinit && compinit
+
+# zsh plugins
 include ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+include ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # zsh
 HISTFILE=~/.zsh_history
@@ -25,10 +38,6 @@ export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
 # pacman
 alias pacin="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window=65% | xargs -ro sudo pacman -S"
 alias pacre="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window=65% | xargs -ro sudo pacman -Rns"
-
-# case insensitive search
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-autoload -Uz compinit && compinit
 
 # bemenu
 export BEMENU_OPTS="--fn 'Hack 11'"
@@ -147,3 +156,25 @@ lfcd() {
 }
 
 alias lf="lfcd"
+
+# autocomplete
+# buggy when placed near other zsh plugins
+# e.g. cycle tab doesnt work including other bugs
+include ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+bindkey -M menuselect '\r' .accept-line
+
+# unbinds up/down history keybindings from autocomplete
+() {
+   local -a prefix=( '\e'{\[,O} )
+   local -a up=( ${^prefix}A ) down=( ${^prefix}B )
+   local key=
+   for key in $up[@]; do
+      bindkey "$key" up-line-or-history
+   done
+   for key in $down[@]; do
+      bindkey "$key" down-line-or-history
+   done
+}
