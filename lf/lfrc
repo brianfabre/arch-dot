@@ -6,13 +6,14 @@ set drawbox
 set icons true
 set period 1
 set cursorpreviewfmt ""
+set sixel true
 
 # set nopreview
 # set ratios 1:2
 # set ratios 1:2:3:5
 
 set previewer ~/.config/lf/previewer.sh
-set cleaner ~/.config/lf/clear_img.sh
+# set cleaner ~/.config/lf/clear_img.sh
 
 # move up/down directory, ignores files
 map J :updir; set dironly true; down; set dironly false; open
@@ -71,15 +72,6 @@ map / :fzf_jump
 # copy file path
 cmd yank-path $printf '%s' "$fx" | wl-copy
 map Y yank-path
-
-# cmd copy_to_clipboard %{{
-#     if type pbcopy > /dev/null 2>&1; then
-#     printf '%s' "$f" | pbcopy
-#     elif type xsel > /dev/null 2>&1; then
-#     printf '%s' "$f" | xsel -ib
-#     fi
-# }}
-# map Y :copy_to_clipboard
 
 # custom remaps
 map <enter> open
