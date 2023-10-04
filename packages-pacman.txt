@@ -1,12 +1,13 @@
 adbfs-rootless-git r112.fd56381-1
 adobe-source-han-sans-kr-fonts 2.004-1
-alacritty 0.12.2-1
+alacritty 0.12.3-1
 amd-ucode 20230804.7be2766d-2
 base 3-1
 base-devel 1-1
 bat 0.23.0-3
 bemenu 0.6.16-1
-chromium 117.0.5938.132-1
+btop 1.2.13-1
+chromium 117.0.5938.149-1
 clipman 1.6.2-1
 cmatrix 2.0-2
 conky 1.18.1-2
@@ -17,7 +18,7 @@ dmidecode 3.5-1
 dunst 1.9.2-1
 efibootmgr 18-2
 eza 0.14.0-1
-fcitx5-configtool 5.1.0-2
+fcitx5-configtool 5.1.1-1
 fcitx5-gtk 5.1.0-1
 fcitx5-hangul 5.1.0-1
 fd 8.7.0-1
@@ -82,6 +83,7 @@ python-xkbcommon 0.8-2
 qpdf 11.6.1-1
 r 4.3.1-2
 redshift 1.12-8
+reflector 2023-1
 ripgrep 13.0.0-3
 rofi 1.7.5-2
 rofi-greenclip 4.2-2
@@ -125,7 +127,7 @@ ttf-times-new-roman 2.0-3
 ueberzugpp 2.9.2-1
 unzip 6.0-19
 usbutils 015-3
-vim 9.0.1968-1
+vim 9.0.1976-1
 virt-viewer 11.0-2
 visidata 2.11.1-1
 visual-studio-code-bin 1.82.2-1
@@ -153,4 +155,3 @@ zathura-pdf-mupdf 0.4.1-4
 zellij 0.38.2-1
 zram-generator 1.1.2-1
 zsh 5.9-4
-zsh-theme-powerlevel10k-git r4165.20323d6f-1

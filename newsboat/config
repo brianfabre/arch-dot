@@ -21,6 +21,7 @@ unbind-key g # bound to `sort` by default
 unbind-key G # bound to `rev-sort` by default
 unbind-key ^d
 unbind-key ^u
+unbind-key i
 
 # bind keys - vim style
 bind-key j down
@@ -35,3 +36,6 @@ bind-key ^D halfpagedown
 bind-key ^U halfpageup
 
 bind-key U show-urls
+
+
+macro i set browser "firefox %u"; open-in-browser; set browser "w3m %u"

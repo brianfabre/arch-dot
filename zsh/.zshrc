@@ -136,7 +136,7 @@ fcd() {
 		--exclude '_*' \
 		--exclude 'backup_samsungT5' \
 		--exclude 'venv' \
-		-t d --hidden --no-ignore-vcs | fzf +m) &&
+		-t d --hidden --no-ignore-vcs | fzf-tmux +m) &&
 		cd "$dir"
 }
 
