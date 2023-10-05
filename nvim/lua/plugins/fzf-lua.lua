@@ -26,6 +26,12 @@ return {
         )
         vim.keymap.set(
             "n",
+            "<leader>ss",
+            "<cmd>lua require('fzf-lua').buffers()<CR>",
+            { silent = true, desc = "search open buffer" }
+        )
+        vim.keymap.set(
+            "n",
             "<leader>sb",
             "<cmd>lua require('fzf-lua').blines()<CR>",
             { silent = true, desc = "search buffer lines" }

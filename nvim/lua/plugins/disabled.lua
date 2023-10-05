@@ -1,4 +1,5 @@
 local M = {
+
     {
         "dccsillag/magma-nvim",
         enabled = false,
@@ -59,6 +60,7 @@ local M = {
             end
         end,
     },
+
     {
         "nvim-telescope/telescope.nvim",
         enabled = false,
@@ -193,6 +195,7 @@ local M = {
             vim.keymap.set("n", "<leader>ss", ts.builtin.colorscheme, { desc = "colorscheme" })
         end,
     },
+
     {
         "ahmedkhalf/project.nvim",
         enabled = false,
@@ -223,6 +226,7 @@ local M = {
             { "<leader>sp", "<Cmd>Telescope projects<CR>", desc = "projects" },
         },
     },
+
     {
         "nvim-neo-tree/neo-tree.nvim",
         enabled = false,
@@ -294,6 +298,33 @@ local M = {
                         require("neo-tree.sources.git_status").refresh()
                     end
                 end,
+            })
+        end,
+    },
+
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        enabled = false,
+        event = { "BufReadPost", "BufNewFile" },
+        config = function()
+            require("ibl").setup({
+                scope = {
+                    show_start = false,
+                    show_end = false,
+                },
+                whitespace = {
+                    remove_blankline_trail = true,
+                },
+                exclude = {
+                    filetypes = {
+                        "help",
+                        "alpha",
+                        "markdown",
+                        "vimwiki",
+                        "neo-tree",
+                        "lazy",
+                    },
+                },
             })
         end,
     },

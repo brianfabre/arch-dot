@@ -101,8 +101,6 @@ fe() {
 			--exclude ".rustup" \
 			--exclude ".texlive" \
 			--exclude ".vscode" \
-			--exclude "Repos/*/*" \
-			--exclude "_*" \
 			--exclude "backup_samsungT5" \
 			--exclude "mnt" \
 			--exclude "venv" |

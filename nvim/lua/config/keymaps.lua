@@ -1,9 +1,12 @@
+local Util = require("config.utils")
+
 local function map(mode, lhs, rhs, opts)
     local options = { noremap = true, silent = true }
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    -- vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- move between panes to left/bottom/top/right
@@ -29,7 +32,7 @@ map("n", "<leader>w|", "<C-W>v", { desc = "split window right" })
 -- move between buffers
 map("n", "<S-l>", ":bnext<CR>")
 map("n", "<S-h>", ":bprevious<CR>")
-map("n", "<Leader>qq", ":bp | bd! #<CR>", { desc = "quit buffer" })
+-- map("n", "<Leader>qq", ":bp | bd! #<CR>", { desc = "quit buffer" })
 map("n", "<Leader>qa", ":%bd|e#<CR>:bnext<CR>:bd<CR>e", { desc = "quit all other buffers" })
 
 -- move line/down
@@ -85,6 +88,11 @@ map("n", "<leader>oc", ":e $MYVIMRC<CR>", { desc = "config" })
 -- map("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
 -- map("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
 -- map("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
+
+-- lazygit in float term
+map("n", "<leader>gg", function()
+    Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false })
+end, { desc = "Lazygit (root dir)" })
 
 -- ui stuff
 map("n", "<leader>us", ":set invspell<CR>", { desc = "toggle spelling" })

@@ -20,28 +20,15 @@ local M = {
 
             local wk = require("which-key")
             wk.register({
+                b = { name = "buffer" },
                 c = { name = "directory" },
                 f = { name = "files" },
-                -- o = { name = "Open ...", g = { "Lazygit" } },
                 o = { name = "open ..." },
                 p = { name = "run code" },
                 q = { name = "quit ..." },
                 s = { name = "search ..." },
-                -- s = {
-                --     name = "Search ...",
-                --     p = { ":cd ~/.local/share/nvim/lazy<CR> :Telescope find_files <CR>", "Plugins" },
-                --     c = {
-                --         ':cd ~/.config<CR> :lua require"telescope.builtin".find_files({ hidden = true })<CR>',
-                --         "Config",
-                --     },
-                --     r = { ":cd /Volumes/Bob/R<CR> :Telescope find_files <CR>", "R" },
-                --     s = { ":cd ~/Documents/Stata<CR> :Telescope find_files <CR>", "Stata" },
-                --     l = { ":cd /Volumes/Bob/Latex<CR> :Telescope find_files <CR>", "Latex" },
-                --     d = { ":cd ~/Documents<CR> :Telescope find_files <CR>", "Documents" },
-                --     -- p = { ":cd ~/Documents/PycharmProjects<CR> :Telescope find_files <CR>", "Pycharm search" },
-                -- },
                 u = { name = "ui" },
-                w = { name = "Windows / Wiki" },
+                w = { name = "windows / wiki" },
             }, { prefix = "<leader>" })
         end,
     },

@@ -19,11 +19,7 @@ local M = {
             local stylua = function()
                 return {
                     exe = "stylua",
-                    args = {
-                        "--config-path",
-                        "~/.config/nvim/stylua.toml",
-                        "-",
-                    },
+                    args = { "--config-path", "~/.config/nvim/stylua.toml", "-" },
                     stdin = true,
                 }
             end
