@@ -187,15 +187,15 @@ local M = {
                 }),
             })
 
-            -- disables completion in markdown
-            local autocmd = vim.api.nvim_create_autocmd
-            autocmd("FileType", {
-                -- pattern = { "markdown", "sh" },
-                pattern = { "sh" },
-                callback = function()
-                    require("cmp").setup.buffer({ enabled = false })
-                end,
-            })
+            -- -- disables completion in markdown
+            -- local autocmd = vim.api.nvim_create_autocmd
+            -- autocmd("FileType", {
+            --     -- pattern = { "sh" },
+            --     pattern = {},
+            --     callback = function()
+            --         require("cmp").setup.buffer({ enabled = false })
+            --     end,
+            -- })
 
             -- cmdline setup.
             cmp.setup.cmdline(":", {

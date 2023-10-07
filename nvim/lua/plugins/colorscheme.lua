@@ -7,6 +7,11 @@ local M = {
         opts = { transparent = false },
     },
     {
+        "projekt0n/github-nvim-theme",
+        lazy = true,
+        priority = 1000,
+    },
+    {
         "rockyzhang24/arctic.nvim",
         lazy = true,
         branch = "v2",

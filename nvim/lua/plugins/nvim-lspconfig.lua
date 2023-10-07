@@ -107,6 +107,11 @@ local M = {
                 },
             })
 
+            require("lspconfig")["bashls"].setup({
+                on_attach = on_attach,
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            })
+
             require("lspconfig")["pyright"].setup({
                 on_attach = on_attach,
                 settings = {

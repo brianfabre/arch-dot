@@ -38,7 +38,8 @@ end
 -- c("falcon")
 -- c("material")
 -- c("arctic") -- vscode colors
-c("dracula")
+-- c("dracula")
+c("github_dark_dimmed")
 -- c("catppuccin")
 
 -- require
