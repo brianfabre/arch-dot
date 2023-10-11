@@ -107,6 +107,29 @@ local M = {
                 },
             })
 
+            -- require("lspconfig")["rust_analyzer"].setup({
+            --     on_attach = on_attach,
+            --     capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            --     settings = {
+            --         ["rust-analyzer"] = {
+            --             imports = {
+            --                 granularity = {
+            --                     group = "module",
+            --                 },
+            --                 prefix = "self",
+            --             },
+            --             cargo = {
+            --                 buildScripts = {
+            --                     enable = true,
+            --                 },
+            --             },
+            --             procMacro = {
+            --                 enable = true,
+            --             },
+            --         },
+            --     },
+            -- })
+
             require("lspconfig")["bashls"].setup({
                 on_attach = on_attach,
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),

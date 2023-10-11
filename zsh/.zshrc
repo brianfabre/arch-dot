@@ -35,9 +35,12 @@ setopt appendhistory
 # ruby / jekyll
 export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
 
+# cargo
+export PATH=$HOME/.cargo/bin:$PATH
+
 # pacman
-alias pacin="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window=65% | xargs -ro sudo pacman -S"
-alias pacre="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window=65% | xargs -ro sudo pacman -Rns"
+alias pacin="pacman -Slq | fzf --height=100% --multi --preview 'pacman -Si {1}' --preview-window=65% | xargs -ro sudo pacman -S"
+alias pacre="pacman -Qq | fzf --height=100% --multi --preview 'pacman -Qi {1}' --preview-window=65% | xargs -ro sudo pacman -Rns"
 
 # bemenu
 export BEMENU_OPTS="--fn 'Hack 11'"

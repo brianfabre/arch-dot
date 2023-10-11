@@ -5,8 +5,11 @@ autocmd InsertLeave,WinEnter * if &number | set rnu | endif
 " run lua code
 autocmd FileType lua map <buffer> <leader>pp :w<CR>:luafile %<CR>
 
-" restart kitty when saving conf file
-" autocmd bufwritepost ~/.config/kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep -a kitty)
+" hide buffer if terminal
+augroup TerminalSettings
+    autocmd!
+    autocmd TermOpen * setlocal nobuflisted
+augroup END
 
 " autocmd FileType stata setlocal commentstring=//\ %s
 ]])

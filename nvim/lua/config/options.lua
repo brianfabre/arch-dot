@@ -30,8 +30,6 @@ vim.opt.completeopt = { 'noselect' }
 vim.opt.foldmethod = 'marker'
 vim.opt.laststatus = 3                                   -- global status
 
--- vim.opt.spell = true
-
 -- vim.opt.swapfile = false
 vim.opt.updatetime = 300
 

@@ -9,13 +9,15 @@ return {
             winopts = {
                 -- Use **only one** of the below options
                 -- split = "aboveleft new"   -- open in split above current window
-                -- split = "belowright new"  -- open in split below current window
+                -- split = "belowright new", -- open in split below current window
                 -- split = "aboveleft vnew"  -- open in split left of current window
-                -- split = "belowright vnew" -- open in split right of current window
+                -- split = "belowright vnew", -- open in split right of current window
                 -- split = "topleft new", -- open in a full-width split on top
                 split = "botright new", -- open in a full-width split on the bottom
                 -- split = "topleft vnew"  -- open in a full-height split on the far left
                 -- split = "botright vnew", -- open in a full-height split on the far right
+                border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }, -- thin straight
+                -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
             },
         })
         vim.keymap.set(
