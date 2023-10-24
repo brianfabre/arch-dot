@@ -23,6 +23,9 @@ map("n", "<S-right>", "$")
 -- cursor remains in position after yank
 map("v", "y", "ygv<esc>")
 
+-- netrw
+map("n", "<leader>v", ":Lexplore<CR>", { desc = "netrw" })
+
 -- windows
 map("n", "<leader>wo", "<C-W>p", { desc = "other window" })
 map("n", "<leader>wd", "<C-W>c", { desc = "delete window" })

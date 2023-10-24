@@ -1,9 +1,10 @@
 -- options
 -- stylua: ignore start
 -- vim.g.python3_host_prog = "/opt/homebrew/bin/python3"
-vim.g.loaded_netrw = 1                                   -- disable netrw
-vim.g.loaded_netrwPlugin = 1                             -- disable netrw
 
+-- vim.g.loaded_netrw = 1                                   -- disable netrw
+-- vim.g.loaded_netrwPlugin = 1                             -- disable netrw
+vim.g.netrw_winsize = 20                               -- netrw options
 vim.opt.background = "dark"
 vim.opt.termguicolors = true
 vim.opt.pumheight = 10
