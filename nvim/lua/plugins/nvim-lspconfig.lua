@@ -8,6 +8,28 @@ local M = {
             { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
         },
         config = function()
+            -- test start
+            local border = {
+                { "🭽", "FloatBorder" },
+                { "▔", "FloatBorder" },
+                { "🭾", "FloatBorder" },
+                { "▕", "FloatBorder" },
+                { "🭿", "FloatBorder" },
+                { "▁", "FloatBorder" },
+                { "🭼", "FloatBorder" },
+                { "▏", "FloatBorder" },
+            }
+
+            -- LSP settings (for overriding per client)
+            local handlers = {
+                ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+                ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+            }
+
+            -- Do not forget to use the on_attach function
+            -- require("lspconfig").myserver.setup({ handlers = handlers })
+            -- test end
+
             require("echo-diagnostics").setup({
                 show_diagnostic_number = true,
                 show_diagnostic_source = false,
@@ -136,6 +158,7 @@ local M = {
             })
 
             require("lspconfig")["pyright"].setup({
+                handlers = handlers,
                 on_attach = on_attach,
                 settings = {
                     python = {

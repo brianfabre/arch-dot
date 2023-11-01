@@ -1,7 +1,7 @@
 adbfs-rootless-git r112.fd56381-1
 clipman 1.6.2-1
 cpu-x 5.0.1-1
-microsoft-edge-stable-bin 118.0.2088.61-1
+microsoft-edge-stable-bin 118.0.2088.76-1
 rofi-greenclip 4.2-2
 sanoid-git r803.61000c9-1
 ttf-times-new-roman 2.0-3

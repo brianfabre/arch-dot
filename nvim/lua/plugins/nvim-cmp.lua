@@ -55,10 +55,10 @@ local M = {
                     end,
                 },
                 window = {
-                    -- completion = cmp.config.window.bordered({
-                    -- 	border = "single",
-                    -- 	col_offset = -1,
-                    -- }),
+                    completion = cmp.config.window.bordered({
+                        border = "single",
+                        col_offset = -1,
+                    }),
                     documentation = cmp.config.window.bordered({
                         border = "single",
                     }),
