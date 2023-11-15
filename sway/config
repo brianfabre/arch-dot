@@ -246,6 +246,12 @@ input type:keyboard {
     xkb_layout custom-xkb
 }
 
+input "1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall" {
+      pointer_accel 0.5
+      scroll_button BTN_EXTRA
+      scroll_method on_button_down
+}
+
 #
 # Custom settings:
 #

@@ -10,6 +10,21 @@ local M = {
         "projekt0n/github-nvim-theme",
         lazy = true,
         priority = 1000,
+        config = function()
+            require("github-theme").setup({
+                options = {
+                    styles = {
+                        comments = "italic",
+                    },
+                },
+                groups = {
+                    all = {
+                        -- must type :GithubThemeCompile for it to work
+                        VimwikiLink = { fg = "#6cb6ff", style = "underline" },
+                    },
+                },
+            })
+        end,
     },
     {
         "rockyzhang24/arctic.nvim",

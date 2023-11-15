@@ -43,8 +43,10 @@ local M = {
             "markdown",
         },
         config = function()
-            vim.g.vmt_fence_text = "TOC"
-            vim.g.vmt_fence_closing_text = "/TOC"
+            vim.cmd([[
+            let g:vmt_fence_text = 'TOC'
+            let g:vmt_fence_closing_text = '/TOC'
+            ]])
         end,
     },
     {

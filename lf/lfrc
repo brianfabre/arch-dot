@@ -2,7 +2,7 @@
 set hidden true
 set ignorecase true
 set info size
-# set drawbox
+set drawbox
 set icons true
 set period 1
 set cursorpreviewfmt ""
