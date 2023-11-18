@@ -22,7 +22,6 @@ vim.opt.expandtab = true                                 -- sets tab spacing
 vim.opt.autoindent = true
 vim.opt.ignorecase = true                                -- case-insensitive search
 vim.opt.smartcase = true                                 -- case-insensitive search
-vim.opt.conceallevel = 2                                 -- for markdown syntax
 vim.opt.linebreak = true                                 -- doesnt split words
 vim.opt.breakindent = true                               -- enable indentation
 vim.opt.breakindentopt = { 'shift:4', 'sbr', 'list:-1' } -- indent by an additional 4 characters on wrapped line

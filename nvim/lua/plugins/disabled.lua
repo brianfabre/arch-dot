@@ -1,8 +1,11 @@
-local M = {
+-- since this is just an example spec, don't actually load anything here and return an empty spec
+-- stylua: ignore
+if true then return {} end
+
+return {
 
     {
         "dccsillag/magma-nvim",
-        enabled = false,
         ft = "stata",
         dependencies = {
             "poliquin/stata-vim",
@@ -63,7 +66,6 @@ local M = {
 
     {
         "nvim-telescope/telescope.nvim",
-        enabled = false,
         event = { "BufReadPre", "BufNewFile" },
         version = false, -- telescope did only one release, so use HEAD for now
         dependencies = {
@@ -198,7 +200,6 @@ local M = {
 
     {
         "ahmedkhalf/project.nvim",
-        enabled = false,
         opts = {
             -- Methods of detecting the root directory. **"lsp"** uses the native neovim
             -- lsp, while **"pattern"** uses vim-rooter like glob pattern matching. Here
@@ -229,7 +230,6 @@ local M = {
 
     {
         "nvim-neo-tree/neo-tree.nvim",
-        enabled = false,
         cmd = "Neotree",
         dependencies = {
             "MunifTanjim/nui.nvim",
@@ -303,8 +303,28 @@ local M = {
     },
 
     {
+        "nvim-pack/nvim-spectre",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("spectre").setup()
+
+            -- vim.keymap.set("n", "<leader>S", '<cmd>lua require("spectre").open()<CR>', {
+            --     desc = "Open Spectre",
+            -- })
+            -- vim.keymap.set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+            --     desc = "Search current word",
+            -- })
+            -- vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+            --     desc = "Search current word",
+            -- })
+            vim.keymap.set("n", "<leader>rf", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+                desc = "Search on current file",
+            })
+        end,
+    },
+
+    {
         "lukas-reineke/indent-blankline.nvim",
-        enabled = false,
         event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("ibl").setup({
@@ -328,6 +348,25 @@ local M = {
             })
         end,
     },
-}
 
-return M
+    {
+        "simrat39/rust-tools.nvim",
+        ft = "rust",
+        config = function()
+            local rt = require("rust-tools")
+
+            rt.setup({
+                server = {
+                    on_attach = function(_, bufnr)
+                        vim.keymap.set("n", "<Leader>pp", rt.runnables.runnables, { buffer = bufnr })
+                    end,
+                },
+                tools = {
+                    inlay_hints = {
+                        auto = false,
+                    },
+                },
+            })
+        end,
+    },
+}

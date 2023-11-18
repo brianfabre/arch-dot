@@ -1,12 +1,13 @@
 return {
     "Vigemus/iron.nvim",
     cmd = "IronRepl",
-    keys = {
-        { "<leader>is", "<cmd>IronRepl<cr>", desc = "start iron" },
-        { "<leader>ir", "<cmd>IronRestart<cr>", desc = "restart iron" },
-        { "<leader>if", "<cmd>IronFocus<cr>", desc = "focus iron" },
-        { "<leader>ih", "<cmd>IronHide<cr>", desc = "hide iron" },
-    },
+    -- appears on whichkey even if not loaded
+    -- keys = {
+    --     { "<leader>is", "<cmd>IronRepl<cr>", desc = "start iron" },
+    --     { "<leader>ir", "<cmd>IronRestart<cr>", desc = "restart iron" },
+    --     { "<leader>if", "<cmd>IronFocus<cr>", desc = "focus iron" },
+    --     { "<leader>ih", "<cmd>IronHide<cr>", desc = "hide iron" },
+    -- },
     config = function()
         local iron = require("iron.core")
 
@@ -54,7 +55,13 @@ return {
             ignore_blank_lines = true, -- ignore blank lines when sending visual select lines
         })
 
-        -- iron also has a list of commands, see :h iron-commands for all available commands
+        require("which-key").register({
+            ["<leader>i"] = { name = "iron", _ = "which_key_ignore" },
+        })
+        vim.keymap.set("n", "<leader>is", "<cmd>IronRepl<cr>", { desc = "start iron" })
+        vim.keymap.set("n", "<leader>ir", "<cmd>IronRestart<cr>", { desc = "restart iron" })
+        vim.keymap.set("n", "<leader>if", "<cmd>IronFocus<cr>", { desc = "focus iron" })
+        vim.keymap.set("n", "<leader>ih", "<cmd>IronHide<cr>", { desc = "hide iron" })
         -- vim.keymap.set("n", "<leader>rs", "<cmd>IronRepl<cr>")
         -- vim.keymap.set("n", "<leader>rr", "<cmd>IronRestart<cr>")
         -- vim.keymap.set("n", "<space>rf", "<cmd>IronFocus<cr>")

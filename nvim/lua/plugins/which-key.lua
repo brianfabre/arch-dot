@@ -20,15 +20,16 @@ local M = {
 
             local wk = require("which-key")
             wk.register({
-                b = { name = "buffer" },
-                c = { name = "directory" },
-                f = { name = "files" },
-                o = { name = "open ..." },
-                p = { name = "run code" },
-                q = { name = "quit ..." },
-                s = { name = "search ..." },
-                u = { name = "ui" },
-                w = { name = "windows / wiki" },
+                b = { name = "buffer", _ = "which_key_ignore" },
+                c = { name = "directory", _ = "which_key_ignore" },
+                f = { name = "files", _ = "which_key_ignore" },
+                o = { name = "open", _ = "which_key_ignore" },
+                p = { name = "run code", _ = "which_key_ignore" },
+                q = { name = "quit", _ = "which_key_ignore" },
+                r = { name = "rename lsp", _ = "which_key_ignore" },
+                s = { name = "search fzf", _ = "which_key_ignore" },
+                u = { name = "ui", _ = "which_key_ignore" },
+                w = { name = "wiki", _ = "which_key_ignore" },
             }, { prefix = "<leader>" })
         end,
     },

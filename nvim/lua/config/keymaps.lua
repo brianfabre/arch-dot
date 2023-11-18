@@ -27,10 +27,11 @@ map("v", "y", "ygv<esc>")
 map("n", "<leader>v", ":Lexplore<CR>", { desc = "netrw" })
 
 -- windows
-map("n", "<leader>wo", "<C-W>p", { desc = "other window" })
-map("n", "<leader>wd", "<C-W>c", { desc = "delete window" })
-map("n", "<leader>w-", "<C-W>s", { desc = "split window below" })
-map("n", "<leader>w|", "<C-W>v", { desc = "split window right" })
+-- disabled temporarily, conflicts with wiki.vim
+-- map("n", "<leader>wo", "<C-W>p", { desc = "other window" })
+-- map("n", "<leader>wd", "<C-W>c", { desc = "delete window" })
+-- map("n", "<leader>w-", "<C-W>s", { desc = "split window below" })
+-- map("n", "<leader>w|", "<C-W>v", { desc = "split window right" })
 
 -- move between buffers
 map("n", "<S-l>", ":bnext<CR>")
@@ -91,11 +92,6 @@ map("n", "<leader>oc", ":e $MYVIMRC<CR>", { desc = "config" })
 -- map("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
 -- map("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
 -- map("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
-
--- lazygit in float term
-map("n", "<leader>gg", function()
-    Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false })
-end, { desc = "Lazygit (root dir)" })
 
 -- ui stuff
 map("n", "<leader>us", ":set invspell<CR>", { desc = "toggle spelling" })

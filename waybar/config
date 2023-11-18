@@ -1,10 +1,9 @@
-{
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+[{
+    "layer": "bottom", // Waybar at top layer
+    "output": "DP-1",
     "height": 20, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
     "modules-center": ["sway/window"],
     "modules-right": ["custom/wl-gammarelay-temperature", "custom/wl-gammarelay-brightness", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray"],
@@ -146,5 +145,8 @@
        "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d +0.02",
        "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -0.02"
     }
-}
-
+},{
+    "layer": "top",
+    "output": ["HDMI-A-1", "DVI-D-1"],
+    "modules-left": ["sway/workspaces"],
+}]

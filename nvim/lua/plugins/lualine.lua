@@ -1,5 +1,4 @@
 local M = {
-
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -9,10 +8,10 @@ local M = {
                     icons_enabled = true,
                     globalstatus = true,
                     theme = "auto",
-                    component_separators = { left = "", right = "" },
-                    section_separators = { left = "", right = "" },
-                    -- component_separators = { left = "", right = "" },
-                    -- section_separators = { left = "", right = "" },
+                    -- component_separators = { left = "", right = "" },
+                    -- section_separators = { left = "", right = "" },
+                    component_separators = "|",
+                    section_separators = "",
                     disabled_filetypes = {
                         statusline = { "alpha" },
                         winbar = {},

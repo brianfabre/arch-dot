@@ -21,6 +21,8 @@ local M = {
                     all = {
                         -- must type :GithubThemeCompile for it to work
                         VimwikiLink = { fg = "#6cb6ff", style = "underline" },
+                        VimwikiHeader1 = { fg = "#f47067", style = "bold" },
+                        VimwikiHeader2 = { fg = "#dcbdfb", style = "bold" },
                     },
                 },
             })
