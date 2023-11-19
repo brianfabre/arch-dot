@@ -23,6 +23,7 @@ local M = {
                 b = { name = "buffer", _ = "which_key_ignore" },
                 c = { name = "directory", _ = "which_key_ignore" },
                 f = { name = "files", _ = "which_key_ignore" },
+                g = { name = "code / git", _ = "which_key_ignore" },
                 o = { name = "open", _ = "which_key_ignore" },
                 p = { name = "run code", _ = "which_key_ignore" },
                 q = { name = "quit", _ = "which_key_ignore" },

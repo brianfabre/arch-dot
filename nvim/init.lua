@@ -36,7 +36,6 @@ end
 -- c("onedark")
 -- c("rose-pine")
 -- c("falcon")
--- c("material")
 -- c("arctic") -- vscode colors
 -- c("dracula")
 c("github_dark_dimmed")

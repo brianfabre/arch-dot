@@ -37,7 +37,6 @@ local M = {
             -- show line diagnostics automatically in hover window or echo
             vim.diagnostic.config({ virtual_text = false })
             vim.o.updatetime = 250
-            -- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
             vim.cmd([[autocmd CursorHold * lua require('echo-diagnostics').echo_line_diagnostic()]])
 
             -- icons
@@ -130,29 +129,6 @@ local M = {
                     },
                 },
             })
-
-            -- require("lspconfig")["rust_analyzer"].setup({
-            --     on_attach = on_attach,
-            --     capabilities = require("cmp_nvim_lsp").default_capabilities(),
-            --     settings = {
-            --         ["rust-analyzer"] = {
-            --             imports = {
-            --                 granularity = {
-            --                     group = "module",
-            --                 },
-            --                 prefix = "self",
-            --             },
-            --             cargo = {
-            --                 buildScripts = {
-            --                     enable = true,
-            --                 },
-            --             },
-            --             procMacro = {
-            --                 enable = true,
-            --             },
-            --         },
-            --     },
-            -- })
 
             require("lspconfig")["bashls"].setup({
                 on_attach = on_attach,

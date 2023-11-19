@@ -20,9 +20,9 @@ local M = {
                 groups = {
                     all = {
                         -- must type :GithubThemeCompile for it to work
-                        VimwikiLink = { fg = "#6cb6ff", style = "underline" },
-                        VimwikiHeader1 = { fg = "#f47067", style = "bold" },
-                        VimwikiHeader2 = { fg = "#dcbdfb", style = "bold" },
+                        mkdLink = { fg = "#6cb6ff", style = "underline" },
+                        htmlH1 = { fg = "#f47067", style = "bold" },
+                        htmlH2 = { fg = "#dcbdfb", style = "bold" },
                     },
                 },
             })
@@ -35,14 +35,6 @@ local M = {
         dependencies = { "rktjmp/lush.nvim" },
     },
     {
-        "marko-cerovac/material.nvim",
-        lazy = true,
-        config = function()
-            require("material").setup({})
-            vim.g.material_style = "deep ocean"
-        end,
-    },
-    {
         "navarasu/onedark.nvim",
         lazy = true,
         config = function()
@@ -51,7 +43,7 @@ local M = {
             })
         end,
     },
-    { "rose-pine/neovim", lazy = true, name = "rose-pine" },
+    { "rose-pine/neovim", lazy = true, name = "rose-pine", opts = {variant = 'moon'} },
     {
         "catppuccin/nvim",
         lazy = true,
