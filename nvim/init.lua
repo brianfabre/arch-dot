@@ -30,7 +30,7 @@ require("lazy").setup("plugins", {
 local function c(theme)
     vim.cmd.colorscheme(theme)
 end
--- c("kanagawa")
+c("kanagawa")
 -- c("sonokai")
 -- c("tokyonight")
 -- c("onedark")
@@ -38,7 +38,7 @@ end
 -- c("falcon")
 -- c("arctic") -- vscode colors
 -- c("dracula")
-c("github_dark_dimmed")
+-- c("github_dark_dimmed")
 -- c("catppuccin")
 
 -- require

@@ -6,7 +6,7 @@ return {
 
             "-",
             "<cmd>Oil<cr>",
-            desc = "Open File Explorer",
+            desc = "open file explorer",
         },
     },
     cmd = "Oil",

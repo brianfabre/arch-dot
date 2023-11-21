@@ -4,7 +4,17 @@ local M = {
         "rebelot/kanagawa.nvim",
         lazy = true,
         priority = 1000,
-        opts = { transparent = false },
+        opts = {
+            colors = {
+                theme = {
+                    all = {
+                        ui = {
+                            bg_gutter = "none",
+                        },
+                    },
+                },
+            },
+        },
     },
     {
         "projekt0n/github-nvim-theme",
@@ -43,7 +53,7 @@ local M = {
             })
         end,
     },
-    { "rose-pine/neovim", lazy = true, name = "rose-pine", opts = {variant = 'moon'} },
+    { "rose-pine/neovim", lazy = true, name = "rose-pine", opts = { variant = "moon" } },
     {
         "catppuccin/nvim",
         lazy = true,

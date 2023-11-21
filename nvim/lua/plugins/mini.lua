@@ -65,4 +65,22 @@ return {
             },
         },
     },
+    {
+        "echasnovski/mini.files",
+        version = false,
+        keys = {
+            {
+                "_",
+                function()
+                    require("mini.files").open(vim.api.nvim_buf_get_name(0), false)
+                end,
+                desc = "open mini files",
+            },
+        },
+        opts = {
+            mappings = {
+                go_in_plus = "<CR>",
+            },
+        },
+    },
 }

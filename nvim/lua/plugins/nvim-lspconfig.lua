@@ -81,11 +81,11 @@ local M = {
                     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
                 end
 
-                nmap("<leader>rn", vim.lsp.buf.rename, "[r]e[n]ame")
+                nmap("<leader>lr", vim.lsp.buf.rename, "[r]ename")
                 -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-                nmap("<space>gd", vim.lsp.buf.definition, "[g]oto [d]efinition")
-                nmap("K", vim.lsp.buf.hover, "hover documentation")
-                nmap("<space>ca", vim.lsp.buf.code_action, "[c]ode [a]ction")
+                nmap("<space>ld", vim.lsp.buf.definition, "goto [d]efinition")
+                nmap("<space>lk", vim.lsp.buf.hover, "hover documentation")
+                nmap("<space>lc", vim.lsp.buf.code_action, "[c]ode action")
                 -- vim.keymap.set("<space>co", vim.diagnostic.open_float, bufopts)
                 -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
                 -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
