@@ -54,7 +54,7 @@ map("n", "x", '"_x')
 
 -- leave insert mode
 map("i", "jk", "<esc>")
-map("t", "jk", "<C-\\><C-n>")
+-- map("t", "jk", "<C-\\><C-n>") -- interferes with lazygit.nvim or other terminal plugins
 map("t", "<Esc>", "<C-\\><C-n>")
 
 -- save
