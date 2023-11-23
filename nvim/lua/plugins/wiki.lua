@@ -2,8 +2,13 @@ return {
     {
         "lervag/wiki.vim",
         dependencies = {
-            "godlygeek/tabular",
-            { "preservim/vim-markdown", branch = "master" },
+            {
+                "preservim/vim-markdown",
+                branch = "master",
+                dependencies = {
+                    "godlygeek/tabular",
+                },
+            },
         },
         init = function()
             vim.cmd([[
@@ -27,6 +32,13 @@ return {
             vim.g.vim_markdown_new_list_item_indent = 0 -- no indent when pressing 'o'
             vim.g.vim_markdown_frontmatter = 1 -- highlights yaml frontmatter
 
+            -- call :TableFormat each time after edit
+            -- disabled for now, calling command requires save each time
+            -- vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+            --     pattern = { "*.md" },
+            --     command = "TableFormat",
+            -- })
+
             -- -- WIP changes tag parsing regex
             -- vim.g.wiki_tag_scan_num_lines = -1
             -- vim.cmd([[
@@ -39,34 +51,34 @@ return {
             -- ]])
         end,
     },
-    {
-        "lukas-reineke/headlines.nvim",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        opts = {},
-        config = function()
-            vim.cmd([[highlight Headline1 guibg=#2C6E00 guifg=#58DB01 gui=italic]])
-            vim.cmd([[highlight Headline2 guibg=#C8DB01 guifg=#2C6E00 gui=italic]])
-            vim.cmd([[highlight CodeBlock guibg=#07230E guifg=lightyellow]])
-            vim.cmd([[highlight Quote guifg=#0099EC]])
-
-            require("headlines").setup({
-                markdown = {
-                    headline_highlights = {
-                        "Headline1",
-                        "Headline2",
-                    },
-                    fat_headlines = false,
-                    fat_headline_upper_string = "▃",
-                    codeblock_highlight = "CodeBlock",
-                    quote_highlight = "Quote",
-                    -- quote_string = "┃",
-                    quote_string = ">> ",
-                    dash_highlight = "Dash",
-                    dash_string = "_",
-                },
-            })
-        end,
-    },
+    -- {
+    --     "lukas-reineke/headlines.nvim",
+    --     dependencies = "nvim-treesitter/nvim-treesitter",
+    --     opts = {},
+    --     config = function()
+    --         vim.cmd([[highlight Headline1 guibg=#2C6E00 guifg=#58DB01 gui=italic]])
+    --         vim.cmd([[highlight Headline2 guibg=#C8DB01 guifg=#2C6E00 gui=italic]])
+    --         vim.cmd([[highlight CodeBlock guibg=#07230E guifg=lightyellow]])
+    --         vim.cmd([[highlight Quote guifg=#0099EC]])
+    --
+    --         require("headlines").setup({
+    --             markdown = {
+    --                 headline_highlights = {
+    --                     "Headline1",
+    --                     "Headline2",
+    --                 },
+    --                 fat_headlines = false,
+    --                 fat_headline_upper_string = "▃",
+    --                 codeblock_highlight = "CodeBlock",
+    --                 quote_highlight = "Quote",
+    --                 -- quote_string = "┃",
+    --                 quote_string = ">> ",
+    --                 dash_highlight = "Dash",
+    --                 dash_string = "_",
+    --             },
+    --         })
+    --     end,
+    -- },
     -- {
     --     "vimwiki/vimwiki",
     --     cmd = "VimwikiIndex",
@@ -109,19 +121,6 @@ return {
     --         let g:zettel_format = '%Y%m%d%H%M%S'
     --         let g:zettel_options = [{"disable_front_matter": 1, "template" :  "~/Documents/wiki/template.tpl"}]
     --         let g:vimwiki_markdown_link_ext = 1
-    --         ]])
-    --     end,
-    -- },
-    -- {
-    --     "mzlogin/vim-markdown-toc",
-    --     ft = {
-    --         "vimwiki",
-    --         "markdown",
-    --     },
-    --     config = function()
-    --         vim.cmd([[
-    --         let g:vmt_fence_text = 'TOC'
-    --         let g:vmt_fence_closing_text = '/TOC'
     --         ]])
     --     end,
     -- },

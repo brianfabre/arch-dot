@@ -56,5 +56,11 @@ return {
             "<cmd>lua require('fzf-lua').command_history()<CR>",
             { silent = true, desc = "search command history" }
         )
+        vim.keymap.set(
+            "n",
+            "<leader>sl",
+            "<cmd>lua require('fzf-lua').highlights()<CR>",
+            { silent = true, desc = "search highlights" }
+        )
     end,
 }

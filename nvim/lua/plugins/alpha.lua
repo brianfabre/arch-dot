@@ -24,7 +24,7 @@ local M = {
                     dashboard.button("f", " " .. " Search files", ":lua require('fzf-lua').files() <CR>"),
                     dashboard.button("s", " " .. " Live grep", ":lua require('fzf-lua').live_grep() <CR>"),
                     dashboard.button("i", " " .. " Config", ":e $MYVIMRC <CR> :cd %:p:h <CR>"),
-                    dashboard.button("w", " " .. " Wiki", ":WikiIndex <CR>"),
+                    dashboard.button("w", " " .. " Wiki", ":WikiIndex <CR> :cd %:p:h <CR>"),
                     dashboard.button("q", " " .. " Quit", ":qa<CR>"),
                 },
                 position = "center",

@@ -21,12 +21,6 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     end,
 })
 
--- -- set syntax for .md
--- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile", "BufEnter" }, {
---     pattern = { "*.md" },
---     command = "set syntax=markdown",
--- })
-
 -- set iskeyword+=-
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile", "Filetype" }, {
     pattern = { "*" },
@@ -45,9 +39,9 @@ vim.api.nvim_create_autocmd(
 )
 
 -- delete all marks on enter
-vim.api.nvim_create_autocmd({ "BufRead" }, {
-    command = ":delm a-zA-Z0-9",
-})
+-- vim.api.nvim_create_autocmd({ "BufRead" }, {
+--     command = ":delm a-zA-Z0-9",
+-- })
 
 -- deletes trailing whitespaces on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
