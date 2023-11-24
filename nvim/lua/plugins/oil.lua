@@ -1,10 +1,9 @@
 return {
     "stevearc/oil.nvim",
-    -- keys = "-",
     keys = {
         {
 
-            "-",
+            "_",
             "<cmd>Oil<cr>",
             desc = "open file explorer",
         },

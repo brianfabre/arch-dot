@@ -371,6 +371,19 @@ return {
     },
 
     {
+        "xiyaowong/nvim-transparent",
+        opts = {
+            extra_groups = {
+                "Folded",
+                "TelescopeNormal",
+                "NormalFloat",
+                "StatusLine",
+                "StatusLineNC",
+            },
+        },
+    },
+
+    {
         "RRethy/vim-illuminate",
         event = "VeryLazy",
         opts = {
