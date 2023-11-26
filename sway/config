@@ -159,10 +159,10 @@ exec swayidle -w \
     # exec swaymsg 'exec foot'
     assign [app_id="thunderbird"] workspace 3
     exec swaymsg 'exec thunderbird'
-    assign [class="Microsoft-edge"] workspace 6
-    exec swaymsg 'exec microsoft-edge-stable'
-    assign [class="discord"] workspace 7
-    exec swaymsg 'exec discord'
+    # assign [class="Microsoft-edge"] workspace 6
+    # exec swaymsg 'exec microsoft-edge-stable'
+    # assign [class="discord"] workspace 7
+    # exec swaymsg 'exec discord'
 
     exec $term --title term_init
     for_window [title="term_init"] move workspace 2

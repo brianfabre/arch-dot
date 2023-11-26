@@ -27,9 +27,8 @@ map("v", "y", "ygv<esc>")
 map("n", "<leader>v", ":Lexplore<CR>", { desc = "netrw" })
 
 -- windows
--- disabled temporarily, conflicts with wiki.vim
 -- map("n", "<leader>wo", "<C-W>p", { desc = "other window" })
--- map("n", "<leader>wd", "<C-W>c", { desc = "delete window" })
+map("n", "<leader>dw", "<C-W>c", { desc = "[d]elete [w]indow" })
 -- map("n", "<leader>w-", "<C-W>s", { desc = "split window below" })
 -- map("n", "<leader>w|", "<C-W>v", { desc = "split window right" })
 

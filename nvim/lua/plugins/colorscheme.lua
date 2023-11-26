@@ -60,8 +60,15 @@ local M = {
         name = "catppuccin",
         opts = {
             flavour = "mocha", -- latte, frappe, macchiato, mocha
+            term_colors = true,
+            color_overrides = {
+                mocha = {
+                    base = "#000000",
+                    mantle = "#000000",
+                    crust = "#000000",
+                },
+            },
             -- transparent_background = true,
-            -- term_colors = true,
         },
     },
     {

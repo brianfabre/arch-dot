@@ -50,18 +50,18 @@ return {
         "echasnovski/mini.bufremove",
         keys = {
             {
-                "<leader>bd",
+                "<leader>db",
                 function()
                     require("mini.bufremove").delete(0, false)
                 end,
-                desc = "delete buffer",
+                desc = "[d]elete [b]uffer",
             },
             {
-                "<leader>bD",
+                "<leader>dB",
                 function()
                     require("mini.bufremove").delete(0, true)
                 end,
-                desc = "delete buffer (force)",
+                desc = "[d]elete [b]uffer (force)",
             },
         },
     },

@@ -40,9 +40,9 @@ return {
         )
         vim.keymap.set(
             "n",
-            "<leader>so",
+            "<leader>sr",
             "<cmd>lua require('fzf-lua').oldfiles()<CR>",
-            { silent = true, desc = "search old files" }
+            { silent = true, desc = "search recent files" }
         )
         vim.keymap.set(
             "n",
@@ -52,13 +52,13 @@ return {
         )
         vim.keymap.set(
             "n",
-            "<leader>sh",
+            "<leader>sc",
             "<cmd>lua require('fzf-lua').command_history()<CR>",
             { silent = true, desc = "search command history" }
         )
         vim.keymap.set(
             "n",
-            "<leader>sl",
+            "<leader>sh",
             "<cmd>lua require('fzf-lua').highlights()<CR>",
             { silent = true, desc = "search highlights" }
         )

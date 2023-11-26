@@ -7,7 +7,6 @@
 vim.g.netrw_winsize = 20                               -- netrw options
 vim.opt.background = "dark"
 vim.opt.termguicolors = true
-vim.opt.pumheight = 10
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.splitbelow = true
@@ -29,13 +28,10 @@ vim.opt.showbreak = '>'                                  -- append '>>' to inden
 vim.opt.completeopt = { 'noselect' }
 vim.opt.foldmethod = 'marker'
 vim.opt.laststatus = 3                                   -- global status
-
--- vim.opt.swapfile = false
 vim.opt.updatetime = 300
 
 -- ## not in use ##
 -- vim.opt.cmdheight = 0
--- vim.opt.autochdir = true
 vim.opt.cursorline = true
 -- vim.opt.laststatus = 0                                   -- hides status line
 -- vim.formatoptions = 'tqj'                                -- removed 'c'

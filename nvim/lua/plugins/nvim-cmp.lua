@@ -14,6 +14,9 @@ local M = {
             "saadparwaiz1/cmp_luasnip",
         },
         config = function()
+            -- popup menu height
+            vim.opt.pumheight = 20
+
             local kind_icons = {
                 Text = "",
                 Method = "󰆧",
@@ -55,10 +58,10 @@ local M = {
                     end,
                 },
                 window = {
-                    completion = cmp.config.window.bordered({
-                        border = "single",
-                        col_offset = -1,
-                    }),
+                    -- completion = cmp.config.window.bordered({
+                    --     border = "single",
+                    --     col_offset = -1,
+                    -- }),
                     documentation = cmp.config.window.bordered({
                         border = "single",
                     }),

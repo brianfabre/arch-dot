@@ -6,8 +6,8 @@ return {
             mappings = { extra = false },
         },
         config = function()
-            local api = require('Comment.api')
-            vim.keymap.set("n", "<leader>/", api.toggle.linewise.current)
+            local api = require("Comment.api")
+            vim.keymap.set("n", "<leader>/", api.call("toggle.linewise.current", "g@$"), { expr = true })
             vim.keymap.set("x", "<leader>/", function()
                 vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, false, true), "nx", false)
                 api.toggle.linewise(vim.fn.visualmode())

@@ -3,7 +3,7 @@ return {
     -- enabled = false,
     config = function()
         require("virt-column").setup({
-            virtcolumn = "100",
+            virtcolumn = "95",
         })
     end,
 }
