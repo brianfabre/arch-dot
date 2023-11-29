@@ -3,6 +3,12 @@ exec fcitx5
 exec wl-gammarelay
 exec /home/brian/.config/sway/scripts/installed_packages.sh
 
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu bemenu-run -l 10 --fn 'Hack 11' -p menu | xargs swaymsg exec --
+
 # set $output-primary "Acer Technologies XV240Y P 0x00006F5C"
 # set $output-secondary "Acer Technologies Acer H236HL LX1AA0044210"
 set $output-primary "DP-1"

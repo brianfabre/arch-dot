@@ -7,12 +7,6 @@
 # run at startup
 exec wl-paste -t text --watch clipman store --max-items=1000 --histpath="~/.cache/clipman.json"
 
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu bemenu-run -l 10 --fn 'Hack 11' -p menu | xargs swaymsg exec --
-
 #
 ### Variables
 #
