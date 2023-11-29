@@ -21,6 +21,13 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     end,
 })
 
+-- sway filetypes
+-- HACK
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = { "config-t480", "config-base" },
+    command = "setfiletype swayconfig",
+})
+
 -- set iskeyword+=-
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile", "Filetype" }, {
     pattern = { "*" },
