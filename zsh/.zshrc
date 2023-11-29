@@ -74,6 +74,7 @@ alias ls='eza'
 alias ll='eza -lab --icons'
 alias lz='NVIM_APPNAME=lazyvim nvim'
 alias ks='NVIM_APPNAME=nvim-ks nvim'
+
 # python venv
 alias act='source venv/bin/activate'
 alias deact='deactivate'

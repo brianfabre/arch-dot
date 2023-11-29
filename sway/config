@@ -1,26 +1,7 @@
 # run at startup
-exec wl-paste -t text --watch clipman store --max-items=1000 --histpath="~/.cache/clipman.json"
 exec fcitx5
 exec wl-gammarelay
 exec /home/brian/.config/sway/scripts/installed_packages.sh
-
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
-set $hyper Mod3
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-# Your preferred terminal emulator
-set $term foot
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu bemenu-run -l 10 --fn 'Hack 11' -p menu | xargs swaymsg exec --
 
 # set $output-primary "Acer Technologies XV240Y P 0x00006F5C"
 # set $output-secondary "Acer Technologies Acer H236HL LX1AA0044210"
@@ -58,84 +39,10 @@ exec swayidle -w \
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-### Key bindings
+
 #
-# Basics:
+# Workspaces:
 #
-    # Start a terminal
-    bindsym $mod+Return exec $term
-
-    # Kill focused window
-    bindsym $mod+q kill
-
-    # Start your launcher
-    bindsym $mod+space exec $menu
-
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
-
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
-
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
-# Moving around:
-#
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
-
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
-
-# #
-# # Workspaces:
-# #
-    # Switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
-    bindsym $mod+5 workspace 5
-    bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
-    bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1; workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2; workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3; workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4; workspace 4
-    bindsym $mod+Shift+5 move container to workspace 5; workspace 5
-    bindsym $mod+Shift+6 move container to workspace 6; workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7; workspace 7
-    bindsym $mod+Shift+8 move container to workspace 8; workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9; workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10; workspace 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-
     # workspace to displays
     workspace 1 output $output-primary
     workspace 2 output $output-primary
@@ -170,71 +77,6 @@ exec swayidle -w \
     # switch last window
     bindsym $hyper+space workspace back_and_forth
 
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
-
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
-    bindsym $mod+tab layout toggle tabbed splith
-
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
-
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+t floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    # bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
-
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+m scratchpad show
-
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
-
 
 #
 # Status Bar:
@@ -242,14 +84,6 @@ bindsym $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     swaybar_command waybar
-}
-
-input type:keyboard {
-    repeat_rate 50
-    repeat_delay 400
-    # custom-xkb located in ~/.config/xkb/symbols
-    # xkb_layout us,kr,custom-xkb
-    xkb_layout custom-xkb
 }
 
 input "1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall" {
@@ -266,21 +100,11 @@ input "1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall" {
     for_window [app_id="pavucontrol"]        floating enable
     for_window [class="fcitx5-config-qt"]    floating enable
 
-     # ocr screenshot
-    bindsym $hyper+1 exec grim -g "$(slurp)" - | tesseract -l "eng" stdin stdout | wl-copy
-    bindsym $hyper+2 exec grim -g "$(slurp)" "$HOME/Downloads/screenshot-$(date '+%y%m%d_%H-%M-%S').png"
-    # screenshot straight to clipboard
-    # bindsym $hyper+2 exec grim -g "$(slurp)" - | wl-copy
 
-    # clipboard history
-    bindsym $hyper+c exec clipman --histpath="~/.cache/clipman.json" pick --tool=bemenu --tool-args="-l 10 --fn 'Hack 11'"
-
-    # start with clipboard in scratchpad
-    exec $term --title Scratchpad
-    for_window [title="Scratchpad"] move scratchpad
 
     # transparency
     # set $opacity 0.85
     # for_window [app_id="foot"] opacity $opacity
 
 include /etc/sway/config.d/*
+include ~/.config/sway/config-base
