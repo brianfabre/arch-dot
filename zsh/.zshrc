@@ -45,10 +45,12 @@ alias pacre="pacman -Qq | fzf --height=100% --multi --preview 'pacman -Qi {1}' -
 # bemenu
 export BEMENU_OPTS="--fn 'Hack 11'"
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if command -v pyenv &>/dev/null; then
+    # pyenv
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
 
 # fzf
 include /usr/share/fzf/key-bindings.zsh
