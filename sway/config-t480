@@ -1,3 +1,5 @@
+include ~/.config/sway/config-base
+
 # set default menu
 set $menu bemenu-run -l 10 --fn 'Hack Nerd Font 11' -p menu | xargs swaymsg exec --
 
@@ -33,4 +35,3 @@ input "1739:0:Synaptics_TM3276-022" {
 }
 
 include /etc/sway/config.d/*
-include ~/.config/sway/config-base

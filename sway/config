@@ -1,3 +1,5 @@
+include ~/.config/sway/config-base
+
 # run at startup
 exec fcitx5
 exec wl-gammarelay
@@ -113,4 +115,3 @@ input "1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall" {
     # for_window [app_id="foot"] opacity $opacity
 
 include /etc/sway/config.d/*
-include ~/.config/sway/config-base
