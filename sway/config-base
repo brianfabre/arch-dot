@@ -99,6 +99,8 @@ set $term foot
     # Move focus to the parent container
     bindsym $mod+a focus parent
 
+    # switch last window
+    bindsym $hyper+space workspace back_and_forth
 #
 # Workspaces:
 #

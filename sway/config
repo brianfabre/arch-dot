@@ -82,10 +82,6 @@ exec swayidle -w \
     exec $term --title term_init
     for_window [title="term_init"] move workspace 2
 
-    # switch last window
-    bindsym $hyper+space workspace back_and_forth
-
-
 #
 # Status Bar:
 #
