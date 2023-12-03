@@ -7,8 +7,9 @@
 static const int sloppyfocus               = 1;  /* focus follows mouse */
 static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
 static const unsigned int borderpx         = 1;  /* border pixel of windows */
+static const unsigned int gappx            = 7; /* gap between windows */
 static const float bordercolor[]           = COLOR(0x444444ff);
-static const float focuscolor[]            = COLOR(0xff0000ff);
+static const float focuscolor[]            = COLOR(0xa6e3a1ff);
 static const float urgentcolor[]           = COLOR(0xff0000ff);
 /* To conform the xdg-protocol, set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.1, 0.1, 0.1, 1.0}; /* You can also use glsl colors */
@@ -57,7 +58,7 @@ static const MonitorRule monrules[] = {
 	{ "eDP-1",    0.5,  1,      2,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
 	*/
 	/* defaults */
-	{ NULL,       0.5, 1,      1,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
+	{ NULL,       0.55, 1,      1,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
 };
 
 /* keyboard */
@@ -154,6 +155,10 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_d,          incnmaster,     {.i = -1} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Left,       setmfact,       {.f = -0.05} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Right,      setmfact,       {.f = +0.05} },
+ 	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_h,          incgaps,       {.i = +1 } },
+ 	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_l,          incgaps,       {.i = -1 } },
+ 	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_0,          togglegaps,     {0} },
+ 	{ MODKEY|WLR_MODIFIER_CTRL|WLR_MODIFIER_SHIFT,   XKB_KEY_parenright,defaultgaps,    {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_m,          setlayout,      {.v = &layoutmonocle[0]} },
 	// { MODKEY,                    XKB_KEY_Tab,        view,           {0} },
