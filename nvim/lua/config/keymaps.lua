@@ -16,6 +16,10 @@ end
 -- map("n", "<C-j>", "<C-w>j")
 -- map("n", "<C-k>", "<C-w>k")
 
+-- jk for wrapped words
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
 -- horizontal movement
 map("n", "<S-left>", "^")
 map("n", "<S-right>", "$")

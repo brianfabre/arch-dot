@@ -1,7 +1,7 @@
 include ~/.config/sway/config-base
 
 # set default menu
-set $menu bemenu-run -l 10 --fn 'Hack Nerd Font 11' -p menu | xargs swaymsg exec --
+set $menu bemenu-run -i -l 10 --fn 'Hack Nerd Font 11' -p menu | xargs swaymsg exec --
 
 output eDP-1 scale 1.5
 

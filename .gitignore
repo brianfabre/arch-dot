@@ -1,6 +1,7 @@
 /*
 !alacritty/
 !dunst/
+# !dwl/
 !firefox/
 !foot/
 !lf/
@@ -10,6 +11,8 @@
 !picom/
 !qtile/
 !rofi/
+# !somebar/
+# !someblocks/
 !sway/
 !tmux/
 !w3m/
@@ -23,32 +26,3 @@
 !mimeapps.list
 !packages-aur.txt
 !packages-pacman.txt
-
-
-
-# alacritty/themes
-# calibre
-# chromium
-# Code/*
-# !Code/User
-# Code/User/*
-# !Code/User/keybindings.json
-# !Code/User/settings.json
-# !Code/User/vs_code_extensions_list.txt
-# dconf
-# discord
-# emacs
-# fcit*
-# GIMP
-# htop
-# ibus
-# lazygit
-# Ledger Live
-# libreoffice
-# microsoft-edge
-# pulse
-# Thunar
-# torbrowser
-# QtProject.conf
-# xfce4
-# virt-viewer

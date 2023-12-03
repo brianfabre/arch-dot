@@ -189,4 +189,4 @@ input type:keyboard {
     # bindsym $hyper+2 exec grim -g "$(slurp)" - | wl-copy
 
     # clipboard history
-    bindsym $hyper+c exec clipman --histpath="~/.cache/clipman.json" pick --tool=bemenu --tool-args="-l 10 --fn 'Hack 11'"
+    bindsym $hyper+c exec clipman --histpath="~/.cache/clipman.json" pick --tool=bemenu --tool-args="-l 10 --fn 'Hack 11' -i"
