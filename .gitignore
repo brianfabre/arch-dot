@@ -24,13 +24,20 @@
 !packages-aur.txt
 !packages-pacman.txt
 
-# only allow config.h and patches
+# allow config.h and patches
 !dwl/
 dwl/*
 !dwl/config.h
 !dwl/*.patch
 
-# only allow blocks.h
+# allow src/config.hpp
+!somebar/
+somebar/*
+!somebar/src/
+somebar/src/*
+!somebar/src/config.hpp
+
+# allow blocks.h
 !someblocks/
 someblocks/*
 !someblocks/blocks.h
