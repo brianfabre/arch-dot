@@ -1,7 +1,6 @@
 /*
 !alacritty/
 !dunst/
-# !dwl/
 !firefox/
 !foot/
 !lf/
@@ -11,8 +10,6 @@
 !picom/
 !qtile/
 !rofi/
-# !somebar/
-# !someblocks/
 !sway/
 !tmux/
 !w3m/
@@ -26,3 +23,14 @@
 !mimeapps.list
 !packages-aur.txt
 !packages-pacman.txt
+
+# only allow config.h and patches
+!dwl/
+dwl/*
+!dwl/config.h
+!dwl/*.patch
+
+# only allow blocks.h
+!someblocks/
+someblocks/*
+!someblocks/blocks.h
