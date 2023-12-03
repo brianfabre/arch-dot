@@ -28,6 +28,7 @@
 !dwl/
 dwl/*
 !dwl/config.h
+!dwl/dwl.c
 !dwl/*.patch
 
 # allow src/config.hpp

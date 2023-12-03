@@ -40,8 +40,13 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },
 	// { "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
 	{ "|M|",      centeredmaster },
+ 	{ NULL,       NULL },
+};
+
+static const Layout layoutmonocle[] = {
+	/* symbol     arrange function */
+	{ "[M]",      monocle },
  	{ NULL,       NULL },
 };
 
@@ -150,6 +155,7 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Left,       setmfact,       {.f = -0.05} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Right,      setmfact,       {.f = +0.05} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     zoom,           {0} },
+	{ MODKEY,                    XKB_KEY_m,          setlayout,      {.v = &layoutmonocle[0]} },
 	// { MODKEY,                    XKB_KEY_Tab,        view,           {0} },
 	{ MODKEY,                    XKB_KEY_q,          killclient,     {0} },
 	// { MODKEY,                    XKB_KEY_t,          setlayout,      {.v = &layouts[0]} },
