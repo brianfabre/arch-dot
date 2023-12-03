@@ -1,7 +1,10 @@
 return {
     {
         "lervag/wiki.vim",
-        dependencies = { "preservim/vim-markdown", branch = "master" },
+        dependencies = {
+            { "preservim/vim-markdown", branch = "master" },
+            "godlygeek/tabular",
+        },
         init = function()
             vim.cmd([[
                 let g:wiki_link_creation = {
