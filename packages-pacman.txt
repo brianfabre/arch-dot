@@ -41,7 +41,7 @@ git 2.43.0-1
 go 2:1.21.4-1
 grim 1.4.1-1
 gsimplecal 2.5.1-1
-gst-plugin-pipewire 1:1.0.0-1
+gst-plugin-pipewire 1:1.0.0-2
 gvfs 1.52.1-1
 gvfs-smb 1.52.1-1
 hblock 3.4.2-1
@@ -54,11 +54,11 @@ jq 1.7-1
 kmon 1.6.4-1
 lazygit 0.40.2-1
 lf 31-1
-libpulse 16.1-6
+libpulse 16.1-7
 linux 6.6.3.arch1-1
 linux-firmware 20231110.74158e7a-1
 linux-headers 6.6.3.arch1-1
-linux-lts 6.1.64-1
+linux-lts 6.1.65-1
 lua-language-server 3.7.3-1
 ly 0.6.0-1
 lzop 1.04-3
@@ -82,10 +82,10 @@ pacman-contrib 1.9.1-1
 pavucontrol 1:5.0+r64+geba9ca6-1
 perl-file-homedir 1.006-4
 picom 10.2-1
-pipewire 1:1.0.0-1
-pipewire-alsa 1:1.0.0-1
-pipewire-jack 1:1.0.0-1
-pipewire-pulse 1:1.0.0-1
+pipewire 1:1.0.0-2
+pipewire-alsa 1:1.0.0-2
+pipewire-jack 1:1.0.0-2
+pipewire-pulse 1:1.0.0-2
 pkgfile 21-2
 pkgstats 3.2.14-1
 prettier 3.1.0-1
@@ -141,7 +141,7 @@ ttf-terminus-nerd 3.1.1-1
 ttf-times-new-roman 2.0-3
 unzip 6.0-20
 usbutils 017-1
-vim 9.0.2121-1
+vim 9.0.2143-1
 virt-viewer 11.0-2
 visidata 2.11.1-1
 visual-studio-code-bin 1.84.2-1
@@ -150,7 +150,7 @@ waybar 0.9.24-1
 wev-git 1.0.0.r4.g0fc0549-1
 wget 1.21.4-1
 wireless_tools 30.pre9-3
-wireplumber 0.4.16-1
+wireplumber 0.4.17-1
 wl-clipboard 1:2.2.1-1
 wl-gammarelay 0.1.0-1
 wpa_supplicant 2:2.10-8

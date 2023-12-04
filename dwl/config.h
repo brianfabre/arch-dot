@@ -18,6 +18,8 @@ static const float fullscreen_bg[]         = {0.1, 0.1, 0.1, 1.0}; /* You can al
 static const char *const autostart[] = {
         "someblocks", NULL,
         "sh", "-c", "wl-paste -t text --watch clipman store --max-items=1000 --histpath='~/.cache/clipman.json'", NULL,
+        "sh", "-c", "wl-gammarelay", NULL,
+        "sh", "-c", "dunst", NULL,
         NULL /* terminate */
 };
 
@@ -141,6 +143,10 @@ static const Key keys[] = {
     { HYPER,                     XKB_KEY_c,          spawn,          SHCMD("~/.config/sway/scripts/clipman.sh") },
     { HYPER,                     XKB_KEY_1,          spawn,          SHCMD("~/.config/sway/scripts/ocr.sh") },
     { HYPER,                     XKB_KEY_2,          spawn,          SHCMD("~/.config/sway/scripts/screenshot.sh") },
+    { HYPER,                     XKB_KEY_7,          spawn,          SHCMD("~/.config/qtile/scripts/temp_down.sh") },
+    { HYPER,                     XKB_KEY_8,          spawn,          SHCMD("~/.config/qtile/scripts/temp_up.sh") },
+    { HYPER,                     XKB_KEY_9,          spawn,          SHCMD("~/.config/qtile/scripts/bright_down.sh") },
+    { HYPER,                     XKB_KEY_0,          spawn,          SHCMD("~/.config/qtile/scripts/bright_up.sh") },
 	// { MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
 	// { MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
 	{ MODKEY,                    XKB_KEY_h,          focusdir,       {.ui = 0} },
