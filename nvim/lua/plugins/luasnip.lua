@@ -1,14 +1,13 @@
-local M = {
+return {
     "L3MON4D3/LuaSnip",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-        "rafamadriz/friendly-snippets",
-        config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-    },
-    -- install jsregexp (optional!).
+    dependencies = { "rafamadriz/friendly-snippets" },
+    version = "v2.*",
     build = "make install_jsregexp",
+    init = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+        -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })
+    end,
     opts = {
         history = true,
         delete_check_events = "TextChanged",
@@ -19,5 +18,3 @@ local M = {
         })
     end,
 }
-
-return M

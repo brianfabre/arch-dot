@@ -9,15 +9,15 @@ static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will
 static const unsigned int borderpx         = 1;  /* border pixel of windows */
 static const unsigned int gappx            = 7; /* gap between windows */
 static const float bordercolor[]           = COLOR(0x444444ff);
-static const float focuscolor[]            = COLOR(0xa6e3a1ff);
-static const float urgentcolor[]           = COLOR(0xff0000ff);
+static const float focuscolor[]            = COLOR(0xe9b872ff);
+static const float urgentcolor[]           = COLOR(0xa63d40ff);
 /* To conform the xdg-protocol, set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.1, 0.1, 0.1, 1.0}; /* You can also use glsl colors */
 
 /* Autostart */
 static const char *const autostart[] = {
         "someblocks", NULL,
-        "wl-paste -t text --watch clipman store --max-items=1000 --histpath='~/.cache/clipman.json'", NULL,
+        "sh", "-c", "wl-paste -t text --watch clipman store --max-items=1000 --histpath='~/.cache/clipman.json'", NULL,
         NULL /* terminate */
 };
 
@@ -28,12 +28,12 @@ static const char *const autostart[] = {
 static int log_level = WLR_ERROR;
 
 static const Rule rules[] = {
- 	/* app_id     title       tags mask     isfloating  isterm  noswallow  monitor */
+ 	/* app_id    , title , tags mask , isfloating , isterm , noswallow , monitor */
     /* examples:
- 	{ "Gimp",     NULL,       0,            1,          0,      1,         -1 },
- 	{ "firefox",  NULL,       1 << 8,       0,          0,      1,         -1 },
+ 	{ "Gimp"     , NULL  , 0         , 1          , 0      , 1         , -1 }       ,
+ 	{ "firefox"  , NULL  , 1 << 8    , 0          , 0      , 1         , -1 }       ,
 	*/
- 	{ "foot",     NULL,       0,            0,          1,      0,         -1 },
+ 	{ "foot"     , NULL  , 0         , 0          , 1      , 0         , -1 }       ,
 };
 
 /* layout(s) */
