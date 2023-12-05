@@ -4,7 +4,6 @@
 #include <getopt.h>
 #include <libinput.h>
 #include <linux/input-event-codes.h>
-#include <math.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -236,11 +235,6 @@ typedef struct {
 	struct wl_listener destroy;
 } SessionLock;
 
-typedef struct {
-	int x;
-	int y;
-} Vector;
-
 /* function declarations */
 static void applybounds(Client *c, struct wlr_box *bbox);
 static void applyrules(Client *c);
@@ -251,7 +245,6 @@ static void arrangelayers(Monitor *m);
 static void autostartexec(void);
 static void axisnotify(struct wl_listener *listener, void *data);
 static void buttonpress(struct wl_listener *listener, void *data);
-static void centeredmaster(Monitor *m);
 static void chvt(const Arg *arg);
 static void checkidleinhibitor(struct wlr_surface *exclude);
 static void cleanup(void);
@@ -283,8 +276,6 @@ static Monitor *dirtomon(enum wlr_direction dir);
 static void focusclient(Client *c, int lift);
 static void focusmon(const Arg *arg);
 static void focusstack(const Arg *arg);
-static void focusdir(const Arg *arg);
-static void swapdir(const Arg *arg);
 static Client *focustop(Monitor *m);
 static void fullscreennotify(struct wl_listener *listener, void *data);
 static void handlesig(int signo);
@@ -709,68 +700,6 @@ buttonpress(struct wl_listener *listener, void *data)
 	 * pointer focus that a button press has occurred */
 	wlr_seat_pointer_notify_button(seat,
 			event->time_msec, event->button, event->state);
-}
-
-void
-centeredmaster(Monitor *m)
-{
-	unsigned int i, n, h, mw, mx, my, oty, ety, tw;
-	Client *c;
-
-	n = 0;
-	wl_list_for_each(c, &clients, link)
-		if (VISIBLEON(c, m) && !c->isfloating && !c->isfullscreen)
-			n++;
-	if (n == 0)
-		return;
-
-	/* initialize areas */
-	mw = m->w.width;
-	mx = 0;
-	my = 0;
-	tw = mw;
-
-	if (n > m->nmaster) {
-		/* go mfact box in the center if more than nmaster clients */
-		mw = m->nmaster ? m->w.width * m->mfact : 0;
-		tw = m->w.width - mw;
-
-		if (n - m->nmaster > 1) {
-			/* only one client */
-			mx = (m->w.width - mw) / 2;
-			tw = (m->w.width - mw) / 2;
-		}
-	}
-
-	i = 0;
-	oty = 0;
-	ety = 0;
-	wl_list_for_each(c, &clients, link) {
-		if (!VISIBLEON(c, m) || c->isfloating || c->isfullscreen)
-			continue;
-		if (i < m->nmaster) {
-			/* nmaster clients are stacked vertically, in the center
-			 * of the screen */
-			h = (m->w.height - my) / (MIN(n, m->nmaster) - i);
-			resize(c, (struct wlr_box){.x = m->w.x + mx, .y = m->w.y + my, .width = mw,
-				   .height = h}, 0);
-			my += c->geom.height;
-		} else {
-			/* stack clients are stacked vertically */
-			if ((i - m->nmaster) % 2) {
-				h = (m->w.height - ety) / ( (1 + n - i) / 2);
-				resize(c, (struct wlr_box){.x = m->w.x, .y = m->w.y + ety, .width = tw,
-					   .height = h}, 0);
-				ety += c->geom.height;
-			} else {
-				h = (m->w.height - oty) / ((1 + n - i) / 2);
-				resize(c, (struct wlr_box){.x = m->w.x + mx + mw, .y = m->w.y + oty, .width = tw,
-					.height = h}, 0);
-				oty += c->geom.height;
-			}
-		}
-		i++;
-	}
 }
 
 void
@@ -1245,13 +1174,6 @@ void
 cyclelayout(const Arg *arg)
 {
 	Layout *l;
-    // start
-    // if current layout is monocle, then switch to layout[0]
-    Layout *m = (Layout *)layoutmonocle;
-    if (m == selmon->lt[selmon->sellt]) {
-		setlayout(&((Arg) { .v = &layouts[0] }));
-    }
-    // end test
 	for (l = (Layout *)layouts; l != selmon->lt[selmon->sellt]; l++);
 	if (arg->i > 0) {
 		if (l->symbol && (l + 1)->symbol)
@@ -1511,161 +1433,6 @@ focusstack(const Arg *arg)
 	}
 	/* If only one client is visible on selmon, then c == sel */
 	focusclient(c, 1);
-}
-
-Vector
-position_of_box(const struct wlr_box *box)
-{
-	return (Vector){
-		.x = box->x + box->width / 2,
-		.y = box->y + box->height / 2,
-	};
-}
-
-Vector
-diff_of_vectors(Vector *a, Vector *b)
-{
-	return (Vector){
-		.x = b->x - a->x,
-		.y = b->y - a->y,
-	};
-}
-
-const char *
-direction_of_vector(Vector *vector)
-{
-	// A zero length vector has no direction
-	if (vector->x == 0 && vector->y == 0) return "";
-
-	if (abs(vector->y) > abs(vector->x)) {
-		// Careful: We are operating in a Y-inverted coordinate system.
-		return (vector->y > 0) ? "bottom" : "top";
-	} else {
-		return (vector->x > 0) ? "right" : "left";
-	}
-}
-
-uint32_t
-vector_length(Vector *vector)
-{
-	// Euclidean distance formula
-	return (uint32_t)sqrt(vector->x * vector->x + vector->y * vector->y);
-}
-
-// Spatial direction, based on focused client position.
-Client *
-client_in_direction(const char *direction, const int *skipfloat)
-{
-	Client *cfocused = focustop(selmon);
-	Vector cfocusedposition = position_of_box(&cfocused->geom);
-	Client *ctarget = NULL;
-	double targetdistance = INFINITY;
-	Client *c;
-
-	if (!cfocused || cfocused->isfullscreen || (skipfloat && cfocused->isfloating))
-		return NULL;
-
-	wl_list_for_each(c, &clients, link) {
-		Vector cposition;
-		Vector positiondiff;
-		uint32_t distance;
-
-		if (c == cfocused)
-			continue;
-
-		if (skipfloat && c->isfloating)
-			continue;
-
-		if (!VISIBLEON(c, selmon))
-			continue;
-
-		cposition = position_of_box(&c->geom);
-		positiondiff = diff_of_vectors(&cfocusedposition, &cposition);
-
-		if (strcmp(direction, direction_of_vector(&positiondiff)) != 0)
-			continue;
-
-		distance = vector_length(&positiondiff);
-
-		 if (distance < targetdistance) {
-			ctarget = c;
-			targetdistance = distance;
-		}
-	}
-
-	return ctarget;
-}
-
-void
-focusdir(const Arg *arg)
-{
-	Client *c = NULL;
-
-	if (arg->ui == 0)
-		c = client_in_direction("left", (int *)0);
-	if (arg->ui == 1)
-		c = client_in_direction("right", (int *)0);
-	if (arg->ui == 2)
-		c = client_in_direction("top", (int *)0);
-	if (arg->ui == 3)
-		c = client_in_direction("bottom", (int *)0);
-
-	if (c != NULL)
-		focusclient(c, 1);
-}
-
-void
-wl_list_swap(struct wl_list *list1, struct wl_list *list2)
-{
-	struct wl_list *prev1, *next1, *prev2, *next2;
-	struct wl_list temp;
-
-	if (list1 == list2) {
-		// No need to swap the same list
-		return;
-	}
-
-	// Get the lists before and after list1
-	prev1 = list1->prev;
-	next1 = list1->next;
-
-	// Get the lists before and after list2
-	prev2 = list2->prev;
-	next2 = list2->next;
-
-	// Update the next and previous pointers of adjacent lists
-	prev1->next = list2;
-	next1->prev = list2;
-	prev2->next = list1;
-	next2->prev = list1;
-
-	// Swap the next and previous pointers of the lists to actually swap them
-	temp = *list1;
-	*list1 = *list2;
-	*list2 = temp;
-}
-
-void
-swapdir(const Arg *arg)
-{
-	Client *c = NULL;
-	Client *cfocused;
-
-	if (arg->ui == 0)
-		c = client_in_direction("left", (int *)1);
-	if (arg->ui == 1)
-		c = client_in_direction("right", (int *)1);
-	if (arg->ui == 2)
-		c = client_in_direction("top", (int *)1);
-	if (arg->ui == 3)
-		c = client_in_direction("bottom", (int *)1);
-
-	if (c == NULL)
-		return;
-
-	cfocused = focustop(selmon);
-	wl_list_swap(&cfocused->link, &c->link);
-	arrange(selmon);
 }
 
 /* We probably should change the name of this, it sounds like
@@ -2902,11 +2669,12 @@ tile(Monitor *m)
 		if (!VISIBLEON(c, m) || c->isfloating || c->isfullscreen)
 			continue;
 		if (i < m->nmaster) {
-			resize(c, (struct wlr_box){.x = m->w.x, .y = m->w.y + my, .width = mw,
+			resize(c, (struct wlr_box){.x = m->w.x + m->w.width - mw,
+				.y = m->w.y + my, .width = mw,
 				.height = (m->w.height - my) / (MIN(n, m->nmaster) - i)}, 0);
 			my += c->geom.height;
 		} else {
-			resize(c, (struct wlr_box){.x = m->w.x + mw, .y = m->w.y + ty,
+			resize(c, (struct wlr_box){.x = m->w.x, .y = m->w.y + ty,
 				.width = m->w.width - mw, .height = (m->w.height - ty) / (n - i)}, 0);
 			ty += c->geom.height;
 		}
