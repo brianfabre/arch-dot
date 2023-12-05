@@ -1,0 +1,28 @@
+From de7a48c842a031674e384e3194cb6432d36a4889 Mon Sep 17 00:00:00 2001
+From: Dmitry Zakharchenko <dmitz@disroot.org>
+Date: Tue, 3 Jan 2023 23:59:20 +0200
+Subject: [PATCH] masterOnRight: sync with 0.4
+
+---
+ dwl.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/dwl.c b/dwl.c
+index 19bb6ce34..82ca38100 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -2316,11 +2316,12 @@ tile(Monitor *m)
+ 		if (!VISIBLEON(c, m) || c->isfloating || c->isfullscreen)
+ 			continue;
+ 		if (i < m->nmaster) {
+-			resize(c, (struct wlr_box){.x = m->w.x, .y = m->w.y + my, .width = mw,
++			resize(c, (struct wlr_box){.x = m->w.x + m->w.width - mw,
++				.y = m->w.y + my, .width = mw,
+ 				.height = (m->w.height - my) / (MIN(n, m->nmaster) - i)}, 0);
+ 			my += c->geom.height;
+ 		} else {
+-			resize(c, (struct wlr_box){.x = m->w.x + mw, .y = m->w.y + ty,
++			resize(c, (struct wlr_box){.x = m->w.x, .y = m->w.y + ty,
+ 				.width = m->w.width - mw, .height = (m->w.height - ty) / (n - i)}, 0);
+ 			ty += c->geom.height;
+ 		}
