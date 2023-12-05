@@ -67,3 +67,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end,
     group = group,
 })
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "c" },
+    callback = function()
+        vim.keymap.set("n", "<leader>pp", ":!gcc -o %:r % && ./%:r<CR>", { silent = true })
+        -- vim.opt.foldmethod = "indent"
+        -- vim.opt.foldmethod = "expr"
+        -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+    end,
+    group = group,
+})
