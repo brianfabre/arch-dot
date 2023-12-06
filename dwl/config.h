@@ -20,6 +20,7 @@ static const char *const autostart[] = {
         "sh", "-c", "wl-paste -t text --watch clipman store --max-items=1000 --histpath='~/.cache/clipman.json'", NULL,
         "sh", "-c", "wl-gammarelay", NULL,
         "sh", "-c", "dunst", NULL,
+        "sh", "-c", "foot --server", NULL,
         NULL /* terminate */
 };
 
@@ -127,7 +128,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[] = { "foot", NULL };
+static const char *termcmd[] = { "footclient", NULL };
 static const char *menucmd[] = { "bemenu-run", NULL };
 
 static const Key keys[] = {
