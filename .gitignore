@@ -15,6 +15,7 @@
 !w3m/
 !waybar/
 !xkb/
+!yambar/
 !zathura/
 !zellij/
 !zsh/
@@ -24,12 +25,6 @@
 !packages-aur.txt
 !packages-pacman.txt
 
-# # allow config.h and patches
-# !dwl/
-# dwl/*
-# !dwl/config.h
-# !dwl/dwl.c
-# !dwl/*.patch
 # allow config.h and patches
 !dwl/
 dwl/*
