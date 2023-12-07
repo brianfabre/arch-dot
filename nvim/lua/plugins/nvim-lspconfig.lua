@@ -135,6 +135,13 @@ local M = {
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
             })
 
+            require("lspconfig").clangd.setup({
+                cmd = { "clangd" },
+                filetypes = { "c", "cpp" },
+                on_attach = on_attach,
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            })
+
             require("lspconfig")["pyright"].setup({
                 handlers = handlers,
                 on_attach = on_attach,
