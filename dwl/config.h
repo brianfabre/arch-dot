@@ -145,6 +145,7 @@ static const Key keys[] = {
     { HYPER,               XKB_KEY_0,          spawn,          SHCMD("~/.config/qtile/scripts/bright_up.sh") },
     { HYPER,               XKB_KEY_minus,      spawn,          SHCMD("~/.config/qtile/scripts/vol_down.sh") },
     { HYPER,               XKB_KEY_equal,      spawn,          SHCMD("~/.config/qtile/scripts/vol_up.sh") },
+ 	{ HYPER,               XKB_KEY_space,      backandforth,      {0} },
 	{ MODKEY,              XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,              XKB_KEY_k,          focusstack,     {.i = -1} },
 	// { MODKEY,              XKB_KEY_h,          focusdir,       {.ui = 0} },

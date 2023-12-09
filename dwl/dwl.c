@@ -244,6 +244,7 @@ static void arrangelayer(Monitor *m, struct wl_list *list,
 static void arrangelayers(Monitor *m);
 static void autostartexec(void);
 static void axisnotify(struct wl_listener *listener, void *data);
+static void backandforth(const Arg *arg);
 static void buttonpress(struct wl_listener *listener, void *data);
 static void chvt(const Arg *arg);
 static void checkidleinhibitor(struct wlr_surface *exclude);
@@ -647,6 +648,17 @@ axisnotify(struct wl_listener *listener, void *data)
 	wlr_seat_pointer_notify_axis(seat,
 			event->time_msec, event->orientation, event->delta,
 			event->delta_discrete, event->source);
+}
+
+void
+backandforth(const Arg *arg)
+{
+	Arg a;
+    int curseltags = selmon->tagset[selmon->seltags];
+    int nextseltags = (curseltags == selmon->tagset[0]) ? selmon->tagset[1] : selmon->tagset[0];
+
+    a.i = nextseltags;
+    view(&a);
 }
 
 void
@@ -2080,6 +2092,11 @@ printstatus(void)
 		printf("%s tags %u %u %u %u\n", m->wlr_output->name, occ, m->tagset[m->seltags],
 				sel, urg);
 		printf("%s layout %s\n", m->wlr_output->name, m->ltsymbol);
+		// printf("-----------\n");
+		// printf("%s m->tagset[0] %d\n", m->wlr_output->name, m->tagset[0]);
+		// printf("%s m->tagset[1] %d\n", m->wlr_output->name, m->tagset[1]);
+		// printf("%s m->seltags %d\n", m->wlr_output->name, m->seltags);
+		// printf("%s m->tagset[m->seltags] %u\n", m->wlr_output->name, m->tagset[m->seltags]);
 	}
 	fflush(stdout);
 }
