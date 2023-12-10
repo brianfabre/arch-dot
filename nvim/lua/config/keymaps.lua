@@ -83,7 +83,7 @@ map("i", ">>", "<c-t>")
 map("v", ".", ":normal .<CR>")
 
 -- open lazy.nvim
-map("n", "<leader>l", ":Lazy<CR>", { desc = "lazy.nvim" })
+map("n", "<leader>lz", ":Lazy<CR>", { desc = "lazy.nvim" })
 
 -- open nvim config
 map("n", "<leader>oc", ":e $MYVIMRC<CR>", { desc = "config" })

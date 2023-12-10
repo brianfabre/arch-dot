@@ -44,15 +44,11 @@ local M = {
         dependencies = { "rktjmp/lush.nvim" },
     },
     {
-        "navarasu/onedark.nvim",
+        "rose-pine/neovim",
         lazy = true,
-        config = function()
-            require("onedark").setup({
-                style = "darker",
-            })
-        end,
+        name = "rose-pine",
+        -- opts = { variant = "moon" },
     },
-    { "rose-pine/neovim", lazy = true, name = "rose-pine", opts = { variant = "moon" } },
     {
         "catppuccin/nvim",
         lazy = true,
