@@ -37,6 +37,7 @@ static const Rule rules[] = {
  	{ "firefox"  , NULL  , 1 << 8    , 0          , 0      , 1         , -1 }       ,
 	*/
  	{ "foot"     , NULL  , 0         , 0          , 1      , 0         , -1 }       ,
+ 	{ "thunar"   , NULL  , 0         , 1          , 0      , 1         , -1 }       ,
 };
 
 /* layout(s) */
