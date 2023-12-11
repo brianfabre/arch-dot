@@ -24,7 +24,7 @@ local M = {
                 c = { name = "directory", _ = "which_key_ignore" },
                 f = { name = "files", _ = "which_key_ignore" },
                 g = { name = "git", _ = "which_key_ignore" },
-                l = { name = "lsp", _ = "which_key_ignore" },
+                l = { name = "lsp / lazy(git)", _ = "which_key_ignore" },
                 o = { name = "open", _ = "which_key_ignore" },
                 p = { name = "run code", _ = "which_key_ignore" },
                 q = { name = "quit", _ = "which_key_ignore" },
