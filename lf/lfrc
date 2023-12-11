@@ -19,13 +19,6 @@ set previewer ~/.config/lf/previewer.sh
 map J :updir; set dironly true; down; set dironly false; open
 map K :updir; set dironly true; up; set dironly false; open
 
-# custom functions
-cmd mkdir ${{
-  printf "Directory Name: "
-  read ans
-  mkdir $ans
-}}
-
 cmd bulk-rename ${{
     old="$(mktemp)"
     new="$(mktemp)"
@@ -78,7 +71,8 @@ map <enter> open
 map . set hidden!
 map d delete
 map x cut
-map a mkdir
+map a push %mkdir<space>
+map A push %touch<space>
 map zp zip
 map R bulk-rename
 
