@@ -9,7 +9,7 @@ exec /home/brian/.config/sway/scripts/installed_packages.sh
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu bemenu-run -i -l 10 --fn 'Hack 11' -p menu | xargs swaymsg exec --
+set $menu bemenu-run -i -l 10 --fn 'Hack Nerd Font 11' -p menu | xargs swaymsg exec --
 
 # set $output-primary "Acer Technologies XV240Y P 0x00006F5C"
 # set $output-secondary "Acer Technologies Acer H236HL LX1AA0044210"

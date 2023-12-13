@@ -29,7 +29,7 @@ bar:
               - map:
                   conditions:
                     # default tag
-                    id == 0: {string: {text: " {layout}  {title}", max: 60}}
+                    id == 0: {string: {text: " {layout}  {title}", max: 50}}
 
                     urgent:
                       map:
