@@ -30,10 +30,10 @@ require("lazy").setup("plugins", {
 local function c(theme)
     vim.cmd.colorscheme(theme)
 end
--- c("kanagawa")
+c("kanagawa")
 -- c("sonokai")
 -- c("tokyonight")
-c("rose-pine")
+-- c("rose-pine")
 -- c("falcon")
 -- c("arctic") -- vscode colors
 -- c("dracula")

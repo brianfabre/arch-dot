@@ -1,11 +1,12 @@
 adbfs-rootless-git r112.fd56381-1
+browsh-bin 1.8.2-1
 clipman 1.6.2-1
 cpu-x 5.0.2-1
 microsoft-edge-stable-bin 119.0.2151.58-1
 rofi-greenclip 4.2-2
 sanoid-git r803.61000c9-1
 ttf-times-new-roman 2.0-3
-visual-studio-code-bin 1.84.2-1
+visual-studio-code-bin 1.85.0-1
 wev-git 1.0.0.r4.g0fc0549-1
 wl-gammarelay 0.1.0-1
 yay 12.2.0-1
