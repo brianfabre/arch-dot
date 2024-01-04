@@ -1,6 +1,21 @@
+import = ["~/.config/alacritty/themes/themes/ubuntu.yml"]
+
 [font]
-normal                = { family = "Hack", style = "Regular" }
-bold                  = { family = "Hack", style = "Bold" }
-italic                = { family = "Hack", style = "Italic" }
-bold_italic           = { family = "Hack", style = "Bold Italic" }
-size                  = 11
+normal      = { family = "Hack", style = "Regular" }
+bold        = { family = "Hack", style = "Bold" }
+italic      = { family = "Hack", style = "Italic" }
+bold_italic = { family = "Hack", style = "Bold Italic" }
+size        = 11
+
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "N"
+mods = "Command"
+
+[window]
+dynamic_padding = true
+opacity = 1.0
+
+[window.padding]
+x = 5
+y = 5
